@@ -18,6 +18,16 @@ and professional learners, with reproducible tools for educators.
 **Status:** Working local implementation for hackathon demonstration and continued
 development.
 
+## Key highlight
+
+> **1StopQuantum is powered by Sumi**, an AI Learning Companion that turns a
+> voice conversation into an AI-native learning experience that explains,
+> demonstrates, acts, and verifies. This is the central product idea of the
+> submission: learners learn quantum computing by doing, with Sumi grounded in
+> the current screen and limited to safe, visible application actions.
+
+![1StopQuantum powered by Sumi — AI Learning Companion](docs/assets/sumi-hero.png)
+
 ## Author and acknowledgment
 
 Tarun Chawdhury, author of this repository, completed a master's education in
