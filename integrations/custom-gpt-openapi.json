@@ -1,0 +1,54 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "1StopQuantum Custom GPT Action",
+    "version": "0.4.0",
+    "description": "Build and locally simulate a quantum circuit from natural language. All results are simulated."
+  },
+  "servers": [
+    { "url": "https://YOUR_HTTPS_DOMAIN", "description": "Replace with the HTTPS URL exposing the 1StopQuantum API" }
+  ],
+  "paths": {
+    "/integrations/chatgpt/visualize": {
+      "post": {
+        "operationId": "visualizeQuantumCircuit",
+        "summary": "Build and simulate a quantum circuit",
+        "description": "Translate natural language to validated Circuit IR and return a simulated circuit result and visualization link.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["text"],
+                "properties": {
+                  "text": { "type": "string", "description": "Natural-language quantum circuit request" },
+                  "backend": { "type": "string", "enum": ["qiskit", "cirq"], "default": "qiskit" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Validated simulated circuit result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "interpretation": { "type": "string" },
+                    "ir": { "type": "object" },
+                    "counts": { "type": "object" },
+                    "visualization_url": { "type": "string", "format": "uri" },
+                    "simulated": { "type": "boolean", "const": true }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

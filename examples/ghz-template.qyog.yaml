@@ -1,0 +1,13 @@
+apiVersion: quantumyog.dev/v1
+kind: Circuit
+metadata:
+  name: ghz-lesson
+  description: Expand a deterministic three-qubit GHZ template.
+spec:
+  backend: cirq
+  template:
+    name: ghz
+    parameters:
+      qubits: 3
+      shots: 512
+      seed: 42

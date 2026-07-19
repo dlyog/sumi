@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "questions": [
+    {
+      "question": "Does this run on a real quantum computer?",
+      "answer": "No. 1StopQuantum simulates circuits locally for education. Real QPU submission is disabled, so results are not hardware certification."
+    },
+    {
+      "question": "Do I need quantum physics or linear algebra first?",
+      "answer": "No. Start with Bits and qubits at High school depth. The course introduces each term with a classical comparison before adding equations at undergraduate and master's depth."
+    },
+    {
+      "question": "What should I learn first?",
+      "answer": "Follow Quantum foundations in order: Bits and qubits, State and the Bloch sphere, Gates and circuits, then Measurement and shots. Make each prediction before running the practical."
+    },
+    {
+      "question": "Can AI-generated course content be wrong?",
+      "answer": "Yes. Visuals and some instructional material are AI-assisted and reviewed, but inaccuracies can remain. Use Report inaccuracy and verify important claims independently."
+    },
+    {
+      "question": "What does the image information icon mean?",
+      "answer": "It identifies a prebuilt AI-generated visual and shows the authoring prompt and model. The visual is illustrative and is not a photograph of a physical qubit."
+    },
+    {
+      "question": "Is my lesson activity private?",
+      "answer": "This local installation records a browser identifier, page views, and voluntary feedback in its own PostgreSQL database. It does not require a third-party cloud analytics service."
+    },
+    {
+      "question": "Why do measurement counts change between runs?",
+      "answer": "Quantum measurement is probabilistic. Repeated shots estimate the predicted distribution, so finite samples vary even when the prepared state is unchanged."
+    },
+    {
+      "question": "How do I report a confusing explanation?",
+      "answer": "Use Report inaccuracy beside the lesson summary. Describe the specific statement or visual relationship that appears misleading so an editor can review it."
+    }
+  ]
+}

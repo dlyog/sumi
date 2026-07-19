@@ -1,0 +1,20 @@
+apiVersion: quantumyog.dev/v1
+kind: Circuit
+metadata:
+  name: bell-state
+  description: Prepare and measure a Bell pair.
+spec:
+  backend: qiskit
+  circuit:
+    version: "1.0"
+    num_qubits: 2
+    gates:
+      - op: H
+        targets: [0]
+      - op: CNOT
+        controls: [0]
+        targets: [1]
+      - op: measure
+        targets: [0, 1]
+    shots: 1024
+    seed: 42

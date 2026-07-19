@@ -1,0 +1,43 @@
+# QuantumYog backend dependencies — fully local on macOS
+# Python 3.11/3.12 recommended (native arm64 wheels on Apple Silicon). Install into a venv:
+#   python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+
+# --- Quantum frameworks / simulators ---
+qiskit                 # IBM framework (default backend)
+qiskit-aer             # high-performance local simulator
+cirq                   # Google framework (alternate backend)
+
+# --- API service ---
+fastapi
+uvicorn[standard]
+pydantic>=2            # Circuit IR models
+PyYAML                 # JSON/YAML QuantumYog declarative manifests
+jsonschema             # validate Circuit IR JSON against the schema
+psycopg[binary]>=3.3,<4 # PostgreSQL accounts, subscriptions, and scheduled jobs
+cryptography>=42        # encrypt admin-managed LLM API keys at rest
+mcp>=1.28,<2            # official Model Context Protocol server for ChatGPT Apps
+
+# --- Math ---
+numpy
+scipy
+Pillow                  # validate locally generated lesson images
+
+# --- Drug-discovery module ---
+rdkit                  # SMILES parsing, 2D depiction, QED, descriptors, alerts
+                       # fallback if the wheel is unavailable on your platform:
+                       #   rdkit-pypi   (or install via conda-forge)
+
+# --- LLM client ---
+# `openai` is used as the client for the LOCAL OpenAI-compatible endpoint
+# (Ollama / LM Studio / llama.cpp / MLX). No OpenAI account or internet needed.
+openai
+# Optional cloud fallback only (leave commented for fully-local builds):
+# anthropic
+
+# --- Optional: annealing paradigm (docs/PROVIDERS.md, stretch M6) ---
+dwave-neal              # local classical simulated-annealing sampler
+
+# --- Testing (CLI evals) ---
+pytest
+pytest-asyncio
+httpx

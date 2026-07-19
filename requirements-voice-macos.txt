@@ -1,0 +1,5 @@
+# Optional local voice runtime for Apple Silicon Macs.
+mlx-whisper
+kokoro>=0.9.4
+soundfile
+silero-vad>=5.1

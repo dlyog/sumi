@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Frequently asked questions | 1StopQuantum</title>
+    <link rel="stylesheet" href="/info.css" />
+  </head>
+  <body>
+    <header class="info-header"><img src="/assets/1stopquantum-logo.png" alt="1StopQuantum" /><a href="/">Return to the learning platform</a></header>
+    <main class="info-main">
+      <p class="eyebrow">Help center</p>
+      <h1>Frequently asked questions</h1>
+      <p class="lede">Short answers about simulation, learning order, AI-assisted media, privacy, and course feedback.</p>
+      <section class="faq-list" id="faqList" aria-live="polite"><p>Loading saved questions...</p></section>
+    </main>
+    <footer class="info-footer"><strong>&copy; 2026 1StopQuantum contributors.</strong> Independent educational software. Trademarks belong to their owners; no endorsement or association is implied.<nav><a href="/policies.html#terms">Terms</a><a href="/policies.html#privacy">Privacy</a><a href="/policies.html#transparency">Transparency</a><a href="/policies.html#disclaimer">Disclaimer</a><a href="/ai-use.html">AI use</a><a href="/credits.html">Credits</a></nav></footer>
+    <script>
+      fetch("/data/faq.json", { cache: "no-store" }).then((response) => response.json()).then((data) => {
+        const list = document.getElementById("faqList");
+        list.replaceChildren(...data.questions.map((entry) => {
+          const details = document.createElement("details");
+          const summary = document.createElement("summary");
+          const answer = document.createElement("p");
+          summary.textContent = entry.question;
+          answer.textContent = entry.answer;
+          details.append(summary, answer);
+          return details;
+        }));
+      }).catch(() => { document.getElementById("faqList").textContent = "The saved FAQ could not be loaded."; });
+    </script>
+  </body>
+</html>

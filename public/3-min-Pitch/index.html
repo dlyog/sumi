@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>1StopQuantum — Powered by Sumi</title>
+<style>
+:root{
+  --ink:#10131a;--muted:#58606f;--blue:#2455d6;--blue2:#6b4df6;
+  --panel:#ffffff;--line:#dce2ec;--soft:#f4f7fb;--accent:#ffd95c;
+}
+*{box-sizing:border-box} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--ink);background:#0b1020}
+button{font:inherit}.deck{min-height:100vh}.slide{display:none;min-height:100vh;background:linear-gradient(145deg,#fff 0%,#f6f8fd 72%,#edf2ff 100%);padding:54px 68px 92px;position:relative;overflow:hidden}.slide.active{display:flex;flex-direction:column}.eyebrow{font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:.08em;font-size:13px}.title{font-size:clamp(38px,5vw,78px);line-height:1.02;max-width:1040px;margin:14px 0 16px}.subtitle{font-size:clamp(18px,2vw,28px);line-height:1.42;color:var(--muted);max-width:980px}.grid{display:grid;grid-template-columns:1.08fr .92fr;gap:42px;align-items:center;flex:1}.visual{background:#fff;border:1px solid var(--line);border-radius:28px;box-shadow:0 24px 70px rgba(26,43,84,.12);overflow:hidden;min-height:430px;display:flex;align-items:center;justify-content:center;position:relative}.visual img{width:100%;height:100%;object-fit:contain;max-height:620px}.video{width:100%;height:100%;min-height:430px;background:#101523;display:flex;align-items:center;justify-content:center;position:relative}.video video{width:100%;height:100%;max-height:620px;background:#000}.placeholder{color:#fff;text-align:center;padding:40px}.placeholder .play{font-size:76px}.placeholder code{color:#bcd0ff}.copy{display:flex;flex-direction:column;gap:20px}.quote{font-size:clamp(25px,3vw,46px);line-height:1.18;font-weight:800}.body{font-size:21px;line-height:1.55;color:var(--muted)}.pill{display:inline-flex;width:max-content;padding:10px 15px;border-radius:999px;background:#e8efff;color:#1646bd;font-weight:800}.actions{display:flex;gap:14px;flex-wrap:wrap}.btn{border:0;border-radius:12px;padding:13px 19px;font-weight:800;cursor:pointer}.btn.primary{background:var(--ink);color:white}.btn.secondary{background:#fff;border:1px solid var(--line);color:var(--ink)}.progress{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);border-top:1px solid var(--line);height:66px;z-index:50;display:flex;align-items:center;padding:0 24px;gap:18px}.progress .bar{flex:1;height:6px;background:#e3e7ef;border-radius:99px;overflow:hidden}.progress .fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--blue2));width:0}.counter{font-weight:800;color:#485064}.mock{padding:28px;width:100%;display:grid;grid-template-columns:170px 1fr;gap:24px;align-items:center;background:linear-gradient(145deg,#eef4ff,#fff)}.mock .avatar{width:160px;height:160px;border-radius:50%;overflow:hidden;border:5px solid white;box-shadow:0 14px 35px rgba(26,43,84,.18)}.mock .avatar img{width:100%;height:100%;object-fit:cover}.chat{display:flex;flex-direction:column;gap:14px}.bubble{padding:16px 18px;border-radius:18px;max-width:88%;font-size:18px;line-height:1.4}.student{background:#fff;border:1px solid var(--line);align-self:flex-end}.sumi{background:#e8efff;color:#173c96;align-self:flex-start}.student-row{display:flex;justify-content:flex-end;align-items:center;gap:10px}.student-icon{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#111;color:#fff;font-weight:800}.testimonial{padding:44px}.testimonial blockquote{font-size:30px;line-height:1.35;margin:0}.testimonial .who{margin-top:24px;color:var(--muted);font-weight:700}.sumi-mark{display:flex;align-items:center;gap:20px}.sumi-mark img{width:150px;height:150px;border-radius:30px;object-fit:cover}.small{font-size:14px;color:var(--muted)}.watermark{position:absolute;right:34px;top:26px;font-weight:900;color:#b6bfd1}.storyline{display:flex;gap:8px;flex-wrap:wrap}.storyline span{padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;font-weight:700;font-size:14px}
+@media(max-width:850px){.slide{padding:36px 24px 92px}.grid{grid-template-columns:1fr}.visual{min-height:300px}.mock{grid-template-columns:1fr}.mock .avatar{margin:auto}.title{font-size:44px}.body{font-size:18px}}
+.deck-logo{position:fixed;top:18px;right:22px;z-index:60;width:150px;height:auto;opacity:.9}.deck-brand{position:fixed;top:14px;right:22px;z-index:60;display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.92);padding:7px 10px;border-radius:12px;box-shadow:0 8px 24px rgba(26,43,84,.1);font-size:12px;font-weight:800;color:#58606f}.deck-brand img:first-child{width:118px}.deck-brand img:last-child{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid #fff}.app-back{text-decoration:none}
+</style>
+</head>
+<body>
+<img class="deck-logo" src="/assets/1stopquantum-logo.png" alt="1StopQuantum" />
+<div class="deck-brand" id="deckBrand" hidden><img src="/assets/1stopquantum-logo.png" alt="1StopQuantum" /><span>Powered by</span><img src="assets/sumi.png" alt="Sumi" /></div>
+<div class="deck" id="deck">
+
+<section class="slide active">
+  <div class="watermark">1StopQuantum</div>
+  <div class="grid">
+    <div class="copy">
+      <div class="eyebrow">OpenAI Education Hackathon</div>
+      <h1 class="title">1StopQuantum<br><span style="color:#2455d6">Powered by Sumi</span></h1>
+      <p class="subtitle">From a voice conversation to an AI-native learning experience that explains, demonstrates, acts, and verifies.</p>
+      <div class="storyline"><span>Idea</span><span>Interactive platform</span><span>Sumi</span><span>Learning by doing</span></div>
+    </div>
+    <div class="visual"><img src="assets/sumi.png" alt="Sumi AI Learning Companion"/></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Agenda · six beats in three minutes</div>
+  <h2 class="title">From voice idea to a reusable learning companion.</h2>
+  <div class="grid">
+    <div class="copy"><div class="storyline"><span>1 · ChatGPT Voice ideation</span><span>2 · Codex goal + constraints</span><span>3 · Sumi architecture + SDK</span><span>4 · Quantum proof</span><span>5 · Live demo</span><span>6 · Learner reflection</span></div><p class="body">We show, rather than tell: the idea, the engineering method, the architecture, the difficult subject we chose, and the learner experience.</p></div>
+    <div class="visual"><img src="assets/codex-vertical-slice.png" alt="Codex five-part goal, context, constraints, execution, verification structure"/></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">It started with an idea</div>
+  <h2 class="title">ChatGPT Voice helped turn a broad idea into a focused product.</h2>
+  <div class="grid">
+    <div class="visual"><img src="assets/idea-voice.png" alt="ChatGPT Voice ideation that shaped the learning companion"/></div>
+    <div class="copy">
+      <div class="quote">“The fastest way to shape the idea was to talk through it.”</div>
+      <p class="body">The conversation moved from a broad quantum platform to a sharper educational thesis: AI should not only answer. It should help the learner act, observe, predict, and understand.</p>
+      <button class="btn primary" onclick="nextSlide()">Continue after video →</button>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">The problem</div>
+  <h2 class="title">Learning is still designed as a one-way transfer.</h2>
+  <div class="grid">
+    <div class="copy">
+      <div class="quote">Lecture. Video. Reading. Assignment. Wait.</div>
+      <p class="body">When a concept becomes difficult, static content cannot see confusion, change its explanation, or demonstrate the next step at the exact moment it is needed.</p>
+      <div class="pill">Static content cannot meet the learner in the moment</div>
+    </div>
+    <div class="visual" style="padding:48px">
+      <img src="assets/static-learning-problem.png" alt="Static lectures, readings, and assignments overwhelm a learner"/>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Our thesis</div>
+  <h2 class="title">Move from static content to interactive learning.</h2>
+  <div class="grid">
+    <div class="visual"><img src="assets/interactive-thesis.png" alt="Interactive learning by doing and experimenting"/></div>
+    <div class="copy">
+      <div class="quote">Most learning copilots answer questions. We want AI to teach by doing.</div>
+      <p class="body">The learner should be able to speak naturally, watch the AI demonstrate a real action, make a prediction, repeat the experiment, and receive feedback grounded in the actual result.</p>
+      <div class="storyline"><span>Listen</span><span>Explain</span><span>Demonstrate</span><span>Act</span><span>Verify</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Why quantum?</div>
+  <h2 class="title">We chose one of the hardest technical subjects as the proof.</h2>
+  <div class="grid">
+    <div class="copy">
+      <p class="body">In 1StopQuantum, a learner can describe an experiment in natural language, build a validated circuit, run a local simulation with Qiskit or Cirq, and inspect the circuit, Bloch state, amplitudes, measurements, and generated code.</p>
+      <div class="pill">Natural language → circuit → simulation → explanation</div>
+    </div>
+    <div class="visual"><img src="assets/quantum-proof.png" alt="Quantum Computing interactive experiment proof"/></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">The insight</div>
+  <h2 class="title">An interactive platform was still not enough.</h2>
+  <div class="grid">
+    <div class="visual"><img src="assets/guided-learning.png" alt="Guided learning by doing with Sumi"/></div>
+    <div class="copy">
+      <div class="quote">A beginner may not know what to ask.</div>
+      <p class="body">Questions are part of learning. A learner may not know which control matters, what to inspect, why a probability changed, or what experiment should come next.</p>
+      <div class="pill">The interface needed a teacher inside it</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Meet Sumi</div>
+  <h2 class="title">An AI Learning Companion that answers—and acts.</h2>
+  <div class="grid">
+    <div class="visual">
+      <div class="mock">
+        <div class="avatar"><img src="assets/sumi.png" alt="Sumi avatar"/></div>
+        <div class="chat">
+          <div class="student-row"><div class="bubble student">Sumi, can you show me how Grover search works?</div><div class="student-icon">L</div></div>
+          <div class="bubble sumi">Absolutely. First, which state do you predict will become most likely: 00, 01, 10, or 11?</div>
+          <div class="student-row"><div class="bubble student">I predict 10.</div><div class="student-icon">L</div></div>
+          <div class="bubble sumi">Great. I’ll build the circuit, pause at each stage, and compare your prediction with the simulator.</div>
+        </div>
+      </div>
+    </div>
+    <div class="copy">
+      <p class="body">Sumi understands the current screen, speaks, highlights controls, performs approved actions, demonstrates the experiment, and gives personalized feedback grounded in deterministic software. She is not a general-purpose chatbot: our reusable SDK and CLI let another learning site register its own screens, concepts, and safe actions.</p>
+      <div class="pill">Ask → Predict → Build → Observe → Explain → Verify</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Live demonstration</div>
+  <h2 class="title">Watch Sumi teach by doing.</h2>
+  <div class="grid">
+    <div class="video">
+      <video id="sumiVideo" controls preload="metadata">
+        <source src="sumi-demo.webm" type="video/webm"/>
+      </video>
+      <div class="placeholder" id="sumiPlaceholder"><div class="play">▶</div><h2>Sumi product demo</h2><p>The embedded demonstration could not be loaded.</p></div>
+    </div>
+    <div class="copy">
+      <p class="body">The demo should show Sumi introducing Algorithm Studio, asking for a prediction, operating real controls, stepping through Grover search, running the local simulator, comparing the result, and revealing Qiskit or Cirq code.</p>
+      <div class="pill">Prediction → action → experiment → understanding</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Trust by design</div>
+  <h2 class="title">The model teaches. Deterministic software stays in control.</h2>
+  <div class="grid">
+    <div class="copy">
+      <div class="quote">Sumi cannot invent a result or execute arbitrary code.</div>
+      <p class="body">Each screen exposes approved concepts and actions. The model interprets intent; deterministic handlers operate the interface; the simulator verifies the outcome.</p>
+      <div class="storyline"><span>Bounded intent</span><span>Registered action</span><span>Verified result</span></div>
+    </div>
+    <div class="visual" style="padding:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;align-content:center">
+      <img src="assets/current-learn.png" alt="Learn workspace" style="width:100%;height:130px;object-fit:cover;border-radius:8px">
+      <img src="assets/current-circuits.png" alt="Circuits workspace" style="width:100%;height:130px;object-fit:cover;border-radius:8px">
+      <img src="assets/sumi-sdk.png" alt="Sumi SDK across learning modules" style="width:100%;height:130px;object-fit:cover;border-radius:8px">
+      <img src="assets/current-use-cases.png" alt="Use cases workspace" style="width:100%;height:130px;object-fit:cover;border-radius:8px">
+      <img src="assets/current-providers.png" alt="Providers workspace" style="width:100%;height:130px;object-fit:cover;border-radius:8px">
+      <img src="assets/current-benchmark.png" alt="Benchmark workspace" style="width:100%;height:130px;object-fit:cover;border-radius:8px">
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Learner reflection</div>
+  <h2 class="title">The difference is guided participation.</h2>
+  <div class="grid">
+    <div class="visual testimonial">
+      <div>
+        <blockquote>“Before Sumi, I could run the circuit, but I did not always understand what to inspect or why the result changed. With Sumi, I could ask naturally, watch each step, make a prediction, and receive feedback immediately.”</blockquote>
+        <div class="who">Sample learner testimonial — replace with a real recording or quote</div>
+      </div>
+    </div>
+    <div class="copy">
+      <div class="quote">From operating a tool to understanding an experiment.</div>
+      <p class="body">The goal is not to hide complexity. It is to make the path through complexity visible, approachable, and accessible.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">The future of learning</div>
+  <div class="grid">
+    <div class="copy">
+      <h2 class="title">This is only the beginning.</h2>
+      <p class="body">Sumi is not perfect. She will make mistakes, and we will keep improving her. Sumi is purpose-built for learning applications—not a general-purpose assistant. With the Sumi SDK and CLI, any learning site can add a screen registry, connect its own LLM, speech-to-text, and text-to-speech providers, and give learners an AI companion that can explain, demonstrate, and act safely inside that module.</p>
+      <div class="quote">Welcome to learning in the AI age.</div>
+      <div class="pill">1StopQuantum — Powered by Sumi · SDK + CLI for learning sites</div>
+    </div>
+    <div class="visual"><img src="assets/future-learning.png" alt="The future of accessible interactive learning"/></div>
+  </div>
+</section>
+
+</div>
+
+<div class="progress">
+  <button class="btn secondary" onclick="prevSlide()">← Back</button>
+  <a class="btn secondary app-back" href="/" aria-label="Back to 1StopQuantum app">↩ App</a>
+  <button class="btn secondary" id="narrationBtn" onclick="toggleNarration()">▶ Play narration</button>
+  <button class="btn secondary" id="playAllBtn" onclick="playAllNarration()">▶ Play all</button>
+  <div class="counter" id="counter">1 / 11</div>
+  <div class="bar"><div class="fill" id="fill"></div></div>
+  <button class="btn primary" onclick="nextSlide()">Next →</button>
+</div>
+<audio id="audioPlayer" preload="auto"></audio>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];let i=0;
+const narrationFiles=['qy-00-idea-step-01-narrator.wav',null,'qy-00-idea-step-01-narrator.wav','qy-01-problem-step-01-narrator.wav','qy-02-thesis-step-01-researcher.wav','qy-03-proof-step-01-narrator.wav','qy-04-gap-step-01-researcher.wav','qy-05-sumi-step-01-researcher.wav','qy-06-demo-step-01-narrator.wav','qy-07-safety-step-01-engineer.wav','qy-08-testimonial-step-01-learner.wav','qy-09-close-step-01-narrator.wav'];
+const narration=document.getElementById('audioPlayer');
+const narrationBtn=document.getElementById('narrationBtn');
+function show(n){i=Math.max(0,Math.min(slides.length-1,n));narration.pause();narration.currentTime=0;slides.forEach((s,j)=>s.classList.toggle('active',j===i));document.querySelector('.deck-logo').style.display=i===0?'block':'none';document.getElementById('deckBrand').hidden=i===0;counter.textContent=`${i+1} / ${slides.length}`;fill.style.width=`${((i+1)/slides.length)*100}%`;narrationBtn.textContent='▶ Play narration';window.scrollTo(0,0)}
+function toggleNarration(){const file=narrationFiles[i];if(!file)return;narration.src=`audio/${file}`;if(narration.paused){narration.play().then(()=>narrationBtn.textContent='Ⅱ Pause').catch((error)=>{narrationBtn.textContent='▶ Retry narration';console.warn('Narration playback failed',error);});}else{narration.pause();narrationBtn.textContent='▶ Play narration';}}
+async function playAllNarration(){for(let slide=i;slide<narrationFiles.length;slide++){const file=narrationFiles[slide];if(!file)continue;show(slide);narration.src=`audio/${file}`;narrationBtn.textContent='Ⅱ Pause';try{await narration.play();await new Promise(resolve=>{narration.onended=resolve;narration.onerror=resolve;});}catch(error){console.warn('Narration playback failed',error);break;}}narrationBtn.textContent='▶ Play narration';}
+narration.addEventListener('ended',()=>narrationBtn.textContent='▶ Play narration');
+function nextSlide(){show(i+1)} function prevSlide(){show(i-1)}
+document.addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();nextSlide()}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prevSlide()}})
+for(const id of ['sumiVideo']){const v=document.getElementById(id);const p=document.getElementById(id.replace('Video','Placeholder'));v.addEventListener('loadeddata',()=>p.style.display='none');v.addEventListener('error',()=>{v.style.display='none';p.style.display='block'})}
+show(0);
+</script>
+</body>
+</html>

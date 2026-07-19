@@ -1,0 +1,1021 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>1StopQuantum</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/quantumyog-192.png" />
+    <link rel="apple-touch-icon" href="/icons/quantumyog-192.png" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/build-version.js"></script>
+  </head>
+  <body>
+    <main class="shell">
+      <aside class="sidebar" aria-label="1StopQuantum navigation">
+        <div class="brand">
+          <div class="brand-logo-frame"><img class="brand-logo" data-testid="brand-logo" src="/assets/1stopquantum-logo.png" alt="1StopQuantum" /></div>
+          <h1 class="sr-only">1StopQuantum</h1>
+        </div>
+
+        <nav class="primary-nav" aria-label="Workspaces">
+          <button class="nav-item active" id="navLearn" data-testid="nav-learn" aria-current="page">
+            <span aria-hidden="true">&#x25C9;</span><span>Learn</span>
+          </button>
+          <button class="nav-item" id="navCircuits">
+            <span aria-hidden="true">&#x2318;</span><span>Circuits</span>
+          </button>
+          <button class="nav-item" id="navImprove" data-testid="nav-improve">
+            <span aria-hidden="true">&#x21BB;</span><span>Improve</span>
+          </button>
+          <div class="nav-group">
+            <button class="nav-item" id="navUseCases" data-testid="nav-use-cases">
+              <span aria-hidden="true">&#x25C8;</span><span>Use cases</span>
+            </button>
+            <button class="nav-item nav-subitem" data-testid="nav-drug-discovery" id="navDrug">
+              <span aria-hidden="true">&#x2697;</span><span>Drug discovery</span>
+            </button>
+          </div>
+          <button class="nav-item" id="navProviders" data-testid="nav-providers">
+            <span aria-hidden="true">&#x21C4;</span><span>Providers</span>
+          </button>
+          <button class="nav-item" id="navBenchmarking" data-testid="nav-benchmarking">
+            <span aria-hidden="true">&#x25F4;</span><span>Benchmark</span>
+          </button>
+          <button class="nav-item" id="navPodcast" data-testid="nav-podcast">
+            <span aria-hidden="true">&#9835;</span><span>Podcast</span>
+          </button>
+          <button class="nav-item" id="navCommunity" data-testid="nav-community">
+            <span aria-hidden="true">&#x25CE;</span><span>Community</span>
+          </button>
+          <button class="nav-item" id="navFaq" data-testid="nav-faq">
+            <span aria-hidden="true">?</span><span>FAQ</span>
+          </button>
+          <a class="nav-item" id="navDemo" data-testid="nav-demo" href="/3-min-Pitch/" aria-label="Open the 1StopQuantum pitch">
+            <span aria-hidden="true">&#x25A3;</span><span>Our Pitch</span>
+          </a>
+          <a class="nav-item" id="navSumiInfo" data-testid="nav-sumi-info" href="/what-is-sumi.html" aria-label="Learn what Sumi is">
+            <span aria-hidden="true">&#x2726;</span><span>What is Sumi?</span>
+          </a>
+        </nav>
+
+      </aside>
+
+      <div class="view-stack">
+        <header class="app-utility-bar" data-testid="app-utilities" aria-label="Application utilities">
+          <div class="account-panel utility-account" aria-label="Account actions">
+            <span id="accountStatus" data-testid="account-status">Guest</span>
+            <button id="signupOpen" data-testid="signup-open" type="button"><span class="account-action-symbol" aria-hidden="true">&#43;</span><span class="account-action-label">Sign up</span></button>
+            <button id="signinOpen" data-testid="signin-open" type="button"><span class="account-action-symbol" aria-hidden="true">&#8594;</span><span class="account-action-label">Sign in</span></button>
+            <button id="accountLogout" data-testid="account-logout" type="button" hidden><span class="account-action-symbol" aria-hidden="true">&#8617;</span><span class="account-action-label">Sign out</span></button>
+          </div>
+          <button class="utility-icon-button audio-utility" id="audioGuideOpen" data-testid="audio-guide-open" type="button" aria-label="Listen to this screen guide" title="Listen to this screen guide">
+            <span aria-hidden="true">&#9835;</span>
+          </button>
+          <button class="utility-icon-button" id="navGuide" data-testid="nav-guide" type="button" aria-label="Help and documentation" title="Help and documentation">
+            <span aria-hidden="true">?</span>
+          </button>
+          <button class="utility-icon-button" id="aboutOpen" data-testid="about-open" type="button" aria-label="About 1StopQuantum" title="About 1StopQuantum">
+            <span aria-hidden="true">i</span>
+          </button>
+        </header>
+        <aside class="co-teacher-turn" id="coTeacherTurn" data-testid="co-teacher-turn" aria-label="Latest Sumi conversation turn" hidden>
+          <p data-testid="co-teacher-user-turn"><strong>You</strong><span id="coTeacherUserTurn">Waiting for your question.</span></p>
+          <p data-testid="co-teacher-sumi-turn"><strong>Sumi</strong><span id="coTeacherSumiTurn">AI Learning Companion ready.</span></p>
+        </aside>
+        <section class="module-page learning-page" id="learning-view" data-testid="learning-view">
+          <header class="learning-header">
+            <div>
+              <p class="eyebrow">AI-assisted quantum learning platform</p>
+              <h2>Learn quantum computing by doing</h2>
+              <p class="learning-subtitle">Move from a plain-language question to a visual, testable quantum circuit without losing the underlying concepts.</p>
+              <ul class="learning-value-points" aria-label="Learning platform highlights">
+                <li><strong>Ask</strong><span>in plain language</span></li>
+                <li><strong>See</strong><span>each state change</span></li>
+                <li><strong>Listen</strong><span>and learn anywhere</span></li>
+                <li><strong>Evaluate</strong><span>claims with evidence</span></li>
+              </ul>
+            </div>
+            <div class="learner-level" aria-label="Learning level">
+              <span>Learning level</span>
+              <div role="group" aria-label="Learning level">
+                <button class="active" id="levelHighSchool" data-testid="level-high-school" data-level="high-school" aria-pressed="true">High school</button>
+                <button id="levelUndergraduate" data-testid="level-undergraduate" data-level="undergraduate" aria-pressed="false">Undergraduate</button>
+                <button id="levelMasters" data-testid="level-masters" data-level="masters" aria-pressed="false">Master's</button>
+              </div>
+            </div>
+          </header>
+
+          <section class="classical-quantum-intro" id="classicalQuantumIntro" aria-labelledby="classicalIntroTitle">
+            <div><p class="eyebrow">Start with the computer you know</p><h3 id="classicalIntroTitle">Quantum is a specialist coprocessor, not a replacement</h3></div>
+            <p id="classicalIntroSummary">Classical computers remain the right tool for everyday logic, storage, graphics, AI, and most optimization.</p>
+            <details><summary>Read the full introduction</summary><p id="classicalIntroNarration"></p></details>
+            <button id="classicalIntroPodcast" type="button"><span aria-hidden="true">&#9835;</span> Continue with the long audio overview</button>
+          </section>
+
+          <section class="course-player" data-testid="course-player" aria-labelledby="courseLessonTitle">
+            <div class="course-player-context">
+              <button class="course-outline-toggle" id="courseOutlineToggle" data-testid="course-outline-toggle" type="button" aria-haspopup="dialog" aria-controls="courseOutlineDialog">
+                <span aria-hidden="true">&#9776;</span><span>Course contents</span>
+              </button>
+              <div><p id="coursePosition">Course 1 of 4 · Lesson 1 of 4</p><h3 id="courseLessonTitle" data-testid="course-lesson-title">Bits and qubits</h3><span id="courseLessonMeta">8 min · High school</span></div>
+            </div>
+            <div class="lesson-audio-controls" aria-label="Lesson narration">
+              <button id="lessonAudioToggle" data-testid="lesson-audio-toggle" type="button" aria-label="Play lesson narration" title="Play lesson narration" disabled><span aria-hidden="true">&#9654;</span></button>
+              <div><strong>Listen to this lesson</strong><span id="lessonAudioTime">0:00 / 0:00</span></div>
+              <input id="lessonAudioProgress" aria-label="Lesson narration position" type="range" min="0" max="1000" value="0" />
+              <button class="audio-speed" id="lessonAudioSpeed" type="button" aria-label="Change narration speed" title="Change narration speed">1x</button>
+              <audio id="lessonAudioPlayer" data-testid="lesson-audio-player" preload="metadata" src="/audio/course/bits-and-qubits.wav"></audio>
+            </div>
+          </section>
+
+          <nav class="course-catalog" id="courseCatalog" data-testid="course-catalog" aria-label="Short courses">
+            <button class="active" type="button" data-course="foundations"><span>Course 01</span><strong>Quantum foundations</strong><small>4 lessons</small></button>
+            <button type="button" data-course="effects"><span>Course 02</span><strong>Quantum effects</strong><small>4 lessons</small></button>
+            <button type="button" data-course="algorithms"><span>Course 03</span><strong>Algorithms through experiments</strong><small>4 lessons</small></button>
+            <button type="button" data-course="hardware-evidence"><span>Course 04</span><strong>Hardware &amp; evidence</strong><small>4 lessons</small></button>
+          </nav>
+
+          <div class="learning-progress-row">
+            <span id="learningProgressLabel">0 of 7 checkpoints complete</span>
+            <progress id="courseProgress" data-testid="course-progress" max="7" value="0">0 of 7</progress>
+          </div>
+
+          <nav class="lesson-tabs" id="lessonTabs" data-testid="course-lesson-tabs" aria-label="Lessons in the selected course">
+            <button class="active" data-lesson-id="bits-and-qubits" data-module="foundations" data-testid="lesson-tab-foundations"><span>01.1</span>Bits and qubits</button>
+            <button data-lesson-id="state-and-bloch-sphere" data-module="qubit" data-testid="lesson-tab-qubit"><span>01.2</span>State and the Bloch sphere</button>
+            <button data-lesson-id="gates-and-circuits" data-module="gates" data-testid="lesson-tab-gates"><span>01.3</span>Gates and circuits</button>
+            <button data-lesson-id="measurement-and-shots" data-module="superposition" data-testid="lesson-tab-superposition"><span>01.4</span>Measurement and shots</button>
+          </nav>
+
+          <div class="lesson-layout">
+            <article class="lesson-content">
+              <section class="lesson-media" id="lessonMedia" data-testid="lesson-media" data-animation="prepare-transform-measure">
+                <figure>
+                  <img id="lessonMediaImage" data-testid="lesson-media-image" src="/assets/course/foundations.png" alt="A clear blue qubit sphere beside a simple classical switch" />
+                  <div class="lesson-media-animation" aria-hidden="true"><i></i><i></i><i></i><span></span></div>
+                  <button class="visual-provenance" id="visualProvenance" data-testid="visual-provenance" type="button" aria-label="About this AI-generated visual" aria-describedby="visualProvenanceTooltip">i</button>
+                  <div class="visual-provenance-tooltip" id="visualProvenanceTooltip" data-testid="visual-provenance-tooltip" role="tooltip">AI-generated visual. Prompt and model details load with this lesson.</div>
+                </figure>
+                <div class="lesson-media-copy">
+                  <p class="eyebrow" id="courseName">Course 01 · Quantum foundations</p>
+                  <h3 id="courseMediaTitle">Bits and qubits</h3>
+                  <p id="courseMediaSummary">Start with a familiar switch, then separate a qubit's predicted state from the classical result we observe.</p>
+                  <div class="lesson-engagement" aria-label="Lesson feedback">
+                    <button id="lessonLike" data-testid="lesson-like" type="button" aria-label="Mark this lesson helpful"><span aria-hidden="true">&#9825;</span><span>Helpful</span><strong id="lessonLikeCount" data-testid="lesson-like-count">0</strong></button>
+                    <button id="lessonReport" data-testid="lesson-report" type="button">Report inaccuracy</button>
+                    <span id="lessonFeedbackStatus" role="status" aria-live="polite"></span>
+                  </div>
+                </div>
+              </section>
+
+              <section class="lesson-intro">
+                <p class="lesson-kicker" id="lessonKicker">Module 00 · Foundations</p>
+                <h3 id="lessonTitle" data-testid="lesson-title">From a classical bit to a qubit</h3>
+                <p id="lessonExplanation" data-testid="lesson-explanation">A classical bit is like a switch: when we read it, it is either 0 or 1. A qubit is not a tiny switch or a spinning coin. Before measurement, its state carries two amplitudes that determine what we may observe.</p>
+                <div class="level-detail"><strong id="lessonLevelLabel">At high-school depth</strong><p id="lessonLevelDetail">Start with the outcomes you already know, then use the simulator to see what a quantum state adds.</p></div>
+              </section>
+
+              <section class="course-guide" id="courseGuide" data-testid="course-guide" aria-labelledby="courseGuideTitle">
+                <div class="course-objectives"><p class="eyebrow">Learning objectives</p><h3 id="courseGuideTitle">After this lesson, you can</h3><ul id="courseObjectives"><li>Distinguish a classical bit from a qubit state</li><li>Explain why one measurement still returns only 0 or 1</li></ul></div>
+                <div class="course-reading" id="courseReading">
+                  <article><h4>Begin with the result</h4><p>A classical bit stores a recorded value, 0 or 1. A qubit also gives a classical 0 or 1 when measured.</p></article>
+                  <article><h4>Prepare, transform, measure</h4><p>Prepare a known state, transform it with gates, and measure many identical copies.</p></article>
+                </div>
+              </section>
+
+              <section class="concept-flow" data-testid="beginner-flow" aria-labelledby="conceptFlowTitle">
+                <header>
+                  <p class="eyebrow">Start with what you know</p>
+                  <h3 id="conceptFlowTitle">Follow one state from start to observation</h3>
+                  <p>No prior quantum vocabulary is required. Read these three blocks from left to right.</p>
+                </header>
+                <div class="concept-flow-track">
+                  <article class="concept-step" data-testid="concept-step-prepare">
+                    <span>1</span><div><strong id="visualPrepareLabel">Prepare</strong><p id="visualPrepareCopy">One switch stores either 0 or 1. Begin with the known state 0.</p></div>
+                  </article>
+                  <div class="concept-connector" aria-hidden="true"><i class="concept-pulse"></i><span>&#8594;</span></div>
+                  <article class="concept-step" data-testid="concept-step-transform">
+                    <span>2</span><div><strong id="visualTransformLabel">Transform</strong><p id="visualTransformCopy">A quantum gate changes the state without reading it.</p></div>
+                  </article>
+                  <div class="concept-connector delay" aria-hidden="true"><i class="concept-pulse"></i><span>&#8594;</span></div>
+                  <article class="concept-step" data-testid="concept-step-measure">
+                    <span>3</span><div><strong id="visualMeasureLabel">Measure</strong><p id="visualMeasureCopy">Measurement turns the quantum state into a classical answer.</p></div>
+                  </article>
+                </div>
+                <p class="concept-observation" data-testid="concept-observation"><strong>What you see:</strong> one result per run, either 0 or 1. Repeat the run to reveal the pattern.</p>
+              </section>
+
+              <section class="classical-bridge" data-testid="classical-comparison">
+                <div><p class="eyebrow">Classical bridge</p><h3 id="comparisonTitle">Switch vs quantum state</h3></div>
+                <p id="comparisonCopy">A classical switch stores one definite value. A qubit still produces 0 or 1 when measured, but its pre-measurement state determines the probabilities and can carry phase.</p>
+                <p class="analogy-limit"><strong>Where the analogy stops:</strong> <span id="analogyLimit">a qubit is not secretly choosing a face while we are not looking.</span></p>
+              </section>
+
+              <section class="gate-logic-comparison" aria-labelledby="gateComparisonTitle">
+                <div class="gate-comparison-intro">
+                  <p class="eyebrow">Known logic, new rules</p>
+                  <h3 id="gateComparisonTitle">Classical gates and their quantum counterparts</h3>
+                  <p>Classical gates may discard information. Quantum gates must be reversible until measurement, so AND and OR need extra workspace qubits.</p>
+                </div>
+                <div class="gate-table-wrap">
+                  <table data-testid="gate-comparison-table">
+                    <thead><tr><th scope="col">Classical gate</th><th scope="col">What it does</th><th scope="col">Quantum bridge</th><th scope="col">Key difference</th></tr></thead>
+                    <tbody>
+                      <tr><th scope="row"><span class="logic-glyph">AND</span></th><td>Outputs 1 only when both inputs are 1.</td><td><span class="quantum-glyph">CCX</span> Toffoli</td><td>Uses a target qubit so the operation stays reversible.</td></tr>
+                      <tr><th scope="row"><span class="logic-glyph">OR</span></th><td>Outputs 1 when either input is 1.</td><td><span class="quantum-glyph">X + CCX</span> reversible construction</td><td>Preserves the inputs and writes the result to workspace.</td></tr>
+                      <tr><th scope="row"><span class="logic-glyph">NOT</span></th><td>Flips 0 to 1 and 1 to 0.</td><td><span class="quantum-glyph">X</span> Pauli X</td><td>The same truth table also acts on superposition amplitudes.</td></tr>
+                      <tr><th scope="row"><span class="logic-glyph">XOR</span></th><td>Outputs 1 when the inputs differ.</td><td><span class="quantum-glyph">CNOT</span> controlled X</td><td>Preserves the control and XORs it into the target.</td></tr>
+                    </tbody>
+                  </table>
+                  <p class="gate-table-note"><strong>Readout:</strong> measurement converts the final quantum state into classical bits.</p>
+                </div>
+              </section>
+
+              <section class="state-explorer" aria-labelledby="stateExplorerTitle">
+                <div class="section-heading learning-section-heading"><div><span id="stateExplorerTitle">Explore the state</span><small>angles update every view</small></div></div>
+                <div class="state-explorer-grid">
+                  <div class="bloch-webgl-stage">
+                    <canvas id="learningWebgl" data-testid="learning-webgl" aria-label="Interactive three-dimensional Bloch sphere"></canvas>
+                    <div class="bloch-axis-labels" aria-hidden="true"><span class="axis-zero">|0&#10217;</span><span class="axis-one">|1&#10217;</span><span class="axis-plus">|+&#10217;</span></div>
+                  </div>
+                  <div class="state-controls">
+                    <div class="state-readout" id="stateReadout" data-testid="state-readout" aria-live="polite">|&#968;&#10217; = 0.707|0&#10217; + 0.707|1&#10217; · P(0) 50% · P(1) 50%</div>
+                    <label for="thetaSlider"><span>State angle &#952;</span><output id="thetaOutput">90&#176;</output><input id="thetaSlider" data-testid="theta-slider" type="range" min="0" max="180" step="1" value="90" /></label>
+                    <label for="phiSlider"><span>Phase angle &#966;</span><output id="phiOutput">0&#176;</output><input id="phiSlider" data-testid="phi-slider" type="range" min="0" max="360" step="1" value="0" /></label>
+                    <div class="state-presets" aria-label="Common qubit states">
+                      <button data-theta="0" data-phi="0">|0&#10217;</button>
+                      <button data-theta="180" data-phi="0">|1&#10217;</button>
+                      <button data-theta="90" data-phi="0">|+&#10217;</button>
+                      <button data-theta="90" data-phi="180">|-&#10217;</button>
+                    </div>
+                    <p id="stateInsight">Move the arrow, then compare its measurement probabilities with a known classical bit.</p>
+                  </div>
+                </div>
+                <div class="comparison-chart" id="classicalQuantumChart" data-testid="classical-quantum-chart" aria-live="polite"></div>
+              </section>
+
+              <section class="practical-lab">
+                <div class="practical-copy"><p class="eyebrow">Try it yourself</p><h3 id="practicalTitle">Prepare one qubit with H, then measure</h3><p id="practicalCopy">Predict the distribution before running 1,024 repeat shots.</p></div>
+                <fieldset class="prediction-options">
+                  <legend>Your prediction</legend>
+                  <button type="button" data-prediction="zero" data-testid="prediction-zero">Always 0</button>
+                  <button type="button" data-prediction="balanced" data-testid="prediction-balanced">About 50/50</button>
+                  <button type="button" data-prediction="one" data-testid="prediction-one">Always 1</button>
+                </fieldset>
+                <button class="run-button lesson-run" id="lessonRunSimulation" data-testid="lesson-run-simulation" disabled><span aria-hidden="true">&#9654;</span><span>Run 1,024 shots</span></button>
+                <div class="lesson-simulation-result" id="lessonSimulationResult" data-testid="lesson-simulation-result" aria-live="polite" hidden>
+                  <div class="lesson-count"><span>0</span><i><b id="lessonBarZero"></b></i><strong id="lessonCountZero">512</strong></div>
+                  <div class="lesson-count"><span>1</span><i><b id="lessonBarOne"></b></i><strong id="lessonCountOne">512</strong></div>
+                  <p id="predictionFeedback">Your prediction is correct: H prepares equal measurement probabilities.</p>
+                  <button id="openCircuitStudio" data-testid="open-circuit-studio">Open in Circuit Studio <span aria-hidden="true">&#8594;</span></button>
+                </div>
+              </section>
+
+              <section class="lesson-checkpoint">
+                <p class="eyebrow">Checkpoint</p>
+                <h3 id="checkpointQuestion">What does a measurement of one qubit return?</h3>
+                <div class="checkpoint-options" id="checkpointOptions">
+                  <button data-answer="wrong" data-testid="checkpoint-wrong">Both 0 and 1 at once</button>
+                  <button data-answer="correct" data-testid="checkpoint-correct">One classical outcome: 0 or 1</button>
+                  <button data-answer="wrong">The Bloch sphere itself</button>
+                </div>
+                <p id="checkpointFeedback" data-testid="checkpoint-feedback" aria-live="polite">Choose an answer to check your model.</p>
+              </section>
+            </article>
+
+            <aside class="learning-glossary" aria-label="Quantum glossary">
+              <div><p class="eyebrow">Plain-language glossary</p><h3>Terms in this course</h3></div>
+              <label for="glossarySearch"><span>Search terms</span><input id="glossarySearch" data-testid="glossary-search" type="search" placeholder="Try phase or entanglement" /></label>
+              <dl id="glossaryResults" data-testid="glossary-results"></dl>
+            </aside>
+          </div>
+        </section>
+
+        <section class="circuit-page" id="circuitPage" hidden>
+          <section class="workspace" id="editor-view">
+            <header class="page-header">
+              <div>
+                <p class="eyebrow">Circuit workspace</p>
+                <h2>Algorithm studio</h2>
+              </div>
+              <div class="page-header-actions"><div class="co-teacher-controls circuit-sumi-legacy" hidden><button class="co-teacher-skip-intro" id="companionSkipIntro" data-testid="companion-skip-intro" type="button" hidden>Skip intro</button><button class="companion-header-launch" id="companionOpenHeader" data-testid="companion-open-header" type="button" aria-label="Activate Sumi AI Learning Companion" data-tooltip="Activate Sumi"><img src="/assets/ai-co-teacher.png" alt="" aria-hidden="true" /></button><span class="co-teacher-status-chip" id="coTeacherStatus" data-testid="co-teacher-status" data-state="idle">Sumi off</span></div><div class="simulated-label"><span></span> Simulated locally</div><aside class="co-teacher-live" id="companionDialog" data-testid="companion-live" hidden aria-label="Sumi AI Learning Companion status"><div class="co-teacher-live-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><p id="companionNote" data-testid="companion-note" role="status" aria-live="polite">Sumi AI Learning Companion ready.</p></aside></div>
+            </header>
+
+            <section class="composer" aria-label="Circuit input">
+              <div class="input-mode-switch" role="tablist" aria-label="Circuit input mode">
+                <button class="active" data-testid="input-mode-natural" id="inputModeNatural" role="tab" aria-selected="true">Natural language</button>
+                <button data-testid="input-mode-manifest" id="inputModeManifest" role="tab" aria-selected="false">JSON / YAML manifest</button>
+              </div>
+              <div id="naturalComposer">
+                <label for="nlInput">Describe a circuit or algorithm</label>
+                <div class="composer-row">
+                  <input data-testid="nl-input" id="nlInput" autocomplete="off" value="Entangle two qubits and measure them." placeholder="Build a three-qubit GHZ state" />
+                  <button class="run-button" data-testid="nl-run" id="runBtn" title="Generate and run simulated circuit">
+                    <span aria-hidden="true">&#9654;</span><span>Run</span>
+                  </button>
+                </div>
+                <div class="composer-tools">
+                  <label class="sample-control" for="samplePromptSelect">Sample prompt
+                    <select id="samplePromptSelect" aria-label="Sample circuit prompts">
+                      <option value="">Choose an example...</option>
+                      <option value="Entangle two qubits and measure them.">Bell pair: entangle two qubits</option>
+                      <option value="Entangle three qubits and measure them.">GHZ: entangle three qubits</option>
+                      <option value="Put one qubit in superposition and measure it.">Hadamard superposition</option>
+                      <option value="Rotate qubit 0 by 90 degrees around X, then measure.">RX rotation by 90 degrees</option>
+                      <option value="Grover search for |11> on 2 qubits.">Grover search for |11&gt;</option>
+                      <option value="Make a quantum random number generator.">Quantum random number generator</option>
+                    </select>
+                  </label>
+                  <label class="backend-control">Engine
+                    <select data-testid="backend-select" id="backendSelect" aria-label="Simulator backend">
+                      <option value="qiskit">Qiskit</option>
+                      <option value="cirq">Cirq</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="template-chips" id="templateChips" aria-label="Algorithm templates">
+                  <span>Templates</span>
+                  <button data-testid="template-chip-ghz" data-template="ghz">GHZ n=3</button>
+                  <button data-testid="template-chip-grover" data-template="grover">Grover |11&gt;</button>
+                  <button id="templateDeutschJozsa" data-testid="template-chip-deutsch-jozsa" data-template="deutsch_jozsa">Deutsch-Jozsa</button>
+                  <button data-testid="template-chip-qrng" data-template="qrng">QRNG</button>
+                  <small data-testid="template-used" id="templateUsed" hidden></small>
+                </div>
+              </div>
+              <div class="manifest-composer" id="manifestComposer" hidden>
+                <label for="manifestEditor">Declare a circuit in 1StopQuantum JSON or YAML</label>
+                <textarea data-testid="manifest-editor" id="manifestEditor" rows="12" spellcheck="false" aria-label="1StopQuantum manifest editor"></textarea>
+                <div class="manifest-actions">
+                  <small>apiVersion quantumyog.dev/v1</small>
+                  <button class="run-button" data-testid="manifest-run" id="manifestRun"><span aria-hidden="true">&#9654;</span><span>Validate and visualize</span></button>
+                </div>
+                <div class="manifest-error" data-testid="manifest-error" id="manifestError" role="alert" hidden></div>
+              </div>
+            </section>
+
+            <section class="workspace-gates" data-testid="palette" aria-label="Quantum gate palette">
+              <div class="workspace-gates-heading"><div><strong>Quantum gates</strong><small>Click or drag into the circuit</small></div><button id="tourReplay" type="button"><span aria-hidden="true">&#9655;</span> Tour this screen</button></div>
+              <div class="palette-auth-note" id="paletteAuthNote">Sign in to build and edit circuits.</div>
+              <div class="workspace-gates-list">
+                <button class="palette-item gate-h" data-op="H" draggable="true" data-testid="palette-item-H" aria-label="Hadamard gate" title="Hadamard: place a qubit into superposition"><span class="gate-glyph">H</span><span><strong>Hadamard</strong><small>Superposition</small></span></button>
+                <button class="palette-item gate-x" data-op="X" draggable="true" aria-label="Pauli X gate" title="Pauli X: flip zero and one"><span class="gate-glyph">X</span><span><strong>Pauli X</strong><small>Bit flip</small></span></button>
+                <button class="palette-item gate-cx" data-op="CNOT" draggable="true" data-testid="palette-item-CNOT" aria-label="CNOT entangling gate" title="CNOT: conditionally flip a target qubit"><span class="gate-glyph">CX</span><span><strong>CNOT</strong><small>Entangle</small></span></button>
+                <button class="palette-item gate-r" data-op="RY" draggable="true" aria-label="Rotation gate" title="RY: rotate around the Bloch sphere Y axis"><span class="gate-glyph">R</span><span><strong>Rotation</strong><small>RY(pi / 2)</small></span></button>
+                <button class="palette-item gate-swap" data-op="SWAP" draggable="true" aria-label="Swap gate" title="SWAP: exchange two qubit states"><span class="gate-glyph">S</span><span><strong>Swap</strong><small>Exchange states</small></span></button>
+                <button class="palette-item gate-measure" data-op="measure" draggable="true" data-testid="palette-item-measure" aria-label="Measurement gate" title="Measure: sample a classical outcome"><span class="gate-glyph">M</span><span><strong>Measure</strong><small>Classical output</small></span></button>
+              </div>
+            </section>
+
+            <div class="error" data-testid="nl-error" id="nlError" role="alert" hidden></div>
+            <div class="fidelity-warning" data-testid="fidelity-warning" id="fidelityWarning" role="status" hidden></div>
+            <div class="build-summary">
+              <p data-testid="interpretation-echo" id="interpretationEcho">Built: 2 qubits — H on q0, then CNOT q0 to q1, then measure (1024 shots).</p>
+              <small data-testid="manifest-name" id="manifestName">Manifest: generated-circuit</small>
+              <span id="simplificationNotice" data-testid="simplification-notice" hidden></span>
+            </div>
+
+            <section class="circuit-section">
+              <div class="section-heading">
+                <div><span>Circuit IR</span><small id="circuitMeta">2 qubits / 3 operations</small></div>
+                <div class="canvas-actions">
+                  <div class="step-controls" aria-label="Step-through controls">
+                    <button data-testid="step-first" id="stepFirst" title="Before first gate" aria-label="Before first gate">&#x23EE;</button>
+                    <button data-testid="step-prev" id="stepPrev" title="Previous gate" aria-label="Previous gate">&#x25C0;</button>
+                    <span id="stepStatus">2 / 2</span>
+                    <button data-testid="step-next" id="stepNext" title="Next gate" aria-label="Next gate">&#x25B6;</button>
+                    <button data-testid="step-last" id="stepLast" title="After last gate" aria-label="After last gate">&#x23ED;</button>
+                  </div>
+                  <button data-testid="diagram-download-svg" id="downloadSvg" title="Export diagram as SVG" aria-label="Export diagram as SVG">SVG</button>
+                  <button data-testid="diagram-download-png" id="downloadPng" title="Export diagram as PNG" aria-label="Export diagram as PNG">PNG</button>
+                  <button id="clearCircuit" title="Clear circuit" aria-label="Clear circuit">&#x2715;</button>
+                </div>
+              </div>
+              <div class="canvas" data-testid="circuit-canvas" id="circuitCanvas" aria-label="Circuit diagram" tabindex="0"></div>
+            </section>
+
+            <section class="source-section">
+              <div class="source-toolbar">
+                <div class="source-tabs" role="tablist" aria-label="Generated source language">
+                  <button data-testid="source-tab-qiskit" id="qiskitTab" aria-selected="true" role="tab">Qiskit</button>
+                  <button data-testid="source-tab-cirq" id="cirqTab" aria-selected="false" role="tab">Cirq</button>
+                  <button data-testid="source-tab-manifest" id="manifestTab" aria-selected="false" role="tab">Manifest</button>
+                </div>
+                <div class="source-actions">
+                  <span>generated from validated IR</span>
+                  <button data-testid="source-copy" id="copySource" title="Copy generated source" aria-label="Copy generated source">Copy</button>
+                  <button data-testid="source-download" id="downloadSource" title="Download Python source" aria-label="Download Python source">Download .py</button>
+                </div>
+              </div>
+              <div class="source-editor" id="sourceEditor" aria-label="Generated source code"></div>
+              <pre class="source-fallback" id="sourcePanel"></pre>
+            </section>
+          </section>
+
+          <aside class="inspector" id="viz-view" aria-label="Simulation visualizations">
+            <section class="inspector-section execution-panel">
+              <div class="inspector-title"><span>Execution</span><span class="live-pill">complete</span></div>
+              <dl>
+                <div><dt>Backend</dt><dd id="executionBackend">Qiskit</dd></div>
+                <div><dt>Engine</dt><dd id="executionEngine">Local simulator</dd></div>
+                <div><dt>Shots</dt><dd id="executionShots">1,024</dd></div>
+              </dl>
+            </section>
+
+            <section class="inspector-section bloch-panel">
+              <div class="inspector-title"><span>Bloch sphere</span><div id="qubitTabs" class="qubit-tabs"></div></div>
+              <div class="sphere" data-testid="bloch-sphere" id="blochSphere">
+                <span class="sphere-ring ring-a"></span>
+                <span class="sphere-ring ring-b"></span>
+                <span class="sphere-axis axis-x"></span>
+                <span class="sphere-axis axis-z"></span>
+                <span class="bloch-vector" id="blochVector"></span>
+                <span class="sphere-label ket-zero">|0&gt;</span>
+                <span class="sphere-label ket-one">|1&gt;</span>
+              </div>
+              <p class="entanglement-message" data-testid="entanglement-message" id="entanglementMessage" hidden>Entangled — this qubit has no individual arrow; see the joint state.</p>
+              <div class="bloch-values" id="blochValues">x 0.00 &nbsp; y 0.00 &nbsp; z 0.00</div>
+            </section>
+
+            <section class="inspector-section histogram-panel">
+              <div class="inspector-title"><span>Measurement</span><small>probability</small></div>
+              <div class="histogram" data-testid="histogram" id="histogram"></div>
+              <p class="bit-order" data-testid="bit-order-caption">Read right-to-left: rightmost bit is q0 (Qiskit convention).</p>
+            </section>
+
+            <section class="inspector-section state-panel">
+              <div class="inspector-title"><span>State amplitudes</span><small>phase aware</small></div>
+              <div class="phase-legend" data-testid="phase-legend"><span></span><small>phase: 0 &rarr; &pi; &rarr; 2&pi;</small></div>
+              <div id="statevector" class="statevector" data-testid="state-amplitudes"></div>
+            </section>
+          </aside>
+        </section>
+
+        <section class="module-page use-cases-page" id="useCasesView" data-testid="use-cases-view" hidden>
+          <header class="module-header use-cases-header">
+            <div><p class="eyebrow">Classical baseline first</p><h2>Quantum Use Case Center</h2><p>Match a decision problem to evidence, resources, and a realistic computing path.</p></div>
+            <div class="claim-key"><span>Educational</span><span>Emerging</span><span>Evidence-backed action</span></div>
+          </header>
+          <div class="use-case-layout">
+            <aside class="use-case-filters" id="useCaseFilters">
+              <label for="useCaseAudience">View for<select id="useCaseAudience"><option value="learner">Learner</option><option value="executive">Executive</option></select></label>
+              <div id="useCaseDomainFilters" role="group" aria-label="Use case domains"></div>
+              <button id="openDrugFromUseCases" type="button">Open drug discovery lab</button>
+            </aside>
+            <section class="use-case-list" id="useCaseList" aria-label="Quantum use cases"></section>
+            <article class="use-case-detail" id="useCaseDetail">
+              <p class="eyebrow">Select a case study</p><h3>Start with the classical baseline</h3><p>The quantum candidate is meaningful only after cost, scale, evidence, and verification are explicit.</p>
+            </article>
+          </div>
+          <section class="use-case-assessment" id="useCaseAssessment">
+            <div><p class="eyebrow">Suitability worksheet</p><h3>Should this become a quantum experiment?</h3></div>
+            <div id="useCaseQuestions"></div>
+            <p id="useCaseAssessmentResult" role="status">Answer the selected case study questions before choosing hardware.</p>
+          </section>
+        </section>
+
+        <section class="module-page drug-page" id="drug-view" hidden>
+          <header class="module-header">
+            <div><p class="eyebrow">Molecular learning lab</p><h2>Drug discovery</h2></div>
+            <div class="clinical-banner" data-testid="clinical-banner">Educational simulation / not for clinical use.</div>
+          </header>
+          <div class="drug-grid">
+            <section class="drug-inputs">
+              <div class="section-heading"><div><span>Experiment</span><small>illustrative VQE workflow</small></div></div>
+              <label>Target amino-acid sequence
+                <textarea id="targetInput" rows="4">MKTAYIAKQRQISFVKSHFSRQ</textarea>
+              </label>
+              <label>Ligand SMILES
+                <input data-testid="smiles-input" id="smilesInput" value="CC(=O)OC1=CC=CC=C1C(=O)O" />
+              </label>
+              <label>Comparison SMILES <span>optional</span>
+                <input id="compareSmilesInput" data-testid="comparison-smiles" placeholder="Enter a second candidate" />
+              </label>
+              <button class="run-button wide" data-testid="drug-run" id="drugRun"><span aria-hidden="true">&#9654;</span><span>Run simulated study</span></button>
+              <div class="drug-error" id="drugError" role="alert"></div>
+              <div class="lesson-note">
+                <strong>Teaching model</strong>
+                <p>Descriptors come from RDKit. Binding and VQE convergence are deterministic illustrations, not molecular predictions.</p>
+              </div>
+            </section>
+
+            <section class="molecule-panel">
+              <div class="section-heading"><div><span>Molecule</span><small id="moleculeCaption">aspirin candidate</small></div></div>
+              <div class="molecule-stage" id="moleculeStage"><div class="molecule-placeholder">Run the study to render the parsed structure.</div></div>
+              <div class="descriptor-strip" id="descriptorStrip"></div>
+            </section>
+
+            <section class="vqe-panel">
+              <div class="section-heading"><div><span>VQE convergence</span><small>simulated energy by iteration</small></div></div>
+              <canvas id="convergenceCanvas" width="720" height="240" aria-label="Simulated VQE convergence chart"></canvas>
+              <div class="mini-circuit" id="vqeCircuit" aria-label="Illustrative VQE circuit">
+                <span>|0&gt;</span><b>RY</b><i></i><b>CX</b><i></i><b>RZ</b><i></i><b>M</b>
+              </div>
+            </section>
+
+            <section class="score-panel">
+              <div class="section-heading"><div><span>Multi-objective scorecard</span><small>normalized teaching indicators</small></div></div>
+              <div class="score-layout">
+                <canvas id="radarCanvas" width="320" height="300" aria-label="Drug score radar chart"></canvas>
+                <div class="scorecard" data-testid="scorecard" id="scorecard" hidden></div>
+                <div class="comparison-scorecard" data-testid="comparison-scorecard" id="comparisonScorecard" hidden></div>
+              </div>
+              <div class="lipinski-breakdown" data-testid="lipinski-breakdown" id="lipinskiBreakdown" hidden></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="module-page benchmarking-page" id="benchmarking-view" data-testid="benchmarking-view" hidden>
+          <header class="benchmarking-header">
+            <div>
+              <p class="eyebrow">Evidence before claims</p>
+              <h2>1StopQuantum intelligence</h2>
+              <p>Learn the landscape, match a workload, test a forecast, and review utility-scale claims.</p>
+            </div>
+            <div class="qbi-context"><strong>QBI-inspired</strong><span>Independent educational screening</span></div>
+          </header>
+
+          <section class="benchmark-summary-strip" aria-label="Benchmark dataset summary">
+            <div><strong id="benchmarkRecordCount" data-testid="benchmark-record-count">Loading measurements</strong><span>Auditable result rows</span></div>
+            <div><strong id="benchmarkProviderCount">- providers</strong><span id="benchmarkDeviceCount">- measured devices</span></div>
+            <div><strong id="benchmarkDateRange">Loading date range</strong><span>Bundled snapshot window</span></div>
+            <div><strong>Measured / inferred / unknown</strong><span>Evidence state is always visible</span></div>
+          </section>
+
+          <nav class="benchmark-tabs" aria-label="Benchmark intelligence tools">
+            <button class="active" data-benchmark-tab="landscape" data-testid="benchmark-tab-landscape">Landscape</button>
+            <button id="benchmarkMatchTab" data-benchmark-tab="match" data-testid="benchmark-tab-match">QPU Match</button>
+            <button data-benchmark-tab="forecast" data-testid="benchmark-tab-forecast">Forecast</button>
+            <button data-benchmark-tab="claims" data-testid="benchmark-tab-claims">Claims + QBI</button>
+            <button data-benchmark-tab="digest" data-testid="benchmark-tab-digest">Digest</button>
+          </nav>
+
+          <section class="benchmark-panel landscape-panel" data-benchmark-panel="landscape">
+            <div class="benchmark-tool-header">
+              <div><p class="eyebrow">Quantum progress time-lapse</p><h3>Comparable results, one benchmark at a time</h3><p>Each mark is a measured run. Move through time to see the latest evidence available for every device and scale.</p></div>
+              <label>Benchmark family
+                <select id="landscapeBenchmark" data-testid="landscape-benchmark">
+                  <option>QML Kernel</option>
+                  <option>Mirror Circuits</option>
+                  <option>Linear Ramp QAOA</option>
+                  <option>BSEQ</option>
+                  <option>CLOPS</option>
+                  <option>EPLG</option>
+                  <option>Quantum Fourier Transform</option>
+                  <option>WIT</option>
+                </select>
+              </label>
+            </div>
+            <div class="time-controls">
+              <button id="landscapePlay" data-testid="landscape-play" title="Play or pause the benchmark time-lapse"><span aria-hidden="true">&#9654;</span><span>Play</span></button>
+              <input id="landscapeTime" data-testid="landscape-time" type="range" min="0" max="0" value="0" aria-label="Benchmark date" />
+              <output id="landscapeDate" data-testid="landscape-date">Loading</output>
+            </div>
+            <div class="landscape-chart" id="landscapeChart" data-testid="landscape-chart" aria-label="Benchmark score by problem scale and device"></div>
+            <div class="evidence-legend" aria-label="Evidence legend"><span class="measured">Measured</span><span class="inferred">Inferred</span><span class="unknown">Unknown / no mark</span></div>
+            <div class="benchmark-table-wrap"><table class="benchmark-table"><thead><tr><th>Device</th><th>Provider</th><th>Scale</th><th>Score</th><th>Uncertainty</th><th>Measured</th></tr></thead><tbody id="landscapeRows"></tbody></table></div>
+            <p class="coverage-note" id="benchmarkCoverageNote"></p>
+          </section>
+
+          <section class="benchmark-panel match-panel" data-benchmark-panel="match" hidden>
+            <div class="benchmark-workbench">
+              <form class="benchmark-form" id="qpuMatchForm">
+                <div><p class="eyebrow">Which QPU for me?</p><h3>Describe the workload envelope</h3><p>Rank historical evidence before opening a provider account.</p></div>
+                <div class="benchmark-form-grid">
+                  <label>Logical or physical qubits<input id="qpuQubits" data-testid="qpu-qubits" type="number" min="1" max="10000" value="50" required /></label>
+                  <label>Maximum circuit depth<input id="qpuDepth" data-testid="qpu-depth" type="number" min="1" max="1000000" value="60" required /></label>
+                  <label>Workload<select id="qpuWorkload" data-testid="qpu-workload"><option value="general-circuits">General circuits</option><option value="optimization">Optimization</option><option value="machine-learning">Machine learning</option><option value="throughput">Throughput</option><option value="fourier">Fourier algorithms</option></select></label>
+                  <label>Connectivity<select id="qpuConnectivity"><option value="any">Any / unknown acceptable</option><option value="all-to-all">All-to-all</option><option value="nearest-neighbor">Nearest-neighbor</option></select></label>
+                </div>
+                <button class="run-button" type="submit" id="qpuMatchRun" data-testid="qpu-match-run"><span aria-hidden="true">&#9654;</span><span>Rank measured devices</span></button>
+              </form>
+              <div class="match-method">
+                <strong>Two scores, two questions</strong>
+                <dl><dt>Suitability</dt><dd>Does the measured device envelope resemble this workload?</dd><dt>Evidence coverage</dt><dd>How much auditable data supports the screening result?</dd></dl>
+              </div>
+            </div>
+            <div class="benchmark-table-wrap" id="qpuMatchResults" data-testid="qpu-match-results"><table class="benchmark-table recommendation-table"><thead><tr><th>Rank</th><th>Device</th><th>Capacity</th><th>Suitability</th><th>Evidence coverage</th><th>Why</th></tr></thead><tbody><tr><td colspan="6">Run a match to rank the bundled measurements.</td></tr></tbody></table></div>
+            <p class="benchmark-warning" id="qpuMatchWarning" data-testid="qpu-match-warning">Historical evidence only; results are not live availability or procurement guidance.</p>
+          </section>
+
+          <section class="benchmark-panel forecast-panel" data-benchmark-panel="forecast" hidden>
+            <div class="benchmark-tool-header">
+              <div><p class="eyebrow">Predictive benchmark forecasting</p><h3>Extrapolate carefully</h3><p>Fit one comparable device, benchmark, metric, and parameter selector. The uncertainty band widens into the future.</p></div>
+              <button class="run-button" id="forecastRun" data-testid="forecast-run"><span aria-hidden="true">&#9654;</span><span>Run forecast</span></button>
+            </div>
+            <div class="forecast-controls">
+              <label>Device<input id="forecastDevice" value="ibm_torino" /></label>
+              <label>Benchmark<input id="forecastBenchmark" value="QML Kernel" /></label>
+              <label>Metric<input id="forecastMetric" value="score" /></label>
+              <label>Qubit selector<input id="forecastQubits" type="number" min="1" value="50" /></label>
+              <label>Horizon<select id="forecastHorizon"><option value="365">1 year</option><option value="730">2 years</option><option value="1825">5 years</option></select></label>
+            </div>
+            <div class="forecast-chart" id="forecastChart" data-testid="forecast-chart" aria-label="Measured benchmark values and exploratory forecast"></div>
+            <div class="forecast-readout"><strong id="forecastConfidence" data-testid="forecast-confidence">Run a comparable series</strong><span id="forecastModel">Measured points are solid; projections are hatched.</span></div>
+            <p class="benchmark-warning" id="forecastDisclaimer" data-testid="forecast-disclaimer">No forecast has been run.</p>
+          </section>
+
+          <section class="benchmark-panel claims-panel" data-benchmark-panel="claims" hidden>
+            <div class="qbi-stage-strip" aria-label="DARPA QBI-inspired evidence stages">
+              <div><span>A</span><strong>Plausible concept</strong><small>Architecture, use case, cost, classical baseline</small></div>
+              <div><span>B</span><strong>Risk retirement</strong><small>R&amp;D plan and prototype evidence</small></div>
+              <div><span>C</span><strong>Independent V&amp;V</strong><small>Reproduction and operations readiness</small></div>
+            </div>
+            <div class="claims-workbench">
+              <form class="claim-form" id="claimForm">
+                <div><p class="eyebrow">Separate evidence from assertion</p><h3>Provider claim review</h3></div>
+                <label>Provider<input id="claimProvider" data-testid="claim-provider" value="Example Quantum" required /></label>
+                <label>Claim<textarea id="claimText" data-testid="claim-text" rows="3" required>Utility-scale system by 2033</textarea></label>
+                <label>Target year<input id="claimYear" type="number" min="2026" max="2100" value="2033" /></label>
+                <fieldset><legend>Evidence supplied</legend>
+                  <label><input type="checkbox" data-claim-evidence="architecture" checked />Architecture</label>
+                  <label><input type="checkbox" data-claim-evidence="use_case" />Decision-relevant use case</label>
+                  <label><input type="checkbox" data-claim-evidence="cost_model" />Full-system cost model</label>
+                  <label><input type="checkbox" data-claim-evidence="classical_baseline" />Classical baseline</label>
+                  <label><input type="checkbox" data-claim-evidence="risk_retirement_plan" checked />Risk-retirement plan</label>
+                  <label><input type="checkbox" data-claim-evidence="prototype_results" />Prototype results</label>
+                  <label><input type="checkbox" data-claim-evidence="independent_reproduction" />Independent reproduction</label>
+                  <label><input type="checkbox" data-claim-evidence="operations_plan" />Operations plan</label>
+                </fieldset>
+                <button class="run-button" id="claimAssess" data-testid="claim-assess" type="submit"><span aria-hidden="true">&#9654;</span><span>Assess evidence</span></button>
+              </form>
+              <div class="claim-result" id="claimResult" data-testid="claim-result"><p>Select the evidence a provider supplied, then review what remains unverified.</p></div>
+            </div>
+            <p class="claim-disclaimer" id="claimDisclaimer" data-testid="claim-disclaimer">This is a QBI-inspired educational rubric, not a DARPA determination.</p>
+            <section class="use-case-section">
+              <div><p class="eyebrow">Government decision framing</p><h3>Can this use case be solved usefully?</h3><p>Quantum performance matters only against the best classical alternative and full operating cost.</p></div>
+              <div class="benchmark-table-wrap"><table class="benchmark-table use-case-table"><thead><tr><th>Sector</th><th>Decision problem</th><th>Quantum research path</th><th>Classical baseline</th><th>Evidence gate</th><th>Status</th></tr></thead><tbody id="useCaseRows"></tbody></table></div>
+            </section>
+          </section>
+
+          <section class="benchmark-panel digest-panel" data-benchmark-panel="digest" hidden>
+            <div class="benchmark-tool-header">
+              <div><p class="eyebrow">Alert and digest feed</p><h3>What changed in the evidence?</h3><p>A local, source-linked feed for weekly review, cron jobs, Slack, Discord, or newsletter adapters.</p></div>
+              <div class="digest-controls"><label>Window<select id="digestDays"><option value="7">7 days</option><option value="14" selected>14 days</option><option value="30">30 days</option><option value="90">90 days</option></select></label><button class="secondary-button" id="digestRefresh">Refresh</button><button class="secondary-button" id="digestDownload" title="Download the current digest as JSON">Download JSON</button></div>
+            </div>
+            <div class="digest-summary" id="digestSummary">Open this tab to build the local digest.</div>
+            <div class="digest-list" id="digestList" data-testid="digest-list"></div>
+          </section>
+
+          <aside class="benchmark-attribution" id="benchmarkAttribution" data-testid="benchmark-attribution">
+            <strong>Data provenance</strong>
+            <span>Uses <a href="https://metriq.info/" target="_blank" rel="noopener">Metriq</a> benchmark data under CC BY 4.0. 1StopQuantum reformatted the records and produced the analyses; raw metric values remain unchanged.</span>
+            <a href="https://www.darpa.mil/research/programs/quantum-benchmarking-initiative" target="_blank" rel="noopener">Official DARPA QBI program source</a>
+          </aside>
+        </section>
+
+        <section class="module-page providers-page" id="providers-view" hidden>
+          <header class="module-header">
+            <div><p class="eyebrow">Execution architecture</p><h2>Provider lab</h2></div>
+            <div class="simulated-label"><span></span> Local simulation only</div>
+          </header>
+          <section class="provider-summary">
+            <div><strong>Gate model</strong><span>Qiskit default / Cirq alternate / IonQ future hardware</span></div>
+            <div><strong>Annealing model</strong><span>D-Wave-shaped QUBO / local simulated annealer</span></div>
+          </section>
+          <div class="provider-grid" id="providerGrid"></div>
+          <section class="annealing-lab">
+            <div class="anneal-copy">
+              <p class="eyebrow">QUBO lesson</p>
+              <h3>Triangle max-cut</h3>
+              <p>Three binary variables encode graph partitions. Lower energy marks a better simulated cut.</p>
+              <button class="run-button wide" id="annealRun" data-testid="qubo-run"><span aria-hidden="true">&#9654;</span><span>Run local annealer</span></button>
+              <div class="qubo-error" id="quboError" data-testid="qubo-error" role="alert"></div>
+            </div>
+            <div class="qubo-code"><textarea id="quboSource" data-testid="qubo-editor" spellcheck="false" aria-label="Editable QUBO JSON"></textarea></div>
+            <div class="anneal-results" id="annealResults" data-testid="anneal-results"><span>Best sample will appear here.</span></div>
+            <div class="energy-histogram" id="energyHistogram" data-testid="energy-histogram" hidden></div>
+          </section>
+          <section class="routing-lab">
+            <div><p class="eyebrow">Intent router</p><h3>Choose the computing paradigm</h3></div>
+            <input id="routeInput" data-testid="route-input" value="split a triangle graph into two groups" />
+            <button class="run-button" id="routeRun" data-testid="route-run"><span aria-hidden="true">&#9654;</span><span>Route</span></button>
+            <div class="route-result" id="routeResult" data-testid="route-result">Describe a circuit or optimization problem.</div>
+          </section>
+        </section>
+
+        <section class="module-page improvement-page" id="improvement-view" data-testid="improvement-view" hidden>
+          <header class="module-header">
+            <div><p class="eyebrow">Plan · propose · review</p><h2>Circuit improvement lab</h2></div>
+            <div class="simulated-label"><span></span> Bounded local review</div>
+          </header>
+          <div class="improvement-layout">
+            <section class="improvement-form-panel">
+              <h3>Schedule a review</h3>
+              <p>Optimize the current Circuit IR. Candidates are accepted only when statevector equivalence passes and the circuit score decreases.</p>
+              <label for="improvementObjective">Optimization objective</label>
+              <textarea id="improvementObjective" aria-label="Optimization objective">Reduce gate count while preserving simulated behavior.</textarea>
+              <div class="improvement-fields">
+                <label for="improvementSchedule">Run at
+                  <input id="improvementSchedule" type="datetime-local" aria-label="Run at" />
+                </label>
+                <label for="improvementIterations">Maximum iterations
+                  <input id="improvementIterations" type="number" min="1" max="8" value="3" aria-label="Maximum iterations" />
+                </label>
+              </div>
+              <div class="improvement-actions">
+                <button class="run-button" id="improvementRun"><span aria-hidden="true">&#9654;</span><span>Run review now</span></button>
+                <button class="secondary-button" id="improvementScheduleButton">Schedule review</button>
+              </div>
+              <div class="improvement-error" id="improvementError" role="alert" hidden></div>
+            </section>
+            <section class="improvement-manifest-panel">
+              <div class="section-heading"><span>Current circuit artifact</span><small>validated Circuit IR</small></div>
+              <pre id="improvementCircuit"></pre>
+            </section>
+          </div>
+          <section class="improvement-result" id="improvementResult" hidden>
+            <div><p class="eyebrow">Review decision</p><strong id="improvementStatus" data-testid="improvement-status"></strong></div>
+            <div class="metric-delta"><span>Before<strong id="improvementBefore">–</strong></span><i aria-hidden="true">&#8594;</i><span>After<strong id="improvementAfter">–</strong></span></div>
+            <a id="improvementReport" data-testid="improvement-report" target="_blank" rel="noopener">Open HTML review</a>
+          </section>
+          <section class="improvement-history"><div class="section-heading"><span>Scheduled jobs</span><small>PostgreSQL-backed history</small></div><div id="improvementHistory">No jobs scheduled in this session.</div></section>
+        </section>
+
+        <section class="module-page podcast-page" id="podcastView" data-testid="podcast-view" hidden>
+          <header class="podcast-header">
+            <div><p class="eyebrow">Audio-first quantum course</p><h2>1StopQuantum Podcast</h2><p>Learn from classical foundations through use cases and trustworthy hardware evidence.</p></div>
+            <button class="podcast-play-all" id="podcastPlayAll" type="button"><span aria-hidden="true">&#9654;</span><span>Play all episodes</span></button>
+          </header>
+          <section class="podcast-now-playing" aria-labelledby="podcastNowTitle">
+            <div class="podcast-art" aria-hidden="true"><span>1</span><b>Q</b></div>
+            <div><p class="eyebrow">Now playing</p><h3 id="podcastNowTitle">Choose an episode</h3><p id="podcastNowSummary">Playback never starts without your action and resumes on this device.</p></div>
+            <audio id="podcastPlayer" preload="metadata"></audio>
+            <div class="podcast-controls">
+              <button id="podcastPrev" type="button" aria-label="Previous episode">&#x23EE;</button>
+              <button id="podcastToggle" type="button" aria-label="Play episode">&#9654;</button>
+              <button id="podcastNext" type="button" aria-label="Next episode">&#x23ED;</button>
+              <span id="podcastTime">0:00 / 0:00</span>
+              <input id="podcastProgress" type="range" min="0" max="1000" value="0" aria-label="Podcast position" />
+              <label for="podcastSpeed">Speed<select id="podcastSpeed"><option value="0.8">0.8x</option><option value="1" selected>1x</option><option value="1.25">1.25x</option><option value="1.5">1.5x</option><option value="2">2x</option></select></label>
+            </div>
+          </section>
+          <div class="podcast-layout">
+            <section><div class="section-heading"><span>Episodes</span><small>pre-generated and available offline</small></div><div class="podcast-episodes" id="podcastEpisodes"></div></section>
+            <aside class="podcast-transcript"><div class="section-heading"><span>Transcript and chapters</span><small id="podcastChapterPosition">Choose an episode</small></div><div id="podcastChapters"></div><p id="podcastTranscript">The full transcript will appear here.</p></aside>
+          </div>
+          <section class="podcast-api"><div><p class="eyebrow">Read-only integration</p><h3>Podcast API</h3><p>Third-party apps can read versioned metadata, chapters, transcripts, attribution, and the RSS feed.</p></div><code id="podcastApiUrl">http://localhost:8000/api/v1/podcast/catalog</code><a href="http://localhost:8000/api/v1/podcast/feed.xml" target="_blank" rel="noreferrer">Open RSS feed</a></section>
+        </section>
+
+        <section class="module-page community-page" id="communityView" data-testid="community-view" hidden>
+          <header class="module-header"><div><p class="eyebrow">Research and learning community</p><h2>Contribute to 1StopQuantum</h2><p>Share a research publication inquiry, volunteer as a contributor, or apply to review educational material.</p></div></header>
+          <div class="community-layout">
+            <form class="community-form" id="communityForm">
+              <label for="communityKind">I want to<select id="communityKind"><option value="research">Submit a research article inquiry</option><option value="contributor">Become a contributor</option><option value="reviewer">Become a reviewer</option></select></label>
+              <label for="communityName">Name<input id="communityName" required maxlength="120" autocomplete="name" /></label>
+              <label for="communityEmail">Email<input id="communityEmail" required type="email" autocomplete="email" /></label>
+              <label class="community-consent" for="communityConsent"><input id="communityConsent" type="checkbox" required /> <span>I consent to the 1StopQuantum operator retaining these details for up to 24 months to review and respond to this request.</span></label>
+              <p class="community-privacy">Only name and email are collected initially. Approved publications require a separate content and license review. Read the <a href="/policies.html#privacy">privacy notice</a>; deletion requests can be sent through the API or operator contact.</p>
+              <button class="run-button" type="submit">Send request</button><span id="communityStatus" role="status"></span>
+            </form>
+            <section class="community-publications"><p class="eyebrow">Approved research</p><h3>Community publications</h3><div id="communityPublications">No approved community publications yet.</div></section>
+          </div>
+        </section>
+
+        <section class="module-page sumi-faq-page" id="faqView" data-testid="faq-view" hidden>
+          <header class="module-header">
+            <div><p class="eyebrow">1StopQuantum help</p><h2>Frequently asked questions</h2><p>Saved, concise answers are available instantly and offline. Select Sumi anywhere else when you want a contextual spoken explanation.</p></div>
+            <div class="sumi-faq-brand"><img src="/assets/ai-co-teacher.png" alt="" aria-hidden="true" /><span><strong>1StopQuantum</strong> powered by Sumi</span></div>
+          </header>
+          <div class="sumi-faq-grid" data-testid="faq-assistant-answer">
+            <details open><summary>Does this run on a real quantum computer?</summary><p>No. 1StopQuantum simulates circuits locally for education. Real QPU submission is disabled, so results are not hardware certification.</p></details>
+            <details><summary>Do I need quantum physics or linear algebra first?</summary><p>No. Start with Bits and qubits at High school depth. The course introduces each term with a classical comparison before adding equations at undergraduate and master's depth.</p></details>
+            <details><summary>What should I learn first?</summary><p>Follow Quantum foundations in order: Bits and qubits, State and the Bloch sphere, Gates and circuits, then Measurement and shots. Make each prediction before running the practical.</p></details>
+            <details><summary>Can AI-generated course content be wrong?</summary><p>Yes. Visuals and some instructional material are AI-assisted and reviewed, but inaccuracies can remain. Use Report inaccuracy and verify important claims independently.</p></details>
+            <details><summary>What does the image information icon mean?</summary><p>It identifies a prebuilt AI-generated visual and shows the authoring prompt and model. The visual is illustrative and is not a photograph of a physical qubit.</p></details>
+            <details><summary>Is my lesson activity private?</summary><p>This local installation records a browser identifier, page views, and voluntary feedback in its own PostgreSQL database. It does not require a third-party cloud analytics service.</p></details>
+            <details><summary>Why do measurement counts change between runs?</summary><p>Quantum measurement is probabilistic. Repeated shots estimate the predicted distribution, so finite samples vary even when the prepared state is unchanged.</p></details>
+            <details><summary>How do I report a confusing explanation?</summary><p>Use Report inaccuracy beside the lesson summary. Describe the specific statement or visual relationship that appears misleading so an editor can review it.</p></details>
+          </div>
+        </section>
+
+        <section class="docs-page" id="guide-view" data-testid="documentation-view" hidden>
+          <header class="docs-header">
+            <div class="docs-brand"><img data-testid="docs-brand-logo" src="/assets/1stopquantum-logo.png" alt="" aria-hidden="true" hidden /><div><h2>1StopQuantum Documentation</h2><small>Learn · visualize · simulate · evaluate</small></div></div>
+            <label class="docs-search"><span aria-hidden="true">&#9906;</span><input id="docsSearch" data-testid="docs-search" placeholder="Search documentation" autocomplete="off" /></label>
+            <div class="docs-account-actions">
+              <button class="docs-signup" id="docsSignup">Sign up</button>
+              <button class="docs-signin" id="docsSignin">Sign in</button>
+              <button class="docs-signout" id="docsLogout" hidden>Sign out</button>
+            </div>
+          </header>
+          <div class="docs-search-results" id="docsSearchResults" data-testid="docs-search-results" hidden></div>
+          <div class="docs-body" data-testid="tutorial-view">
+            <aside class="docs-sidebar" data-testid="docs-sidebar">
+              <p>Start here</p>
+              <button data-doc="quantum-101">Quantum 101</button>
+              <button class="active" data-doc="getting-started">Getting started</button>
+              <button data-doc="first-circuit">First circuit</button>
+              <button data-doc="step-through">Step-through debugging</button>
+              <p>Build</p>
+              <button data-doc="manifests">JSON / YAML manifests</button>
+              <button data-doc="cli">CLI workflow</button>
+              <button data-doc="improvement">Circuit improvement</button>
+              <button data-doc="use-cases">Use Case Center</button>
+              <button data-doc="podcast">Podcast + RSS</button>
+              <button data-doc="community">Community publishing</button>
+              <p>Integrate</p>
+              <button id="docsLinkChatgpt" data-testid="docs-link-chatgpt" data-doc="chatgpt">ChatGPT + MCP</button>
+              <button data-doc="providers">Provider model</button>
+              <button data-doc="benchmarking">Benchmark intelligence</button>
+              <p>Reference</p>
+              <button data-doc="api">API reference</button>
+              <button data-doc="concepts">Quantum concepts</button>
+            </aside>
+            <article class="docs-article" id="docsArticle" data-testid="docs-article">
+              <p class="eyebrow">Introduction</p>
+              <h2>Getting started with 1StopQuantum</h2>
+              <p>New learners should begin in Learn with Bits and qubits. Choose a depth, predict an outcome, and run the one-qubit practical before opening Circuit Studio.</p>
+              <h3>Recommended sequence</h3>
+              <p>Complete foundations, qubit state, gates, and measurement before the Bell-state entanglement lesson. Each checkpoint saves locally.</p>
+              <h3>CLI quick start</h3>
+              <pre><code>./qyog validate examples/bell.qyog.yaml
+./qyog plan examples/bell.qyog.yaml
+./qyog run examples/bell.qyog.yaml</code></pre>
+            </article>
+            <aside class="docs-toc"><p>On this page</p><a href="#">Introduction</a><a href="#">First circuit</a><a href="#">CLI quick start</a></aside>
+          </div>
+        </section>
+
+        <footer class="app-footer" data-testid="legal-footer">
+          <div class="footer-brand"><strong>1StopQuantum</strong><span>AI experiment platform powered by Sumi, your AI Learning Companion.</span></div>
+          <div class="footer-link-groups"><nav aria-label="Policies"><b>Policies</b><a href="/policies.html#terms">Terms</a><a href="/policies.html#privacy">Privacy</a><a href="/policies.html#transparency">Transparency</a><a href="/policies.html#disclaimer">Disclaimer</a><a href="/faq.html">FAQ</a><a href="/credits.html">Credits</a></nav></div>
+          <p class="footer-legal">Educational demo for the OpenAI Hackathon, not a general-public service. No warranty or guarantee; availability may change or be discontinued. Sumi can make mistakes.</p>
+        </footer>
+      </div>
+    </main>
+
+    <button class="sumi-voice-reset" id="sumiVoiceReset" data-testid="sumi-voice-reset" type="button" aria-label="Reset Sumi voice" title="Stop audio and reset voice" hidden>↻</button>
+    <button class="sumi-system-reset" id="sumiSystemReset" data-testid="sumi-system-reset" type="button" aria-label="Reset app and clear cache" title="Reset app and clear cache" hidden>⌫</button>
+    <button class="faq-assistant-open sumi-ta-open" id="faqAssistantOpen" data-testid="faq-assistant-open" type="button" aria-label="Activate Sumi AI Learning Companion" hidden><img src="/assets/sumi-companion.png" alt="" aria-hidden="true" /></button>
+
+    <dialog class="course-outline-dialog" id="courseOutlineDialog" data-testid="course-outline" aria-labelledby="courseOutlineTitle">
+      <article>
+        <header class="dialog-heading"><div><p class="eyebrow">Learning path</p><h2 id="courseOutlineTitle">Course contents</h2><span id="courseOutlineCount">16 short lessons · 2 hours 36 minutes</span></div><button type="button" id="courseOutlineClose" aria-label="Close course contents">&#215;</button></header>
+        <div class="course-outline-body" id="courseOutlineBody"></div>
+      </article>
+    </dialog>
+
+    <dialog class="audio-guide-dialog" id="audioGuideDialog" data-testid="audio-guide-dialog" aria-labelledby="audioGuideTitle">
+      <article>
+        <header class="dialog-heading"><div><p class="eyebrow">Audio guide</p><h2 id="audioGuideTitle" data-testid="audio-guide-title">Learn: guided quantum courses</h2></div><button type="button" id="audioGuideClose" data-testid="audio-guide-close" aria-label="Close audio guide">&#215;</button></header>
+        <p class="audio-guide-summary" id="audioGuideSummary">Follow four short courses from first principles through algorithms and evidence-based hardware evaluation.</p>
+        <section><strong>How to use this screen</strong><p id="audioGuideHowto" data-testid="audio-guide-howto">Open Course contents, choose a lesson, listen to its narration, manipulate the visual, make a prediction, run the simulator, and answer the checkpoint.</p></section>
+        <div class="audio-guide-player">
+          <button id="audioGuideToggle" type="button" aria-label="Play screen guide"><span aria-hidden="true">&#9654;</span></button>
+          <div><strong>Screen summary</strong><span id="audioGuideTime">0:00 / 0:00</span></div>
+          <input id="audioGuideProgress" aria-label="Screen guide position" type="range" min="0" max="1000" value="0" />
+          <audio id="audioGuidePlayer" data-testid="audio-guide-player" preload="metadata" src="/audio/screens/learn.wav"></audio>
+        </div>
+        <p class="audio-transcript"><details><summary>Read transcript</summary><span id="audioGuideTranscript"></span></details></p>
+      </article>
+    </dialog>
+
+    <dialog class="signup-dialog" id="signupDialog" data-testid="signup-dialog">
+      <form id="signupForm">
+        <div class="dialog-heading"><div><p class="eyebrow">1StopQuantum membership</p><h2>Create your account</h2></div><button type="button" id="signupClose" aria-label="Close signup dialog">&#215;</button></div>
+        <p>Choose an educational entitlement. This installation does not collect payment information.</p>
+        <label for="signupName">Name<input id="signupName" name="display_name" aria-label="Name" required maxlength="80" /></label>
+        <label for="signupEmail">Email<input id="signupEmail" name="email" type="email" aria-label="Email" required /></label>
+        <label for="signupPassword">Password<input id="signupPassword" name="password" type="password" aria-label="Password" required minlength="8" maxlength="128" autocomplete="new-password" /></label>
+        <details class="recovery-setup">
+          <summary>Add password recovery <span>Recommended</span></summary>
+          <p>A hint is shown before the challenge. Never put your password in the hint.</p>
+          <label for="signupPasswordHint">Password hint<input id="signupPasswordHint" name="password_hint" aria-label="Password hint" minlength="3" maxlength="120" autocomplete="off" placeholder="A clue only you understand" /></label>
+          <label for="signupRecoveryQuestion">Recovery question<select id="signupRecoveryQuestion" name="recovery_question" aria-label="Recovery question"><option value="">Choose a question</option><option>What recovery word did you choose?</option><option>What was the title of the first book you remember?</option><option>What city was your first school in?</option></select></label>
+          <label for="signupRecoveryAnswer">Recovery answer<input id="signupRecoveryAnswer" name="recovery_answer" aria-label="Recovery answer" minlength="3" maxlength="128" autocomplete="off" /></label>
+        </details>
+        <label for="signupPlan">Plan<select id="signupPlan" name="plan" aria-label="Plan"><option value="explorer">Explorer</option><option value="scholar">Scholar</option><option value="lab">Lab</option></select></label>
+        <div class="plan-note" id="planNote">Explorer · one scheduled review · two iterations per run</div>
+        <div class="signup-error" id="signupError" role="alert" hidden></div>
+        <button class="run-button wide" type="submit">Create account</button>
+      </form>
+    </dialog>
+
+    <dialog class="signup-dialog" id="signinDialog" data-testid="signin-dialog">
+      <form id="signinForm">
+        <div class="dialog-heading"><div><p class="eyebrow">Returning learner</p><h2>Sign in to 1StopQuantum</h2></div><button type="button" id="signinClose" aria-label="Close sign in dialog">&#215;</button></div>
+        <p>Use your account for this 1StopQuantum installation.</p>
+        <section class="demo-account" aria-label="Demo learner account">
+          <div><strong>Demo learner</strong><span>Explore every student workspace with the bundled Scholar account.</span></div>
+          <dl><div><dt>Email</dt><dd><code>learner@1stopquantum.local</code></dd></div><div><dt>Password</dt><dd><code>LearnQuantum2026!</code></dd></div></dl>
+          <button type="button" id="demoAccountFill">Use demo account</button>
+        </section>
+        <label for="signinEmail">Email<input id="signinEmail" name="email" type="email" aria-label="Email" required autocomplete="email" /></label>
+        <label for="signinPassword">Password<input id="signinPassword" name="password" type="password" aria-label="Password" required maxlength="128" autocomplete="current-password" /></label>
+        <button class="text-action" type="button" id="recoveryOpen">Forgot password?</button>
+        <div class="signup-error" id="signinError" role="alert" hidden></div>
+        <button class="run-button wide" type="submit">Sign in</button>
+      </form>
+    </dialog>
+
+    <dialog class="signup-dialog recovery-dialog" id="recoveryDialog" data-testid="recovery-dialog">
+      <form id="recoveryForm">
+        <div class="dialog-heading"><div><p class="eyebrow">Account recovery</p><h2>Reset your password</h2></div><button type="button" id="recoveryClose" aria-label="Close password recovery">&#215;</button></div>
+        <p>Enter your email to view the hint and challenge saved when the account was created.</p>
+        <label for="recoveryEmail">Account email<input id="recoveryEmail" name="email" type="email" aria-label="Account email" required autocomplete="email" /></label>
+        <button class="secondary-action" type="button" id="recoveryChallenge">Show recovery question</button>
+        <section class="recovery-challenge" id="recoveryChallengePanel" hidden>
+          <div class="recovery-hint"><span>Password hint</span><strong id="recoveryHint"></strong></div>
+          <p id="recoveryQuestion"></p>
+          <label for="recoveryAnswer">Recovery answer<input id="recoveryAnswer" name="recovery_answer" aria-label="Recovery answer" minlength="3" maxlength="128" autocomplete="off" /></label>
+          <label for="recoveryNewPassword">New password<input id="recoveryNewPassword" name="new_password" type="password" aria-label="New password" minlength="8" maxlength="128" autocomplete="new-password" /></label>
+          <button class="run-button wide" type="submit">Reset password</button>
+        </section>
+        <div class="signup-error" id="recoveryError" role="alert" hidden></div>
+        <div class="recovery-status" id="recoveryStatus" role="status" aria-live="polite"></div>
+        <button class="text-action" type="button" id="recoveryReturn">Return to sign in</button>
+      </form>
+    </dialog>
+
+    <dialog class="signup-dialog feedback-dialog" id="feedbackDialog" data-testid="feedback-dialog">
+      <form id="feedbackForm">
+        <div class="dialog-heading"><div><p class="eyebrow">Content review</p><h2>Report a possible inaccuracy</h2></div><button type="button" id="feedbackClose" aria-label="Close feedback dialog">&#215;</button></div>
+        <p>Tell the course team what appears misleading. Reports are reviewed before a visual or explanation is replaced.</p>
+        <label for="feedbackMessage">What looks inaccurate?<textarea id="feedbackMessage" aria-label="What looks inaccurate?" required minlength="10" maxlength="2000" rows="5"></textarea></label>
+        <div class="signup-error" id="feedbackError" role="alert" hidden></div>
+        <button class="run-button wide" type="submit">Send feedback</button>
+      </form>
+    </dialog>
+
+    <dialog class="signup-dialog admin-login-dialog" id="adminLoginDialog" data-testid="admin-login-dialog">
+      <form id="adminLoginForm">
+        <div class="dialog-heading"><div><p class="eyebrow">Internal access</p><h2>Analytics sign in</h2></div><button type="button" id="adminLoginClose" aria-label="Close internal sign in">&#215;</button></div>
+        <p>This entry point is restricted to the installation's internal administrators. On first setup, the generated credential is stored as <code>QUANTUMYOG_ADMIN_PASSWORD</code> in the ignored <code>.env</code> file. After a password change, PostgreSQL is authoritative.</p>
+        <label for="adminEmail">Internal email<input id="adminEmail" type="email" aria-label="Internal email" required autocomplete="username" /></label>
+        <label for="adminPassword">Internal password<input id="adminPassword" type="password" aria-label="Internal password" required autocomplete="current-password" /></label>
+        <div class="signup-error" id="adminLoginError" role="alert" hidden></div>
+        <button class="run-button wide" type="submit">Open analytics</button>
+      </form>
+    </dialog>
+
+    <dialog class="admin-dashboard" id="adminDashboard" data-testid="admin-dashboard" aria-labelledby="adminDashboardTitle">
+      <article>
+        <header class="dialog-heading"><div><p class="eyebrow">Internal analytics</p><h2 id="adminDashboardTitle">Audience and content signals</h2></div><button type="button" id="adminDashboardClose" aria-label="Close analytics">&#215;</button></header>
+        <div class="admin-metrics" id="adminMetrics"></div>
+        <div class="admin-data-grid"><section><h3>Daily audience</h3><div id="adminDaily"></div></section><section><h3>Most-viewed pages</h3><div id="adminPopular"></div></section></div>
+        <section class="admin-feedback"><h3>Recent feedback</h3><div id="adminFeedback"></div></section>
+        <section class="admin-community"><div><p class="eyebrow">Moderation</p><h3>Community requests</h3></div><div id="adminCommunity">No pending requests.</div></section>
+        <section class="admin-llm-settings" aria-labelledby="adminLlmTitle">
+          <div><p class="eyebrow">Model provider</p><h3 id="adminLlmTitle">Circuit-generation LLM</h3><p>Changing to OpenAI sends circuit prompts to the configured external API. The API key is encrypted in PostgreSQL and is never returned to this page.</p></div>
+          <form id="adminLlmForm">
+            <label for="adminLlmProvider">LLM provider<select id="adminLlmProvider" aria-label="LLM provider"><option value="local">Local OpenAI-compatible</option><option value="openai">OpenAI API</option></select></label>
+            <label for="adminLlmUrl">LLM API URL<input id="adminLlmUrl" aria-label="LLM API URL" type="url" required /></label>
+            <label for="adminLlmModel">LLM model<input id="adminLlmModel" aria-label="LLM model" required maxlength="200" /></label>
+            <label for="adminLlmKey">LLM API key<input id="adminLlmKey" aria-label="LLM API key" type="password" maxlength="1000" autocomplete="new-password" placeholder="Leave blank to keep the saved key" /></label>
+            <button class="run-button" type="submit">Save LLM settings</button><span id="adminLlmStatus" role="status" aria-live="polite"></span>
+          </form>
+        </section>
+        <section class="admin-password-settings" aria-labelledby="adminPasswordTitle">
+          <div><p class="eyebrow">Credential</p><h3 id="adminPasswordTitle">Change internal password</h3><p>The new hash is saved in PostgreSQL and all internal sessions are signed out. Re-running setup does not reset it from <code>.env</code>.</p></div>
+          <form id="adminPasswordForm"><label for="adminCurrentPassword">Current password<input id="adminCurrentPassword" type="password" required autocomplete="current-password" /></label><label for="adminNewPassword">New password<input id="adminNewPassword" type="password" required minlength="8" maxlength="128" autocomplete="new-password" /></label><label for="adminConfirmPassword">Confirm password<input id="adminConfirmPassword" type="password" required minlength="8" maxlength="128" autocomplete="new-password" /></label><button class="run-button" type="submit">Change password</button><span id="adminPasswordStatus" role="alert"></span></form>
+        </section>
+      </article>
+    </dialog>
+
+    <dialog class="tour-dialog" id="tourDialog" aria-labelledby="tourTitle">
+      <article><header><p class="eyebrow" id="tourPosition">Guided tour</p><button id="tourSkip" type="button">Skip tour</button></header><h2 id="tourTitle">Learn this workspace</h2><p id="tourBody"></p><div class="tour-actions"><button id="tourPrevious" type="button" aria-label="Previous tour step">&#x2190;</button><button id="tourNext" class="run-button" type="button">Next</button></div></article>
+    </dialog>
+
+    <dialog class="about-dialog" id="aboutDialog" data-testid="about-dialog" aria-labelledby="aboutTitle">
+      <article>
+        <div class="dialog-heading">
+          <div><p class="eyebrow">Product information</p><h2 id="aboutTitle">About 1StopQuantum</h2></div>
+          <button type="button" id="aboutClose" data-testid="about-close" aria-label="Close About dialog">&#215;</button>
+        </div>
+        <div class="about-brand"><img src="/assets/1stopquantum-logo.png" alt="1StopQuantum" /></div>
+        <p class="about-purpose">An AI-assisted quantum learning platform that turns questions into visual lessons, validated circuits, guided simulations, and evidence-aware exploration.</p>
+        <dl class="about-meta">
+          <div><dt>Version</dt><dd>0.5.4 <small>supports 0.4.0 manifests</small></dd></div>
+          <div><dt>Build</dt><dd><code id="aboutBuild">dev</code></dd></div>
+          <div><dt>Runtime</dt><dd>Local-first</dd></div>
+        </dl>
+        <section class="about-section">
+          <h3>What this app does</h3>
+          <p>Learn quantum concepts with audio and interactive visuals, ask AI for a constrained circuit, inspect every state transition, and evaluate hardware claims from one workspace.</p>
+        </section>
+        <div class="about-boundary"><strong>Simulation only</strong><span>Real QPU submission is disabled. Results are educational evidence, not hardware certification.</span></div>
+        <p class="about-attribution">Benchmark views use transformed and attributed <a href="https://metriq.info/" target="_blank" rel="noreferrer">Metriq</a> data under CC BY 4.0. QBI workflows are inspired by public DARPA program goals; an in-app assessment is not a DARPA determination.</p>
+      </article>
+    </dialog>
+
+    <script src="/vendor/monaco/vs/loader.js"></script>
+    <script src="/tutorial-viz.bundle.js"></script>
+    <script src="/sumi-voice-sdk.js"></script>
+    <script src="/sumi-ui-actions.js"></script>
+    <script src="/sumi-framework.js"></script>
+    <script src="/app.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        const version = encodeURIComponent(window.QYOG_BUILD_ID || "dev");
+        window.__quantumyogServiceWorkerReady = navigator.serviceWorker
+          .register(`/service-worker.js?v=${version}`, { updateViaCache: "none" })
+          .then((registration) => registration.update().then(() => navigator.serviceWorker.ready))
+          .catch(() => null);
+      }
+    </script>
+  </body>
+</html>

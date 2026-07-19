@@ -1,0 +1,25 @@
+{
+  "name": "quantumyog",
+  "version": "0.5.4",
+  "private": true,
+  "bin": {
+    "sumi-framework": "scripts/sumi-framework-cli.js"
+  },
+  "description": "1StopQuantum local learning, circuit simulation, and benchmark intelligence platform.",
+  "scripts": {
+    "dev": "node scripts/dev-server.js",
+    "build": "node --check scripts/dev-server.js && node --check scripts/sumi-framework-cli.js && node --check public/sumi-voice-sdk.js && node --check public/sumi-framework.js && node --check public/sumi-ui-actions.js && node --check public/sumi-mic-worklet.js && node --check public/app.js && node --check public/monaco-worker.js && esbuild public/tutorial-viz.js --bundle --format=iife --global-name=QuantumYogTutorialViz --outfile=public/tutorial-viz.bundle.js",
+    "sumi-framework": "node scripts/sumi-framework-cli.js",
+    "test:ui": "playwright test -c evals/ui/playwright.config.ts",
+    "playwright:install": "playwright install"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.47.0",
+    "esbuild": "^0.28.1",
+    "monaco-editor": "^0.52.2"
+  },
+  "dependencies": {
+    "d3": "^7.9.0",
+    "three": "^0.185.1"
+  }
+}

@@ -1,0 +1,37 @@
+# macOS and editors
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Local configuration and secrets (keep distributable examples)
+.env
+.env.*
+!.env.example
+!.env.loop.example
+!.env.*.example
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Node and browser tests
+node_modules/
+playwright-report/
+test-results/
+npm-debug.log*
+
+# Local runtime and generated output
+.loop/
+.run/
+*.log
+*.pid
+backups/
+artifacts/improvements/*.html
+public/generated/*.png

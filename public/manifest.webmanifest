@@ -1,0 +1,26 @@
+{
+  "name": "1StopQuantum",
+  "short_name": "1StopQuantum",
+  "description": "An AI-assisted quantum learning platform with visual circuits, guided simulation, narrated courses, and evidence-aware hardware exploration.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f7f8f7",
+  "theme_color": "#ffffff",
+  "categories": ["education", "developer", "utilities"],
+  "icons": [
+    {
+      "src": "/icons/quantumyog-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/quantumyog-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

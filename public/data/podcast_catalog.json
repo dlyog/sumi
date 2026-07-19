@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "title": "1StopQuantum Podcast",
+  "description": "A practical audio course connecting familiar classical computing to quantum concepts, use cases, security, hardware, and evidence.",
+  "language": "en-US",
+  "publisher": "1StopQuantum contributors",
+  "license": "Educational use; verify technical claims independently.",
+  "generated_with": {
+    "engine": "Kokoro",
+    "voice": "am_michael",
+    "speed": 0.94,
+    "runtime_dependency": false
+  },
+  "episodes": [
+    {
+      "id": "classical-to-quantum",
+      "number": 1,
+      "title": "The computer you know and the quantum coprocessor",
+      "summary": "Why quantum computers complement CPUs and GPUs, how bits differ from qubits, and how to recognize a plausible quantum workload.",
+      "published": "2026-07-17",
+      "audio": "/audio/podcast/classical-to-quantum.wav",
+      "duration_seconds": 228,
+      "chapters": [
+        {
+          "start_seconds": 0,
+          "title": "Classical computers are not going away"
+        },
+        {
+          "start_seconds": 80,
+          "title": "What a qubit adds"
+        },
+        {
+          "start_seconds": 170,
+          "title": "The coprocessor model"
+        }
+      ],
+      "transcript": "Welcome to the 1StopQuantum Podcast. This first episode starts with the computer you already know. A phone, laptop, cloud server, or supercomputer uses classical bits. A bit records one of two values, usually written zero and one. Processors transform those bits with logical operations. Memory stores them, networks move them, and software organizes billions of small deterministic steps into useful work. Modern classical computing is extraordinarily capable. CPUs are flexible. GPUs repeat mathematical operations across large arrays. Databases retrieve and combine records. Specialized accelerators make artificial intelligence practical. Quantum computing does not make these tools obsolete. It is better understood as a possible specialist coprocessor that works beside a classical system.\n\nWhy build a different kind of processor? Some problems contain mathematical structure that may be represented and transformed more naturally with quantum states. A qubit still gives a classical zero or one when measured, but before measurement its state is described by amplitudes. Those amplitudes can interfere. Multiple qubits can also share a joint state that cannot be reduced to independent descriptions. Gates transform the state without reading it, and a carefully designed algorithm arranges interference so useful outcomes become more likely. This is not the same as trying every answer and reading them all. Measurement gives one ordinary result, so algorithm design and repeated verification remain essential.\n\nA complete quantum workflow therefore contains classical computers at every stage. Classical software prepares the problem, compiles a circuit for a device, sends control signals, collects measurement shots, checks errors, and interprets the result. Even a future fault-tolerant quantum computer will need substantial classical infrastructure. That is why the word complement matters. Email, web pages, accounting, most machine learning, and everyday optimization should continue to run on classical systems. A quantum component belongs only where a specific subproblem, algorithm, and resource estimate justify it.\n\nHere is a practical screening method. First, name the decision or scientific quantity that creates value. Second, identify the strongest classical baseline, not a toy alternative. Third, describe the quantum algorithm and every input assumption. Fourth, estimate logical qubits, circuit depth, precision, repetitions, error correction, data loading, and classical orchestration. Fifth, specify how an independent team can verify the output. Finally, compare total time, quality, energy, and cost at the scale that matters. A small circuit that runs successfully is an experiment, not automatically an advantage.\n\nChemistry is a natural research area because electrons and molecules are quantum systems, although important calculations often require fault-tolerant resources beyond current noisy devices. Optimization is more conditional. A traveling-salesperson example is excellent for teaching, but a real routing or supply-chain model includes capacity, time windows, uncertainty, and constantly changing data. Mature classical operations-research tools are difficult to beat. Security is different again: a future large fault-tolerant system running Shor's algorithm could affect current public-key cryptography, so organizations can take useful defensive action now by inventorying cryptography and planning migration to post-quantum standards.\n\nThe central lesson is simple. Do not ask whether quantum computers are faster. Ask which precisely defined workload, under which assumptions, on which architecture, compared with which classical method, and measured by which outcome. In the Learn workspace, continue with bits and qubits. Make a prediction, use the simulator, and remember that the goal is not to replace what already works. The goal is to discover whether a specialized quantum process can add verified value to a larger classical system.",
+      "bytes": 10962524
+    },
+    {
+      "id": "security-shor-and-readiness",
+      "number": 2,
+      "title": "Shor, RSA, and what security teams should do now",
+      "summary": "A careful explanation of the quantum threat to public-key cryptography and practical post-quantum readiness without alarmism.",
+      "published": "2026-07-17",
+      "audio": "/audio/podcast/security-shor-and-readiness.wav",
+      "duration_seconds": 281,
+      "chapters": [
+        {
+          "start_seconds": 0,
+          "title": "Why factoring matters"
+        },
+        {
+          "start_seconds": 95,
+          "title": "What current hardware cannot do"
+        },
+        {
+          "start_seconds": 190,
+          "title": "A migration program for today"
+        }
+      ],
+      "transcript": "This episode connects a famous quantum algorithm to a practical security program. Public-key cryptography lets systems establish secrets and verify identity across untrusted networks. RSA relies on the practical difficulty of factoring a large composite integer with known classical methods. Elliptic-curve systems rely on a related discrete-logarithm problem. These are mathematical assumptions, not permanent laws of nature. In the nineteen nineties, Peter Shor described a quantum algorithm that can factor integers and solve discrete logarithms in polynomial time on an ideal quantum computer. That result is why quantum computing appears in long-term cybersecurity planning.\n\nThe phrase quantum computer hides an important qualification. Breaking an operational RSA key would require a large, fault-tolerant system with enough reliable logical qubits and a very large number of controlled operations. A logical qubit is protected by error correction and may require many physical qubits. Resource estimates depend on the error-correction code, physical error rates, architecture, compilation, runtime, and engineering assumptions. The noisy machines available today do not break operational RSA keys. A demonstration that factors a tiny number is educational and does not show cryptographic capability. Any timeline claim should include a full resource model and explicit uncertainty.\n\nWhy act before the machine exists? Security migrations take years. Cryptography is embedded in protocols, libraries, certificates, hardware, devices, backups, vendor products, and long-lived records. Some sensitive information collected now may need confidentiality far into the future. An adversary could store encrypted traffic and attempt decryption later if capability becomes available. The response is not panic and it is not buying a quantum computer. It is cryptographic engineering.\n\nThe United States National Institute of Standards and Technology approved the first post-quantum cryptography standards in twenty twenty-four. They include a module-lattice key-encapsulation standard and standards for digital signatures, including module-lattice and hash-based approaches. These algorithms run on classical computers and are designed to resist attacks from both classical and future quantum computers under the security assumptions reviewed by the standards process. Migration still requires careful implementation, interoperability testing, performance measurement, key management, and monitoring for future cryptanalysis.\n\nA responsible readiness program has several steps. Build a cryptographic inventory: identify algorithms, key sizes, certificates, protocols, libraries, data lifetimes, and system owners. Prioritize systems holding long-lived sensitive data and infrastructure that is difficult to update. Establish crypto-agility so algorithms and parameters can change without rebuilding every product. Test standardized post-quantum mechanisms in representative environments. Measure message size, latency, hardware compatibility, failure behavior, and operational impact. Plan hybrid or staged transitions where appropriate. Update procurement language so suppliers disclose dependencies and migration paths. Preserve rollback and incident procedures. Finally, track official standards and validated implementations rather than selecting an algorithm from marketing material.\n\nQuantum random number generation and quantum key distribution are separate topics. They may have roles in particular threat models, but they do not replace a broad post-quantum migration program. Likewise, Grover's search algorithm can change security margins for symmetric cryptography in idealized models, but it does not simply halve real-world key strength without considering circuit cost and architecture. Security decisions need workload-specific analysis.\n\nIn 1StopQuantum, use the cybersecurity case study to compare threat, capability, and response. The quantum threat is a reason for disciplined preparation, not a claim that current devices can decrypt protected data. The practical action today is to know where cryptography lives, understand how long information must remain secure, and begin standards-based migration with measurable tests.",
+      "bytes": 13467164
+    },
+    {
+      "id": "optimization-science-use-cases",
+      "number": 3,
+      "title": "Routes, molecules, and choosing real use cases",
+      "summary": "How to separate useful quantum research from oversimplified optimization and discovery claims.",
+      "published": "2026-07-17",
+      "audio": "/audio/podcast/optimization-science-use-cases.wav",
+      "duration_seconds": 276,
+      "chapters": [
+        {
+          "start_seconds": 0,
+          "title": "The traveling-salesperson lesson"
+        },
+        {
+          "start_seconds": 105,
+          "title": "Supply chains and hybrid workflows"
+        },
+        {
+          "start_seconds": 205,
+          "title": "Chemistry and materials"
+        }
+      ],
+      "transcript": "This episode asks a question every quantum program should answer: which use cases deserve serious work? Start with the traveling-salesperson problem. A salesperson must visit a set of locations and return home while minimizing total distance. The number of possible tours grows quickly, so the example teaches combinatorial optimization. It is also easy to overstate. A quantum state can represent many configurations, but measurement does not reveal all of them. A quantum optimizer still needs an objective, an encoding, a procedure that changes probabilities, repeated samples, and a way to verify feasibility and quality.\n\nClassical optimization is a strong competitor. Mixed-integer programming, constraint programming, branch and bound, decomposition, local search, and specialized heuristics solve large operational problems every day. A fair experiment compares against tuned modern software, not brute force. It reports total wall-clock time, solution quality, constraint violations, preprocessing, embedding, parameter search, sampling, repair, and hardware access delay. A tiny graph with a visually pleasing result is a teaching demonstration. It is not evidence that a national supply chain should move to a quantum processor.\n\nReal supply chains add inventory, capacity, lead time, service levels, uncertain demand, labor, regulations, multiple objectives, and frequent replanning. A sensible quantum research project isolates one expensive subproblem and leaves the rest of the workflow classical. An annealer represents a quadratic unconstrained binary optimization model and searches for low-energy samples. A gate-model research method such as QAOA prepares and measures parameterized circuits. Both require classical coordination. The result should be compared with the incumbent solver under the same constraints and decision deadline. If a hybrid method improves a meaningful metric after every overhead is included, that is useful evidence. If not, the project can still reveal resource requirements and stop further spending.\n\nChemistry and materials offer a different motivation. Nature itself is quantum mechanical. Exact electronic-structure calculations become difficult as interacting particles and active orbitals increase. Quantum algorithms may eventually represent and evolve these states in ways that complement high-performance classical chemistry. Candidate applications include catalysts, battery materials, magnets, corrosion, fertilizers, fuels, and superconducting materials. Yet the business label drug discovery is too broad. A molecule moves through target selection, synthesis, assays, toxicity studies, formulation, clinical trials, and regulation. A quantum calculation would address a specific scientific quantity inside that long pipeline, not produce a medicine by itself.\n\nA credible chemistry project defines the molecule or material, active space, target property, required accuracy, classical method, logical resource estimate, state preparation, error correction, and experimental validation. Variational algorithms on noisy hardware can be educational and scientifically informative, but a small molecular energy result does not establish commercial advantage. Fault-tolerant algorithms may offer stronger asymptotic foundations, while their physical resource requirements remain a central engineering question.\n\nOther domains require the same discipline. Finance combines sampling, optimization, and linear algebra, but data loading and accuracy may consume theoretical gains. Energy combines molecular simulation with grid operations, which are different workloads. Climate is not one algorithm; it includes earth-system simulation, materials, sensing, uncertainty, and optimization. Government assessment should reject umbrella claims and ask for mission value, full-system cost, critical prototypes, independent reproduction, and explicit failure criteria.\n\nUse the Use Case Center in 1StopQuantum as a worksheet. Select a domain, read the strongest classical baseline, inspect the candidate quantum method, and answer the suitability questions. Treat an educational label as a reason to learn, an emerging label as a reason to research cautiously, and an evidence-backed label as support for a specific current action, not broad quantum supremacy. The best first outcome of a use-case program may be a defensible no. That is still valuable because it protects resources for the problems where evidence can improve.",
+      "bytes": 13257164
+    },
+    {
+      "id": "hardware-benchmarks-and-claims",
+      "number": 4,
+      "title": "Hardware, benchmarks, QBI, and separating hype from evidence",
+      "summary": "A full-stack checklist for comparing QPUs, roadmaps, forecasts, and utility-scale claims.",
+      "published": "2026-07-17",
+      "audio": "/audio/podcast/hardware-benchmarks-and-claims.wav",
+      "duration_seconds": 277,
+      "chapters": [
+        {
+          "start_seconds": 0,
+          "title": "Qubit count is not enough"
+        },
+        {
+          "start_seconds": 90,
+          "title": "Benchmark provenance"
+        },
+        {
+          "start_seconds": 190,
+          "title": "QBI-inspired verification"
+        }
+      ],
+      "transcript": "The final episode in this series explains how to evaluate quantum hardware without reducing progress to one number. Qubit count matters, but it is not a capacity rating by itself. A useful computer also needs high-quality gates, measurement, connectivity, calibration stability, compilation, control electronics, system availability, and an error-management strategy. Different technologies make different tradeoffs. Superconducting circuits can operate quickly but require cryogenic control and constrained connectivity. Trapped ions can offer high connectivity and long coherence while gates may be slower. Neutral atoms, photonics, spins, topological approaches, and annealers have different native operations and engineering paths. There is no honest universal ranking without a workload.\n\nA benchmark begins by naming what was measured. Record the workload, circuit family, problem size, metric direction, device, software version, compilation method, date, number of repetitions, uncertainty, and provenance. A fidelity measurement is not interchangeable with an application benchmark. A result on one topology cannot automatically predict another. A provider-reported point, an independently reproduced result, and a forecast should be shown as different kinds of evidence. Aggregated data can reveal trends, but missing years, changing definitions, and publication bias limit conclusions.\n\nThe QPU recommendation question should therefore start with a circuit or algorithm profile. How many logical or physical qubits are needed? What two-qubit interactions dominate? How deep is the compiled circuit? Does the algorithm tolerate sampling noise? Is all-to-all connectivity valuable? Are custom gates or pulse controls required? Is the goal education, research, or production evidence? A simulator may be the best recommendation when reproducibility and full state inspection matter. An annealer may fit a QUBO experiment but cannot directly replace a universal gate circuit. A hardware recommendation should include an evidence-quality score and explain disqualifying constraints.\n\nForecasting needs similar restraint. Fitting a trend line to historical qubit counts does not predict fault tolerance. Metrics can improve, stall, change definition, or face manufacturing limits. A forecast should show the observed data separately from the modeled future, describe the model, include uncertainty, and avoid declaring a utility date from one metric. Fault-tolerant capability depends on a full architecture and on the resources of valuable workloads.\n\nThe United States Defense Advanced Research Projects Agency created the Quantum Benchmarking Initiative to rigorously examine whether quantum-computing approaches could reach utility-scale operation, where computational value exceeds cost, by twenty thirty-three. QBI uses staged technical review and independent verification. 1StopQuantum is not DARPA and does not issue government determinations, but it can teach a compatible evidence discipline. Ask for a complete system concept, not an isolated qubit. Require a target application or value model, logical resources, error correction, physical overhead, control and facility requirements, manufacturing assumptions, runtime, reliability, and lifecycle cost. Identify the highest technical risks and the prototypes that would retire them. Define what evidence would falsify the roadmap. Seek independent reproduction.\n\nFor a government agency, investor, researcher, or buyer, this process turns a provider claim into testable questions. If a company projects a million qubits, ask whether they are physical or logical, what error rates and yield are assumed, and how they support the target workload. If a benchmark improves, ask whether the method and metric remained comparable. If a system solves a problem, compare it with the best classical solution and include every operational cost. If an architecture cannot yet provide the evidence, label the gap rather than filling it with confidence.\n\nIn the Benchmark workspace, use the progress view, QPU match, forecast, digest, and claim workbench as separate tools. Read the Metriq attribution and source links. The purpose is not to choose a winner from a dashboard. It is to build a traceable evidence packet: what is known, what is modeled, what is claimed, what remains uncertain, and which experiment should happen next. That is how a one-stop platform can support learning and serious assessment without becoming another source of quantum hype.",
+      "bytes": 13279964
+    }
+  ]
+}

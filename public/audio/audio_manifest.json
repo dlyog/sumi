@@ -1,0 +1,278 @@
+{
+  "schema_version": "1.0",
+  "kokoro_url": "http://127.0.0.1:5152",
+  "voice": "am_michael",
+  "speed": 0.94,
+  "items": {
+    "/audio/course/bits-and-qubits.wav": {
+      "kind": "lesson",
+      "id": "bits-and-qubits",
+      "source_hash": "1f75541bab3273fdf51a82c7a57aefa7ea996a9624635909b89cdc02ff56f82f",
+      "bytes": 1556444,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 32.425
+    },
+    "/audio/course/state-and-bloch-sphere.wav": {
+      "kind": "lesson",
+      "id": "state-and-bloch-sphere",
+      "source_hash": "9bac39b6c8dd34295673dd038f209f2151fb0ca94b55acd79caa216276ae14d3",
+      "bytes": 1508444,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 31.425
+    },
+    "/audio/course/gates-and-circuits.wav": {
+      "kind": "lesson",
+      "id": "gates-and-circuits",
+      "source_hash": "60f4be96124e9d2f60b7d6c99ab34357c90be2e28141b0f63dae5110ec15ca1a",
+      "bytes": 1532444,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 31.925
+    },
+    "/audio/course/measurement-and-shots.wav": {
+      "kind": "lesson",
+      "id": "measurement-and-shots",
+      "source_hash": "560543cd7f365c77b49f2729cec30518f94fcd1bfc314aab8ff0a1a375f5103d",
+      "bytes": 1545644,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 32.2
+    },
+    "/audio/course/interference.wav": {
+      "kind": "lesson",
+      "id": "interference",
+      "source_hash": "8688328c5c04550c92398d03cd8cbbab3fb6f28a7e62f2c39b9300cb5fe985fc",
+      "bytes": 1538444,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 32.05
+    },
+    "/audio/course/entanglement.wav": {
+      "kind": "lesson",
+      "id": "entanglement",
+      "source_hash": "3486a679354a449a4b71e51b822d281ebe98517a8ad3c534ada5ddda4e06a741",
+      "bytes": 1590044,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 33.125
+    },
+    "/audio/course/noise-and-decoherence.wav": {
+      "kind": "lesson",
+      "id": "noise-and-decoherence",
+      "source_hash": "e6d279bb88c1af96e68ee614e1ba1b319112e2cd634125cc87664876115e8483",
+      "bytes": 1298444,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 27.05
+    },
+    "/audio/course/error-correction-intuition.wav": {
+      "kind": "lesson",
+      "id": "error-correction-intuition",
+      "source_hash": "9d82a92a67777a3009496f1d60fe75e8a7b2c99806c967bce2ff92f3edde2ce1",
+      "bytes": 1581644,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 32.95
+    },
+    "/audio/course/algorithm-thinking.wav": {
+      "kind": "lesson",
+      "id": "algorithm-thinking",
+      "source_hash": "dc97de33d3208d1bfc4ae0f7a4ca66d0c2d43f7a373eda17463be8a1ff7c1877",
+      "bytes": 1549244,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 32.275
+    },
+    "/audio/course/deutsch-jozsa.wav": {
+      "kind": "lesson",
+      "id": "deutsch-jozsa",
+      "source_hash": "15ffe734d1eb2188d437d4f39e53382fbc3f36e939e4cae228a86f6c13cf5cdd",
+      "bytes": 1396844,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 29.1
+    },
+    "/audio/course/grover-search.wav": {
+      "kind": "lesson",
+      "id": "grover-search",
+      "source_hash": "c20b10ae633d420eb6635e076f64c906576d52d2c23a5d6d59ba3a1e78e648e3",
+      "bytes": 1465244,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 30.525
+    },
+    "/audio/course/ghz-and-teleportation.wav": {
+      "kind": "lesson",
+      "id": "ghz-and-teleportation",
+      "source_hash": "26672c2c06efca355fb8949016020b55acaba3fbe4702fc09c5c09755d1ee980",
+      "bytes": 1520444,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 31.675
+    },
+    "/audio/course/computing-paradigms.wav": {
+      "kind": "lesson",
+      "id": "computing-paradigms",
+      "source_hash": "fa12d229b3f86788e60398843ef27d9b3622aadde30b1c7eef06f6f52ebb0071",
+      "bytes": 1509644,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 31.45
+    },
+    "/audio/course/hardware-modalities.wav": {
+      "kind": "lesson",
+      "id": "hardware-modalities",
+      "source_hash": "162c18ae6f19c3b0800e601ad11935ddfc6e4d2cc5cfa4401dc6c7b8d7fc64d2",
+      "bytes": 1453244,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 30.275
+    },
+    "/audio/course/compilation-and-qpu-fit.wav": {
+      "kind": "lesson",
+      "id": "compilation-and-qpu-fit",
+      "source_hash": "96964c986f30369aafc5229ba5d6433b6ea152f6d91ba0ba59dee1670e568118",
+      "bytes": 1274444,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 26.55
+    },
+    "/audio/course/benchmarks-and-claims.wav": {
+      "kind": "lesson",
+      "id": "benchmarks-and-claims",
+      "source_hash": "e0c92b323cf5f387a75118a51be4556dcd922aaadf1fb84c825ada7573858dba",
+      "bytes": 1057244,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 22.025
+    },
+    "/audio/screens/learn.wav": {
+      "kind": "screen",
+      "id": "learn",
+      "source_hash": "3f577f95138a6ac8366e3af8c94a7993d3f350e374dd0b5eaa9cba722b0d3507",
+      "bytes": 1387244,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 28.9
+    },
+    "/audio/screens/editor.wav": {
+      "kind": "screen",
+      "id": "editor",
+      "source_hash": "988962f076b89036323db7453f536e75365458a3c47a2a948bf1f2bd99d81b0f",
+      "bytes": 1527644,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 31.825
+    },
+    "/audio/screens/drug.wav": {
+      "kind": "screen",
+      "id": "drug",
+      "source_hash": "7d51ee6125eb749e1685dccbd8b400b1464bbc563352898c51b369fbed1d248e",
+      "bytes": 1532444,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 31.925
+    },
+    "/audio/screens/providers.wav": {
+      "kind": "screen",
+      "id": "providers",
+      "source_hash": "530bd7d806a542bf63034c86cb2b9f544d935837e47c5b0f454e9c8987572a92",
+      "bytes": 1412444,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 29.425
+    },
+    "/audio/screens/benchmarking.wav": {
+      "kind": "screen",
+      "id": "benchmarking",
+      "source_hash": "b0678c7030f19730697214c0ecce826c853e12e631bb2a1e3dd6bee1975e699c",
+      "bytes": 1500044,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 31.25
+    },
+    "/audio/screens/improve.wav": {
+      "kind": "screen",
+      "id": "improve",
+      "source_hash": "6c7c1d0f3542c420899c7352d8ac174d75708910f51e329c27f6b67ad81a79cf",
+      "bytes": 1444844,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 30.1
+    },
+    "/audio/screens/guide.wav": {
+      "kind": "screen",
+      "id": "guide",
+      "source_hash": "a15e6618676e75b745429a655a5eba73fac0fea3b320ab9ef5a73c663e6ddbe3",
+      "bytes": 1310444,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 27.3
+    },
+    "/audio/screens/use-cases.wav": {
+      "kind": "screen",
+      "id": "use-cases",
+      "source_hash": "82ec66d47478d83978e1427505551e016948deadae59934f047c33f293457593",
+      "bytes": 1551644,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 32.325
+    },
+    "/audio/screens/podcast.wav": {
+      "kind": "screen",
+      "id": "podcast",
+      "source_hash": "9914e96ae7d856898e48edc7e175588a7a97926ce455063e204c92fe2960cd94",
+      "bytes": 1358444,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 28.3
+    },
+    "/audio/screens/community.wav": {
+      "kind": "screen",
+      "id": "community",
+      "source_hash": "a2f780e7714755d90009d4b6150bcc3de69e0a0e3c8500730af6111feb920716",
+      "bytes": 1348844,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 28.1
+    },
+    "/audio/podcast/classical-to-quantum.wav": {
+      "kind": "podcast",
+      "id": "classical-to-quantum",
+      "source_hash": "59907a9632c19968a0bfe4d6d2879725894d6a2865439660e28109561811fdaa",
+      "bytes": 10962524,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 228.385
+    },
+    "/audio/podcast/security-shor-and-readiness.wav": {
+      "kind": "podcast",
+      "id": "security-shor-and-readiness",
+      "source_hash": "f84fa9f15295c7127f10208e7156c040b9607c31aac7e379602719641803738c",
+      "bytes": 13467164,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 280.565
+    },
+    "/audio/podcast/optimization-science-use-cases.wav": {
+      "kind": "podcast",
+      "id": "optimization-science-use-cases",
+      "source_hash": "4ac0c6a73f3f2ad867e93bb14a28c5fce1dc600ff09c7d83445e3ad1594d675c",
+      "bytes": 13257164,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 276.19
+    },
+    "/audio/podcast/hardware-benchmarks-and-claims.wav": {
+      "kind": "podcast",
+      "id": "hardware-benchmarks-and-claims",
+      "source_hash": "ab22d43e1de033de3a91029c6f63d596aba757decd7885ce047bfbe9299eac93",
+      "bytes": 13279964,
+      "channels": 1,
+      "sample_rate": 24000,
+      "duration_seconds": 276.665
+    }
+  }
+}

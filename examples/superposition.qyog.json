@@ -1,0 +1,21 @@
+{
+  "apiVersion": "quantumyog.dev/v1",
+  "kind": "Circuit",
+  "metadata": {
+    "name": "superposition",
+    "description": "Put q0 in superposition and measure it."
+  },
+  "spec": {
+    "backend": "qiskit",
+    "circuit": {
+      "version": "1.0",
+      "num_qubits": 1,
+      "gates": [
+        {"op": "H", "targets": [0]},
+        {"op": "measure", "targets": [0]}
+      ],
+      "shots": 1024,
+      "seed": 42
+    }
+  }
+}

@@ -1,0 +1,668 @@
+{
+  "schema_version": "1.0",
+  "product": "1StopQuantum",
+  "title": "Quantum computing, from first bit to trustworthy evidence",
+  "description": "Four short courses that join plain-language intuition, visual experiments, circuit practice, and honest hardware evaluation.",
+  "estimated_minutes": 156,
+  "introductions": [
+    {
+      "audience": "beginner",
+      "title": "From the computer you know to a quantum coprocessor",
+      "summary": "Classical computers remain the right tool for everyday logic, storage, graphics, AI, and most optimization. A quantum computer is a specialized coprocessor for selected mathematical structures.",
+      "narration": "Start with the computer you already use. Its processor records bits, follows instructions, moves data, and gives repeatable answers. Modern CPUs, GPUs, databases, and AI systems are extraordinarily capable. A quantum computer does not replace them. It may complement them for a limited set of problems whose structure can use interference, entanglement, or quantum simulation. Factoring is the famous security example: a sufficiently large fault-tolerant quantum computer running Shor's algorithm could threaten RSA and related public-key systems, so organizations should inventory cryptography and plan migration to post-quantum standards before such a machine exists. Optimization needs equal care. A traveling-salesperson or supply chain problem does not become easy merely because it is sent to quantum hardware. A useful workflow starts with the strongest classical solver, defines cost and constraints, and tests whether a quantum or hybrid method improves quality, time, or energy at realistic scale. Chemistry and materials are natural research targets because molecules are quantum systems, but present devices are noisy and small. Think of quantum computing as a future specialist accelerator working beside classical computers, not replacing them."
+    },
+    {
+      "audience": "executive",
+      "title": "A decision framework for quantum opportunity and risk",
+      "summary": "Fund readiness and evidence, not a hardware slogan: define business value, classical baselines, resource estimates, verification gates, and exit criteria.",
+      "narration": "For an executive, the central question is not whether quantum computing is important. It is where a measured investment can retire uncertainty. Quantum computers complement rather than replace classical computing, and any credible program includes classical preprocessing, control, verification, and postprocessing. Begin with risk: RSA and elliptic-curve cryptography could be affected by a future fault-tolerant machine, while NIST post-quantum standards are available now, so cryptographic inventory and migration are practical actions today. For opportunity, select use cases with expensive classical bottlenecks and measurable economic value. A traveling-salesperson demonstration is educational, but a supply chain pilot needs real constraints, a competitive classical baseline, data-loading cost, solution quality, and runtime-to-decision. Chemistry, materials, catalysts, batteries, and selected simulation tasks have strong scientific motivation, yet useful advantage still requires fault-tolerant resources beyond current noisy systems for many targets. Treat provider roadmaps and benchmark forecasts as claims to validate. Require workload definitions, logical resource estimates, physical overhead, error assumptions, independent reproduction, total operating cost, and staged stop criteria. This is the evidence discipline behind a responsible quantum portfolio."
+    }
+  ],
+  "depth_introductions": {
+    "undergraduate": {
+      "title": "From state vectors to a classical baseline",
+      "summary": "Model qubits with complex amplitudes and circuits, then compare every proposed quantum method with the strongest relevant classical algorithm.",
+      "narration": "At undergraduate level, connect the visual model to linear algebra. A qubit is a normalized vector in a two-dimensional complex vector space, and gates are unitary transformations. Measurement probabilities come from squared amplitude magnitudes. Multi-qubit tensor products create a state space that grows exponentially, but that does not mean a measurement reveals every amplitude or that every problem gains a speedup. A useful experiment specifies an algorithm, input encoding, circuit depth, noise model, and classical baseline before comparing outcomes."
+    }
+  },
+  "courses": [
+    {
+      "id": "foundations",
+      "number": 1,
+      "title": "Quantum foundations",
+      "description": "Build a precise mental model of qubits, state, gates, and measurement without assuming physics or linear algebra.",
+      "image": "/assets/course/foundations.png",
+      "lessons": [
+        {
+          "id": "bits-and-qubits",
+          "title": "Bits and qubits",
+          "duration_minutes": 8,
+          "legacy_module": "foundations",
+          "summary": "Start with a familiar switch, then separate a qubit's predicted state from the classical result we observe.",
+          "objectives": [
+            "Distinguish a classical bit from a qubit state",
+            "Explain why one measurement still returns only 0 or 1"
+          ],
+          "sections": [
+            {
+              "heading": "Begin with the result",
+              "body": "A classical bit stores a recorded value, 0 or 1. A qubit also gives a classical 0 or 1 when measured. The quantum difference lives before measurement: a state carries amplitudes that predict the pattern across many identically prepared runs."
+            },
+            {
+              "heading": "Prepare, transform, measure",
+              "body": "Every beginner experiment follows the same loop. Prepare a known state, transform it with gates, and measure. Keep the preparation identical over many shots so that counts estimate the predicted probabilities."
+            }
+          ],
+          "narration": "Welcome to bits and qubits. Begin with what you know: a classical bit records either zero or one. A qubit also returns zero or one when you measure it. The difference is the state before measurement. Gates change that state, and its amplitudes predict the pattern you will see across repeated, identically prepared runs. Follow the three steps on screen: prepare, transform, and measure. Make a prediction before running the simulator, then use many shots to compare your mental model with evidence.",
+          "visual": {
+            "image": "/assets/course/lessons/bits-and-qubits.png",
+            "alt": "A clear blue qubit sphere beside a simple classical switch",
+            "animation": "prepare-transform-measure",
+            "provenance": {
+              "kind": "AI-generated",
+              "model": "DreamShaper_8_pruned.safetensors",
+              "prompt": "Exactly two isolated objects centered on white: one small cobalt glass cube on the left and one larger translucent cobalt glass sphere on the right, wide empty gap, no controls or markings"
+            }
+          },
+          "audio": "/audio/course/bits-and-qubits.wav"
+        },
+        {
+          "id": "state-and-bloch-sphere",
+          "title": "State and the Bloch sphere",
+          "duration_minutes": 10,
+          "legacy_module": "qubit",
+          "summary": "Use a geometric map to connect amplitude magnitude, probability, and relative phase.",
+          "objectives": [
+            "Read a one-qubit state on the Bloch sphere",
+            "Separate probability from relative phase"
+          ],
+          "sections": [
+            {
+              "heading": "A map, not a tiny planet",
+              "body": "The Bloch sphere is a map of pure one-qubit states. The arrow's tilt determines the probabilities of zero and one in the computational basis. Its turn around the sphere represents relative phase."
+            },
+            {
+              "heading": "Same bars, different future",
+              "body": "Two states can have identical zero-one probabilities and different phase. A later gate can turn that hidden phase difference into different measurement counts, which is why a classical random bit is not a replacement for a coherent qubit."
+            }
+          ],
+          "narration": "The Bloch sphere is a map, not a picture of a physical ball. Its arrow represents one pure qubit state. Tilt the arrow and the chances of measuring zero and one change. Turn the arrow around the sphere and relative phase changes, even when the probability bars stay the same. That phase can affect a later gate. Move both controls slowly, compare the arrow with the bars, and remember that a state predicts future observations; it is not itself a measurement result.",
+          "visual": {
+            "image": "/assets/course/lessons/state-and-bloch-sphere.png",
+            "alt": "A blue Bloch sphere with one state arrow",
+            "animation": "bloch-sphere",
+            "provenance": {
+              "kind": "AI-generated",
+              "model": "DreamShaper_8_pruned.safetensors",
+              "prompt": "Exactly one transparent glass sphere isolated on white, one bold cobalt arrow begins at the exact center and points to the upper right, three very thin straight coordinate axes"
+            }
+          },
+          "audio": "/audio/course/state-and-bloch-sphere.wav"
+        },
+        {
+          "id": "gates-and-circuits",
+          "title": "Gates and circuits",
+          "duration_minutes": 9,
+          "legacy_module": "gates",
+          "summary": "Treat gates as reversible state transformations and circuits as ordered experiments.",
+          "objectives": [
+            "Describe X, H, and rotation gates",
+            "Read a circuit from left to right"
+          ],
+          "sections": [
+            {
+              "heading": "Transform without looking",
+              "body": "A quantum gate changes state without measuring it. X swaps zero and one, H creates or recombines equal paths, and rotation gates move continuously around a chosen Bloch-sphere axis."
+            },
+            {
+              "heading": "Order is part of the algorithm",
+              "body": "A circuit is an ordered sequence on qubit wires. Gates that touch different qubits may commute, but changing the order of gates on the same state can change the result. Measurement normally ends the coherent experiment."
+            }
+          ],
+          "narration": "Quantum gates transform a state without reading it. The X gate behaves like a bit flip on zero and one. The Hadamard gate, written H, creates or recombines equal quantum paths. Rotation gates move by a chosen angle. A circuit records these operations from left to right on qubit wires. Order matters because each gate receives the state produced by earlier gates. Use the gate palette, predict the result of X on zero, and then verify it with measurement.",
+          "visual": {
+            "image": "/assets/course/lessons/gates-and-circuits.png",
+            "alt": "Three geometric quantum gates arranged along a clean circuit wire",
+            "animation": "circuit-pulse",
+            "provenance": {
+              "kind": "AI-generated",
+              "model": "DreamShaper_8_pruned.safetensors",
+              "prompt": "Exactly three simple colored glass cubes pierced in sequence by one perfectly straight thin black horizontal rod, cobalt cube, teal cube, amber cube, isolated on white"
+            }
+          },
+          "audio": "/audio/course/gates-and-circuits.wav"
+        },
+        {
+          "id": "measurement-and-shots",
+          "title": "Measurement and shots",
+          "duration_minutes": 9,
+          "legacy_module": "superposition",
+          "summary": "Connect the Born rule to one observed result and many-shot frequency estimates.",
+          "objectives": [
+            "Explain what one shot returns",
+            "Distinguish exact probability from sampled counts"
+          ],
+          "sections": [
+            {
+              "heading": "One run, one answer",
+              "body": "Measurement returns one ordinary bit per measured qubit. It does not print every amplitude. The probability of an outcome is the squared magnitude of its amplitude in the measurement basis."
+            },
+            {
+              "heading": "Why repeat the circuit",
+              "body": "A shot is one independent preparation and measurement. Many shots estimate a distribution, but counts fluctuate. The ideal statevector and a finite sample answer related but different questions."
+            }
+          ],
+          "narration": "Measurement connects a quantum state to an ordinary recorded answer. One measured qubit produces one bit: zero or one. It does not reveal both amplitudes in a single shot. To learn the distribution, prepare the same circuit again and again. Each repetition is called a shot. The counts will fluctuate around the state's exact probabilities. Predict the result of an H gate, run one thousand twenty-four shots, and compare the sampled bars with the ideal fifty-fifty expectation.",
+          "visual": {
+            "image": "/assets/course/lessons/measurement-and-shots.png",
+            "alt": "A qubit state becoming a neutral two-bar measurement chart",
+            "animation": "measurement-drop",
+            "provenance": {
+              "kind": "AI-generated",
+              "model": "DreamShaper_8_pruned.safetensors",
+              "prompt": "One cobalt glass sphere above exactly two shallow white bowls, many tiny black balls collected in the left bowl and many tiny cobalt balls collected in the right bowl"
+            }
+          },
+          "audio": "/audio/course/measurement-and-shots.wav"
+        }
+      ]
+    },
+    {
+      "id": "effects",
+      "number": 2,
+      "title": "Quantum effects",
+      "description": "See how phase, interference, entanglement, and noise create behavior that probability alone cannot explain.",
+      "image": "/assets/course/effects.png",
+      "lessons": [
+        {
+          "id": "interference",
+          "title": "Interference",
+          "duration_minutes": 10,
+          "legacy_module": "interference",
+          "summary": "Track signed amplitudes as paths reinforce or cancel before measurement.",
+          "objectives": [
+            "Explain why amplitudes combine before probabilities",
+            "Predict the H followed by H experiment"
+          ],
+          "sections": [
+            {
+              "heading": "Add amplitudes first",
+              "body": "Classical alternatives add probabilities. Coherent quantum paths add complex amplitudes first and square only at measurement. Positive and negative contributions can reinforce or cancel."
+            },
+            {
+              "heading": "The two-H experiment",
+              "body": "The first H creates equal paths from zero. The second H recombines them: paths to zero reinforce and paths to one cancel. The circuit returns to zero even though its middle state had balanced probabilities."
+            }
+          ],
+          "narration": "Interference is the engine behind many quantum algorithms. Quantum paths carry amplitudes, including signs and phase. Those amplitudes combine before we turn them into measurement probabilities. Apply one Hadamard gate to zero and the measurement is balanced. Apply a second Hadamard before measuring and the paths to one cancel while the paths to zero reinforce. Predict this two-gate result, then run it. The lesson is not that probabilities disappear; it is that amplitudes shape them first.",
+          "visual": {
+            "image": "/assets/course/lessons/interference.png",
+            "alt": "Two clean wave paths combining into one bright quantum outcome",
+            "animation": "interference-waves",
+            "provenance": {
+              "kind": "AI-generated",
+              "model": "DreamShaper_8_pruned.safetensors",
+              "prompt": "Two smooth cobalt wave paths entering from opposite sides, overlapping at the center, and leaving as one bright amplified wave and one cancelled flat path"
+            }
+          },
+          "audio": "/audio/course/interference.wav"
+        },
+        {
+          "id": "entanglement",
+          "title": "Entanglement",
+          "duration_minutes": 11,
+          "legacy_module": "entanglement",
+          "summary": "Move from individual qubit arrows to a joint state that cannot be separated.",
+          "objectives": [
+            "Recognize a Bell state",
+            "Interpret random marginals and correlated joint outcomes"
+          ],
+          "sections": [
+            {
+              "heading": "One description for the pair",
+              "body": "After H on q0 and CNOT from q0 to q1, the Bell state has amplitudes only for 00 and 11. It cannot be written as one independent state for each qubit."
+            },
+            {
+              "heading": "Random alone, structured together",
+              "body": "Each qubit looks maximally mixed by itself, so it has no individual pure-state arrow. Joint measurement reveals the structure: the bits match. This correlation does not send information faster than light."
+            }
+          ],
+          "narration": "Entanglement belongs to a joint system. Start two qubits at zero zero. Apply H to the first and use it as the control of a CNOT. The final Bell state contains the outcomes zero zero and one one. Each qubit looks random when inspected alone, so an individual Bloch arrow would be misleading. The pair, however, has a precise shared state and matching outcomes. Step through H and CNOT, watching the amplitude view move from separate possibilities to a correlated joint pattern.",
+          "visual": {
+            "image": "/assets/course/lessons/entanglement.png",
+            "alt": "Two blue qubit spheres connected by a subtle teal entanglement link",
+            "animation": "entanglement-link",
+            "provenance": {
+              "kind": "AI-generated",
+              "model": "DreamShaper_8_pruned.safetensors",
+              "prompt": "Exactly two separate translucent cobalt spheres connected by one thin luminous teal link, balanced paired composition showing one shared relationship"
+            }
+          },
+          "audio": "/audio/course/entanglement.wav"
+        },
+        {
+          "id": "noise-and-decoherence",
+          "title": "Noise and decoherence",
+          "duration_minutes": 10,
+          "legacy_module": "qubit",
+          "summary": "Understand how control errors and the environment erase useful phase information.",
+          "objectives": [
+            "Distinguish noise from ideal sampling variation",
+            "Explain coherence as a limited resource"
+          ],
+          "sections": [
+            {
+              "heading": "The environment joins the experiment",
+              "body": "A real qubit is never perfectly isolated. Unwanted coupling to its environment can leak which-path information and suppress the phase relationships required for interference. This loss is decoherence."
+            },
+            {
+              "heading": "Not every error is the same",
+              "body": "Relaxation changes excited-state population, dephasing randomizes relative phase, and imperfect controls apply the wrong transformation. Coherence times and gate errors therefore measure different limits."
+            }
+          ],
+          "narration": "Real hardware adds noise to the ideal circuit model. A qubit can exchange energy with its environment, lose relative phase, or receive an imperfect control pulse. Decoherence means the environment has disrupted the phase relationships that interference needs. This is different from ordinary shot noise, which is expected sampling variation even in an ideal experiment. Compare exact simulation with a noisy mental model, and ask which physical error could change populations, erase phase, or distort a gate.",
+          "visual": {
+            "image": "/assets/course/lessons/noise-and-decoherence.png",
+            "alt": "A coherent blue qubit arrow fading under subtle environmental noise",
+            "animation": "decoherence-fade",
+            "provenance": {
+              "kind": "AI-generated",
+              "model": "DreamShaper_8_pruned.safetensors",
+              "prompt": "Two identical smooth cobalt glass spheres side by side on white, the left sphere perfectly sharp and clear, the right sphere surrounded by a soft cloud of scattered pale particles, no arrows, no graph, no baseline"
+            }
+          },
+          "audio": "/audio/course/noise-and-decoherence.wav"
+        },
+        {
+          "id": "error-correction-intuition",
+          "title": "Error correction intuition",
+          "duration_minutes": 10,
+          "legacy_module": "gates",
+          "summary": "See why quantum protection uses distributed information and syndrome checks instead of copying an unknown state.",
+          "objectives": [
+            "Explain why unknown qubits cannot simply be copied",
+            "Describe a syndrome without claiming it reads the logical state"
+          ],
+          "sections": [
+            {
+              "heading": "Protect relationships, not a copy",
+              "body": "The no-cloning theorem prevents making a perfect backup of an arbitrary unknown state. Error-correcting codes distribute one logical qubit across multiple physical qubits instead."
+            },
+            {
+              "heading": "Learn the error, not the answer",
+              "body": "Syndrome measurements reveal parity information that identifies likely errors without measuring the encoded logical value directly. Fault tolerance also prevents one operation from spreading errors uncontrollably."
+            }
+          ],
+          "narration": "Quantum error correction does not make a backup copy of an unknown qubit. Instead, it encodes one logical state across relationships among several physical qubits. Carefully chosen syndrome measurements reveal evidence about an error without directly reading the protected logical answer. A decoder uses those syndromes to infer a correction. This costs many physical qubits and operations, so a large physical qubit count is not the same as a large logical qubit count. Keep that distinction when evaluating hardware claims.",
+          "visual": {
+            "image": "/assets/course/lessons/error-correction-intuition.png",
+            "alt": "One logical qubit protected by a clean lattice of physical qubits",
+            "animation": "syndrome-pulse",
+            "provenance": {
+              "kind": "AI-generated",
+              "model": "DreamShaper_8_pruned.safetensors",
+              "prompt": "One central cobalt sphere protected by a symmetric ring of small teal sensor nodes, two amber warning pulses detected at the perimeter"
+            }
+          },
+          "audio": "/audio/course/error-correction-intuition.wav"
+        }
+      ]
+    },
+    {
+      "id": "algorithms",
+      "number": 3,
+      "title": "Algorithms through experiments",
+      "description": "Learn algorithm patterns by watching preparation, oracle marking, interference, and measurement work together.",
+      "image": "/assets/course/algorithms.png",
+      "lessons": [
+        {
+          "id": "algorithm-thinking",
+          "title": "How quantum algorithms think",
+          "duration_minutes": 9,
+          "legacy_module": "algorithms",
+          "summary": "Replace the myth of trying every answer with the operational pattern of shaping amplitudes.",
+          "objectives": [
+            "Describe encode-transform-measure",
+            "Identify why a classical baseline is required"
+          ],
+          "sections": [
+            {
+              "heading": "Shape an output distribution",
+              "body": "A quantum algorithm prepares amplitudes, applies problem-dependent transformations, and uses interference to increase useful outcomes. Measurement still returns a limited classical sample."
+            },
+            {
+              "heading": "Advantage is end to end",
+              "body": "A useful comparison includes data loading, circuit depth, repetitions, compilation, error correction, and the best classical method. A smaller oracle count alone is not a commercial advantage."
+            }
+          ],
+          "narration": "A quantum computer does not try every answer and hand us the whole list. A quantum algorithm encodes a problem into a state, transforms amplitudes so useful paths reinforce, and then measures a limited answer. The complete cost includes state preparation, circuit execution, repetitions, decoding, and comparison with the best classical method. As you study named algorithms, look for four roles: preparation, a problem oracle, interference or amplification, and measurement. Those roles make unfamiliar circuits easier to read.",
+          "visual": {
+            "image": "/assets/course/lessons/algorithm-thinking.png",
+            "alt": "A clean circuit path emphasizing one selected output",
+            "animation": "algorithm-path",
+            "provenance": {
+              "kind": "AI-generated",
+              "model": "DreamShaper_8_pruned.safetensors",
+              "prompt": "Exactly four smooth thin cobalt curves enter from the left, pass behind three plain black cubes, then merge into one bright amber glass sphere on the right, isolated on white"
+            }
+          },
+          "audio": "/audio/course/algorithm-thinking.wav"
+        },
+        {
+          "id": "deutsch-jozsa",
+          "title": "Deutsch-Jozsa",
+          "duration_minutes": 10,
+          "legacy_module": "interference",
+          "summary": "Use phase kickback and interference to distinguish constant from balanced promise functions.",
+          "objectives": [
+            "State the promise problem",
+            "Connect oracle phase to the final measurement"
+          ],
+          "sections": [
+            {
+              "heading": "A promised question",
+              "body": "The oracle is promised to be constant on every input or balanced across inputs. The task is to decide which case holds, not to learn every function value."
+            },
+            {
+              "heading": "Let phase carry the evidence",
+              "body": "The oracle writes function information into relative phase. A final layer of H gates converts the global interference pattern into a computational-basis result."
+            }
+          ],
+          "narration": "Deutsch-Jozsa is a clean lesson in phase and interference. We are promised that a hidden Boolean function is either constant or balanced. A prepared superposition queries the oracle coherently. Through phase kickback, the function changes signs rather than printing all of its values. Final Hadamard gates recombine those signed paths. Measuring all zeros indicates the constant case; another result indicates balanced. Focus on the promise and the interference pattern, not the outdated claim that every possible input was read at once.",
+          "visual": {
+            "image": "/assets/course/lessons/deutsch-jozsa.png",
+            "alt": "Parallel quantum paths passing through one oracle and recombining",
+            "animation": "oracle-phase",
+            "provenance": {
+              "kind": "AI-generated",
+              "model": "DreamShaper_8_pruned.safetensors",
+              "prompt": "One plain matte black cube centered on white, exactly two cobalt cables enter from the left and exactly two cobalt cables exit to the right, symmetric and isolated"
+            }
+          },
+          "audio": "/audio/course/deutsch-jozsa.wav"
+        },
+        {
+          "id": "grover-search",
+          "title": "Grover search",
+          "duration_minutes": 11,
+          "legacy_module": "algorithms",
+          "summary": "Mark a target by phase and amplify it through reflection about the average.",
+          "objectives": [
+            "Identify oracle and diffuser roles",
+            "Explain quadratic query improvement without promising exponential speedup"
+          ],
+          "sections": [
+            {
+              "heading": "Mark without measuring",
+              "body": "The oracle changes the target state's phase. It does not announce the target. The diffuser then reflects amplitudes about their average so the marked amplitude grows."
+            },
+            {
+              "heading": "Know the claim boundary",
+              "body": "For unstructured search, Grover reduces query scaling from order N to order square root N. Data access, oracle construction, error correction, and constants determine practical value."
+            }
+          ],
+          "narration": "Grover search alternates two operations. First, an oracle marks the desired basis state by changing its phase. Second, a diffuser reflects all amplitudes about their average. That reflection turns the marked sign difference into a larger measurement probability. Repeating the pair the right number of times amplifies the target. The query improvement is quadratic, not exponential, and an expensive oracle can erase practical benefit. Run the two-qubit template and watch the target eleven become more likely than the other outcomes.",
+          "visual": {
+            "image": "/assets/course/lessons/grover-search.png",
+            "alt": "One amber target bar amplified among three quiet quantum outcomes",
+            "animation": "amplitude-amplification",
+            "provenance": {
+              "kind": "AI-generated",
+              "model": "DreamShaper_8_pruned.safetensors",
+              "prompt": "A flat five by five square grid of identical low cobalt glass tiles seen from above, exactly one center tile glowing amber and raised above all other tiles, isolated on white"
+            }
+          },
+          "audio": "/audio/course/grover-search.wav"
+        },
+        {
+          "id": "ghz-and-teleportation",
+          "title": "GHZ states and teleportation",
+          "duration_minutes": 12,
+          "legacy_module": "entanglement",
+          "summary": "Extend Bell-state reasoning to multipartite correlation and distinguish teleportation from physical transport.",
+          "objectives": [
+            "Prepare a three-qubit GHZ state",
+            "Explain why teleportation still needs classical communication"
+          ],
+          "sections": [
+            {
+              "heading": "From a pair to a shared state",
+              "body": "H followed by a chain of CNOT gates prepares a GHZ state with amplitudes on 000 and 111. Each part alone is mixed while the whole state is coherent."
+            },
+            {
+              "heading": "Teleport a state, not matter",
+              "body": "Quantum teleportation consumes shared entanglement and two classical bits to reconstruct an unknown state elsewhere. It does not move a particle or communicate faster than light."
+            }
+          ],
+          "narration": "A GHZ circuit extends Bell-state correlation to three qubits. Apply H to the first qubit, then connect it through CNOT gates. The ideal state has amplitudes only for zero zero zero and one one one. This is a useful test of multipartite coherence. Quantum teleportation uses related resources: a shared Bell pair, a joint measurement, and two classical bits. The receiver applies a correction to reconstruct the original state. No particle is transported, and the classical message preserves the speed-of-light limit.",
+          "visual": {
+            "image": "/assets/course/lessons/ghz-and-teleportation.png",
+            "alt": "Three linked qubits forming one coherent GHZ state",
+            "animation": "ghz-chain",
+            "provenance": {
+              "kind": "AI-generated",
+              "model": "DreamShaper_8_pruned.safetensors",
+              "prompt": "Exactly three identical translucent cobalt glass spheres in one horizontal line, exactly two thin luminous teal links connect neighboring spheres, one small amber pulse on the second link"
+            }
+          },
+          "audio": "/audio/course/ghz-and-teleportation.wav"
+        }
+      ]
+    },
+    {
+      "id": "hardware-evidence",
+      "number": 4,
+      "title": "Hardware & evidence",
+      "description": "Compare computing paradigms, compile honestly, read benchmarks, and assess provider claims without hype.",
+      "image": "/assets/course/hardware-evidence.png",
+      "lessons": [
+        {
+          "id": "computing-paradigms",
+          "title": "Gate model, annealing, and simulation",
+          "duration_minutes": 10,
+          "legacy_module": "algorithms",
+          "summary": "Route a problem to the right computational model instead of treating every provider as interchangeable.",
+          "objectives": [
+            "Distinguish gate circuits from QUBO annealing",
+            "Choose simulation for learning and validation"
+          ],
+          "sections": [
+            {
+              "heading": "Different problem languages",
+              "body": "Gate-model machines execute ordered unitary circuits. Annealers minimize an energy function such as a QUBO. A statevector simulator calculates ideal circuit behavior on classical hardware."
+            },
+            {
+              "heading": "Route intent before choosing a vendor",
+              "body": "Entanglement and algorithm experiments belong to the circuit path. Native combinatorial energy minimization can fit an annealing path. Classical solvers remain the baseline in both cases."
+            }
+          ],
+          "narration": "Quantum providers do not all expose the same computing model. Gate-model systems run ordered circuits such as H and CNOT. Quantum annealers accept an optimization energy function, commonly a QUBO, rather than a gate list. Classical simulators reproduce ideal or noisy behavior for small systems and are the right first stop for learning and validation. Begin with the problem language, route it to a paradigm, and only then compare providers. Always include a strong classical solver as the performance baseline.",
+          "visual": {
+            "image": "/assets/course/lessons/computing-paradigms.png",
+            "alt": "A circuit path and an energy landscape shown as two distinct computing paradigms",
+            "animation": "paradigm-router",
+            "provenance": {
+              "kind": "AI-generated",
+              "model": "DreamShaper_8_pruned.safetensors",
+              "prompt": "A forked technical composition with a gate circuit path on the left and a smooth energy valley landscape on the right, both leading to one neutral result marker"
+            }
+          },
+          "audio": "/audio/course/computing-paradigms.wav"
+        },
+        {
+          "id": "hardware-modalities",
+          "title": "Qubit hardware modalities",
+          "duration_minutes": 10,
+          "legacy_module": "qubit",
+          "summary": "Compare superconducting, trapped-ion, neutral-atom, photonic, and annealing systems by tradeoffs rather than one headline count.",
+          "objectives": [
+            "Name major qubit modalities",
+            "Compare speed, connectivity, fidelity, and scaling tradeoffs"
+          ],
+          "sections": [
+            {
+              "heading": "The qubit is physical",
+              "body": "Superconducting circuits, trapped ions, neutral atoms, photons, and spin systems implement qubits with different controls and environments. Their gate speed, connectivity, loss, and coherence differ."
+            },
+            {
+              "heading": "No single number wins",
+              "body": "Physical qubit count alone omits fidelity, topology, native operations, calibration stability, queueing, and logical overhead. Match all of these to the workload."
+            }
+          ],
+          "narration": "A qubit is implemented by a physical system. Superconducting circuits offer fast gates but often local connectivity. Trapped ions offer strong connectivity and high fidelity with slower operations. Neutral atoms can form flexible arrays. Photonic systems handle information through light and face loss and source challenges. Each modality has a different engineering profile. Do not rank them using physical qubit count alone. Compare usable connectivity, operation fidelity, speed, calibration stability, and the overhead needed for the circuit you actually want to run.",
+          "visual": {
+            "image": "/assets/course/lessons/hardware-modalities.png",
+            "alt": "Four restrained hardware symbols around a central quantum processor",
+            "animation": "hardware-orbits",
+            "provenance": {
+              "kind": "AI-generated",
+              "model": "DreamShaper_8_pruned.safetensors",
+              "prompt": "Exactly four distinct abstract quantum chips in a clean two by two arrangement on white: linear silver rail, cobalt square chip, teal dot grid, curved glass waveguide"
+            }
+          },
+          "audio": "/audio/course/hardware-modalities.wav"
+        },
+        {
+          "id": "compilation-and-qpu-fit",
+          "title": "Compilation and QPU fit",
+          "duration_minutes": 8,
+          "legacy_module": "gates",
+          "summary": "Translate an abstract circuit into native operations while accounting for topology and error budget.",
+          "objectives": [
+            "Explain transpilation and routing",
+            "Estimate why added SWAP gates can change feasibility"
+          ],
+          "sections": [
+            {
+              "heading": "Abstract gates meet native hardware",
+              "body": "A compiler decomposes the requested circuit into a provider's native gates. Routing inserts operations when interacting qubits are not directly connected."
+            },
+            {
+              "heading": "Fit is workload-specific",
+              "body": "A processor with more qubits may perform worse for a circuit if connectivity forces deep routing or two-qubit errors dominate. Evaluate compiled depth and error exposure, not source depth alone."
+            }
+          ],
+          "narration": "The circuit you draw is usually not the circuit a processor executes. A transpiler decomposes abstract gates into the hardware's native operations and maps logical qubits onto physical ones. Limited connectivity can require SWAP gates, increasing depth and exposure to error. This means the best QPU depends on your circuit graph, not only its qubit count. Compare the compiled circuit, two-qubit gate count, estimated error budget, queue and cost before making a provider recommendation.",
+          "visual": {
+            "image": "/assets/course/lessons/compilation-and-qpu-fit.png",
+            "alt": "An abstract circuit being mapped onto a connected quantum chip",
+            "animation": "topology-map",
+            "provenance": {
+              "kind": "AI-generated",
+              "model": "DreamShaper_8_pruned.safetensors",
+              "prompt": "An abstract circuit grid on the left being mapped through arrows onto a sparse connected quantum chip topology on the right, several routing steps visible"
+            }
+          },
+          "audio": "/audio/course/compilation-and-qpu-fit.wav"
+        },
+        {
+          "id": "benchmarks-and-claims",
+          "title": "Benchmarks, QBI, and claims",
+          "duration_minutes": 9,
+          "legacy_module": "algorithms",
+          "summary": "Separate measured evidence, forecasts, and marketing claims using reproducible baselines and explicit uncertainty.",
+          "objectives": [
+            "Read benchmark provenance and coverage",
+            "Apply a QBI-inspired evidence checklist without claiming DARPA authority"
+          ],
+          "sections": [
+            {
+              "heading": "Ask what was measured",
+              "body": "A benchmark needs a defined workload, metric direction, device, date, method, classical baseline, and provenance. Cross-device comparisons are weak when any of those differ."
+            },
+            {
+              "heading": "Separate evidence from assertion",
+              "body": "DARPA's Quantum Benchmarking Initiative evaluates paths toward utility-scale operation. This app offers an educational, QBI-inspired checklist for architecture, cost, risk retirement, and independent validation; it is not a DARPA determination."
+            }
+          ],
+          "narration": "A benchmark is useful only when you can explain what was measured, on which device, with which method, and against what baseline. Keep measured data separate from a forecast and from a provider claim. The DARPA Quantum Benchmarking Initiative is designed to test paths toward utility-scale quantum computing. In 1StopQuantum, the claim workbench uses a QBI-inspired educational checklist covering architecture, cost, use case, risk retirement, prototype evidence, and independent validation. It supports disciplined questions but does not produce a DARPA determination.",
+          "visual": {
+            "image": "/assets/course/lessons/benchmarks-and-claims.png",
+            "alt": "A clean evidence timeline with measured points separated from a forecast",
+            "animation": "evidence-timeline",
+            "provenance": {
+              "kind": "AI-generated",
+              "model": "DreamShaper_8_pruned.safetensors",
+              "prompt": "Exactly six plain cylinders ascending from short to tall across a white surface, first four solid cobalt, fifth and sixth translucent pale blue, one separate small amber sphere beside them"
+            }
+          },
+          "audio": "/audio/course/benchmarks-and-claims.wav"
+        }
+      ]
+    }
+  ],
+  "screen_guides": {
+    "learn": {
+      "title": "Learn: guided quantum courses",
+      "summary": "Follow four short courses from first principles through algorithms and evidence-based hardware evaluation.",
+      "how_to": "Open Course contents, choose a lesson, listen to its narration, manipulate the visual, make a prediction, run the simulator, and answer the checkpoint.",
+      "narration": "This is the Learn workspace. Begin with Quantum foundations if quantum computing is new to you. Open Course contents to move through the short lessons. Each lesson combines a concise explanation, saved audio narration, a visual model, a classical comparison, a prediction, and a simulator checkpoint. Choose a learning depth for high-school, undergraduate, or master's detail. Progress is saved in this browser.",
+      "audio": "/audio/screens/learn.wav"
+    },
+    "editor": {
+      "title": "Circuit Studio: build and simulate",
+      "summary": "Turn natural language or a declarative JSON or YAML manifest into a validated local quantum circuit.",
+      "how_to": "Describe a circuit in natural language or open the manifest tab, choose a backend, generate, inspect the diagram, step through gates, then export code or the visual.",
+      "narration": "This is Circuit Studio. Describe a circuit in natural language, select a deterministic template, or provide a declarative JSON or YAML manifest. Generate the circuit and inspect the interpretation before running it. Use the step controls to see how each gate changes amplitudes and the statevector. Measurement counts use Qiskit bit order, with qubit zero shown at the right. Export Qiskit or Cirq code only after the validated circuit matches your intent.",
+      "audio": "/audio/screens/editor.wav"
+    },
+    "drug": {
+      "title": "Drug discovery: molecular property lesson",
+      "summary": "Compare local molecular descriptors and Lipinski rules without presenting an educational score as a clinical claim.",
+      "how_to": "Enter a valid SMILES string, optionally add a comparison molecule, run the local score, then inspect each property and rule side by side.",
+      "narration": "This is the Drug discovery lesson. Enter a SMILES string to calculate local molecular descriptors such as molecular weight, Log P, hydrogen-bond donors, and acceptors. Add a comparison molecule to inspect the same metrics side by side. The Lipinski breakdown is an educational filter, not a prediction of safety, efficacy, or clinical success. Use it to learn how classical chemistry features can frame future quantum chemistry experiments.",
+      "audio": "/audio/screens/drug.wav"
+    },
+    "providers": {
+      "title": "Provider lab: choose a computing paradigm",
+      "summary": "Compare gate-model and annealing workflows before selecting a hardware provider.",
+      "how_to": "Edit the QUBO JSON and run the local annealer, or enter a natural-language task in the router to see which paradigm fits and why.",
+      "narration": "This is the Provider lab. Gate-model quantum computers execute circuits, while annealers minimize energy functions such as QUBOs. Edit the triangle max-cut QUBO and run the local annealer to inspect samples and energy. Use the intent router to compare an optimization request with an entanglement request. The result explains which computing paradigm was chosen before any vendor is recommended.",
+      "audio": "/audio/screens/providers.wav"
+    },
+    "benchmarking": {
+      "title": "Benchmark intelligence: compare evidence",
+      "summary": "Explore measured progress, QPU fit, cautious forecasts, weekly evidence changes, and QBI-inspired claim review.",
+      "how_to": "Choose a benchmark view, filter the evidence, inspect provenance, compare a workload with QPUs, and keep measured values separate from forecasts and claims.",
+      "narration": "This is Benchmark intelligence. Start with the progress landscape to see measured Metriq records over time. Use QPU Match to describe a workload and compare fit separately from evidence quality. Forecasts show uncertainty and are not fault-tolerance predictions. The claim workbench applies a QBI-inspired evidence checklist, but it is not a DARPA determination. Always inspect provenance, coverage gaps, and classical baselines before drawing a conclusion.",
+      "audio": "/audio/screens/benchmarking.wav"
+    },
+    "improve": {
+      "title": "Improve: bounded circuit review",
+      "summary": "Schedule a plan, proposal, and verification loop that accepts changes only after simulated equivalence checks.",
+      "how_to": "Load a circuit, state the optimization objective, choose a time and iteration limit, then run or schedule the review and open its HTML report.",
+      "narration": "This is the Circuit improvement lab. It performs a bounded plan, propose, and review loop on the current circuit. Describe an optimization objective, select a maximum iteration count, and run now or schedule the job. A candidate is accepted only when its simulated behavior remains equivalent and its score improves. Open the HTML report to review every proposal and decision rather than trusting the loop automatically.",
+      "audio": "/audio/screens/improve.wav"
+    },
+    "guide": {
+      "title": "Documentation: learn, build, evaluate, integrate",
+      "summary": "Use the searchable reference for concepts, manifests, CLI commands, provider boundaries, ChatGPT, MCP, and APIs.",
+      "how_to": "Search by concept or workflow, choose a topic in the left table of contents, and follow the page links for setup, examples, and trust boundaries.",
+      "narration": "This is the 1StopQuantum documentation. Search for a concept or choose a topic from the table of contents. Start with Quantum 101 and Getting started, then use the build guides for declarative manifests and the command-line interface. Integration pages cover ChatGPT, MCP, and the local API. Provider and benchmark pages explain evidence boundaries. The documentation stays inside the app so learners can move between explanation and experiment without losing context.",
+      "audio": "/audio/screens/guide.wav"
+    }
+  },
+  "workspace_guides": {
+    "use-cases": {
+      "title": "Use Case Center: classical baseline first",
+      "summary": "Compare eight domains using explicit classical baselines, quantum candidates, resources, hardware limits, evidence labels, and primary sources.",
+      "how_to": "Choose learner or executive view, filter a domain, inspect the full comparison, open primary sources, and answer every suitability question before selecting a provider.",
+      "narration": "This is the Quantum Use Case Center. Begin with the problem and strongest classical baseline, not a provider or a qubit count. Choose a domain and switch between learner and executive language. Every case separates the current classical method, a candidate quantum approach, full resource assumptions, and present hardware limits. Educational means useful for learning without a production advantage claim. Emerging means active research whose operational utility is not established. Evidence-backed action supports a specific decision today, such as post-quantum cryptography migration, but does not imply broad quantum advantage. Open the primary sources and answer all suitability questions before moving to Provider Lab or funding a pilot.",
+      "audio": "/audio/screens/use-cases.wav"
+    },
+    "podcast": {
+      "title": "Podcast: listen from classical foundations to evidence",
+      "summary": "Build a deliberate queue of long-form episodes with chapters, transcripts, downloads, resume, playback speed, and lock-screen controls.",
+      "how_to": "Choose an episode or press Play all, adjust speed, use chapters, and leave the screen; playback position is saved locally and the next episode follows automatically.",
+      "narration": "This is the 1StopQuantum Podcast workspace. It is designed for phone, tablet, and in-car listening. Press Play all once to start a deliberate queue; the app never autoplays on page load. The episodes begin with classical computers and quantum coprocessors, then cover Shor's algorithm and post-quantum readiness, optimization and science use cases, and full-stack hardware evidence. Each episode has a complete transcript, chapters, a WAV download, and lock-screen media metadata. Playback position and speed are saved on this device. The catalog, episode transcripts, and RSS feed are also available through the documented read-only API.",
+      "audio": "/audio/screens/podcast.wav"
+    },
+    "community": {
+      "title": "Community: contribute with privacy controls",
+      "summary": "Submit a research inquiry or volunteer as a contributor or reviewer while collecting only a name and email at first contact.",
+      "how_to": "Choose a contribution path, enter name and email, read the purpose and retention notice, consent, and keep the returned reference for a deletion request.",
+      "narration": "This is the 1StopQuantum Community workspace. Choose whether you want to discuss a research article, contribute educational material, or review content. The first-contact form collects only your name, email, request type, and explicit consent. It states the review purpose and a maximum twenty-four-month retention period. A request is private until an internal administrator reviews it. Publication requires a separate content and license review, and the public API returns approved records only without email addresses, private feedback, or visitor identifiers. Keep the returned reference if you need to request deletion and use the linked privacy policy for additional rights.",
+      "audio": "/audio/screens/community.wav"
+    }
+  }
+}
