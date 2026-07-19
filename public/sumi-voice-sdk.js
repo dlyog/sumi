@@ -27,6 +27,7 @@
       this.recorder = null;
       this.chunks = [];
       this.audioContext = null;
+      this.playbackContext = null;
       this.audioSource = null;
       this.analyser = null;
       this.vadFrame = null;
@@ -44,6 +45,7 @@
       this.discardRecording = false;
       this.stopWaiters = [];
       this.player = null;
+      this.playbackSource = null;
       this.playerFinish = null;
       this.playerObjectUrl = "";
       this.destroyed = false;
@@ -95,9 +97,15 @@
       try {
         const AudioContextClass = global.AudioContext || global.webkitAudioContext;
         if (AudioContextClass) {
-          const context = new AudioContextClass();
-          await context.resume();
-          await context.close();
+          this.playbackContext ||= new AudioContextClass();
+          await this.playbackContext.resume();
+          if (this.playbackContext.createBuffer && this.playbackContext.createBufferSource) {
+            const buffer = this.playbackContext.createBuffer(1, 1, 22050);
+            const source = this.playbackContext.createBufferSource();
+            source.buffer = buffer;
+            source.connect(this.playbackContext.destination);
+            source.start();
+          }
         }
       } catch (_) {}
       try {
@@ -351,6 +359,43 @@
 
     async playAudio(source) {
       this.stopPlayback();
+      const playbackContext = this.playbackContext;
+      if (playbackContext?.decodeAudioData && playbackContext.createBufferSource) {
+        try {
+          await playbackContext.resume();
+          const response = source instanceof Blob
+            ? source
+            : await fetch(String(source || ""));
+          if (!(response instanceof Blob) && !response.ok) throw new Error(`Audio HTTP ${response.status}`);
+          const bytes = await response.arrayBuffer();
+          const buffer = await playbackContext.decodeAudioData(bytes.slice(0));
+          const player = playbackContext.createBufferSource();
+          player.buffer = buffer;
+          player.connect(playbackContext.destination);
+          this.player = player;
+          this.playbackSource = player;
+          this.assistantBusy = true;
+          return new Promise((resolve) => {
+            const finish = (played) => {
+              if (this.playerFinish !== finish) return;
+              this.player = null;
+              this.playbackSource = null;
+              this.playerFinish = null;
+              player.onended = null;
+              this.assistantBusy = false;
+              resolve(played);
+            };
+            this.playerFinish = finish;
+            player.onended = () => finish(true);
+            player.start();
+          });
+        } catch (_) {
+          this.player = null;
+          this.playbackSource = null;
+          this.playerFinish = null;
+          this.assistantBusy = false;
+        }
+      }
       const url = source instanceof Blob ? URL.createObjectURL(source) : String(source || "");
       if (!url || !this.AudioClass) return false;
       if (source instanceof Blob) this.playerObjectUrl = url;
@@ -381,6 +426,7 @@
         player.onended = null;
         player.onerror = null;
         try { player.pause(); } catch (_) {}
+        try { player.stop?.(); } catch (_) {}
       }
       if (finish) {
         finish(false);
@@ -422,6 +468,8 @@
       this.stopPlayback();
       await this._stopRecording(true);
       this._releaseMicrophone();
+      try { await this.playbackContext?.close?.(); } catch (_) {}
+      this.playbackContext = null;
       this.destroyed = true;
     }
   }

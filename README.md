@@ -29,6 +29,31 @@ are for educational, attribution, and interoperability purposes only. Names and
 trademarks remain the property of their owners; their use does not imply
 sponsorship, endorsement, partnership, or association.
 
+## How Codex helped build this submission
+
+![Codex Guidelines: goal, context, execution, verification, and iteration](docs/assets/codex-guidelines.png)
+
+This project began as a top-level product idea developed with ChatGPT Voice and
+became a working application through an iterative Codex workflow:
+
+1. **Idea to design:** convert the idea into a design prompt, define agent roles,
+   create a harness and repeatable build loop, then write the repository's
+   constraints and conventions in [`AGENTS.md`](AGENTS.md).
+2. **Implementation:** use Codex to organize the application, database, Sumi
+   SDK/CLI, local Whisper and Kokoro APIs, setup scripts, documentation, and
+   copied media assets.
+3. **Feedback and iteration:** manually run the application, inspect screens and
+   workflows, report issues, and iterate on the implementation and UX.
+4. **Self-evaluation:** ask Codex to evaluate both API behavior and browser UI
+   behavior, using pytest plus Playwright accessibility, interaction, and
+   responsive-layout checks before shipping.
+
+The Codex 5.6 model roles followed the same discipline shown above: **Soul** for
+deep planning and architecture, **Tera** for balanced feature implementation and
+integration, and **Lite** for fast, well-defined fixes, validation, and polish.
+Human review remained responsible for product direction, feedback, acceptance,
+and the final OpenAI Hackathon submission.
+
 ## Two products, one repository
 
 This codebase ships two connected but independently useful products:

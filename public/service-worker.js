@@ -6,7 +6,7 @@ const APP_SHELL = [
   "/styles.css",
   "/info.css",
   "/app.js",
-  "/sumi-voice-sdk.js",
+  "/sumi-voice-sdk.js?v=voice-2",
   "/sumi-framework.js",
   "/sumi-mic-worklet.js",
   "/sumi-screen-registry.json",

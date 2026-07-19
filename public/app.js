@@ -3043,6 +3043,7 @@ let coTeacherTourCancelled = false;
 let coTeacherHighlightTimer = null;
 let coTeacherDuplexActive = false;
 let coTeacherTourRunning = false;
+let coTeacherStarting = false;
 let coTeacherResumeTimer = null;
 let coTeacherSpeechController = null;
 let coTeacherTurnController = null;
@@ -3210,6 +3211,7 @@ async function speakCoTeacher(text, clipId = "", options = {}) {
   }
 }
 async function startCoTeacherTour() {
+  if (coTeacherTourRunning) return;
   const [manifest, registry] = await Promise.all([loadCoTeacherManifest(), loadCoTeacherRegistry()]);
   const screen = registry.screens?.[activeWorkspace] || registry.screens?.circuits;
   const graceMs = registry.voice?.intro_barge_in_grace_ms || 1200;
@@ -3568,17 +3570,22 @@ async function resetSumiSystem() {
   window.location.reload();
 }
 async function activateCoTeacher() {
+  if (coTeacherStarting) return;
   if (!coTeacherActive) {
     coTeacherActive = true;
     coTeacherDuplexActive = true;
-    await coTeacherVoiceSession.unlockAudio?.();
-    setCoTeacherState("thinking", "Starting Sumi and requesting microphone access…");
-    try { await coTeacherVoiceSession.setHandsFree(true); }
-    catch (_) {
+    coTeacherStarting = true;
+    try {
+      await coTeacherVoiceSession.unlockAudio?.();
+      setCoTeacherState("thinking", "Starting Sumi and requesting microphone access…");
+      await coTeacherVoiceSession.setHandsFree(true);
+    } catch (_) {
       coTeacherActive = false;
       coTeacherDuplexActive = false;
       setCoTeacherState("error", "Microphone access is unavailable. Allow microphone access and try again.");
       return;
+    } finally {
+      coTeacherStarting = false;
     }
     startCoTeacherTour().catch(() => setCoTeacherState("error", "The guided introduction could not start."));
     return;
