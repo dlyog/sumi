@@ -1,455 +1,427 @@
-# 1StopQuantum — AI-Assisted Quantum Learning Platform
+## Inspiration
 
-<p align="center"><img src="public/assets/1stopquantum-logo.png" alt="1StopQuantum" width="640"></p>
+Sumi began with a voice conversation.
 
-> Ask a quantum question in plain language, see the circuit and state evolve, and
-> test your understanding in guided local simulations. **1StopQuantum** combines
-> narrated courses, interactive labs, constrained AI circuit generation, and
-> evidence literacy in one accessible learning platform. Compatibility identifiers
-> such as `quantumyog.dev/v1`, `qyog`, and existing repository paths remain stable.
-> Its core runtime is local:
-> a Monaco-based IDE, Qiskit/Cirq simulation (no real QPU), PostgreSQL, and an
-> administrator-selected OpenAI-compatible LLM that turns plain English into
-> circuits and algorithms. An optional MCP endpoint adds ChatGPT rendering.
+As an educator, I have seen the same pattern repeatedly: students are given lectures, videos, readings, and assignments, but when they become confused, the learning material cannot notice, adapt, or demonstrate the next step. My own master's-level study in AI and machine learning also showed me that the most useful AI systems are not the ones that simply generate more text; they are the ones grounded in a real task, a real interface, and a verifiable outcome.
 
-**Human creator:** Tarun Kumar Chawdhury
-**Primary use case:** AI-assisted quantum education for high-school, university,
-and professional learners, with reproducible tools for educators.
-**Status:** Working local implementation for hackathon demonstration and continued
-development.
+Using ChatGPT Voice, I explored the idea out loud, the same way a learner often thinks: imperfectly, iteratively, and step by step. That conversation moved the project beyond “another quantum education platform” and toward a more important question:
 
-## Key highlight
+> What if an AI could do more than answer a learner’s question? What if it could understand the current learning screen, demonstrate the next step, operate approved controls safely, and help the learner experiment?
 
-> **1StopQuantum is powered by Sumi**, an AI Learning Companion that turns a
-> voice conversation into an AI-native learning experience that explains,
-> demonstrates, acts, and verifies. This is the central product idea of the
-> submission: learners learn quantum computing by doing, with Sumi grounded in
-> the current screen and limited to safe, visible application actions.
+That question became **Sumi**.
 
-![1StopQuantum powered by Sumi — AI Learning Companion](docs/assets/sumi-hero.png)
+Many educational copilots are still question-and-answer systems placed beside existing lectures, videos, and assignments. But a beginner often does not know what to ask, which control matters, what result to inspect, why the result changed, or what experiment should come next.
 
-## Author and acknowledgment
+We wanted Sumi to participate in the learning process itself.
 
-Tarun Chawdhury, author of this repository, completed a master's education in
-artificial intelligence at Georgia Tech. He gratefully acknowledges the education
-he received there as an important foundation for this work. 1StopQuantum and Sumi
-are independent research created for the OpenAI Hackathon. References to Georgia
-Tech, OpenAI, technology providers, companies, products, or other organizations
-are for educational, attribution, and interoperability purposes only. Names and
-trademarks remain the property of their owners; their use does not imply
-sponsorship, endorsement, partnership, or association.
+Quantum computing became the ideal first proof case because it combines abstract concepts, mathematics, code, visual state changes, simulation, and evidence. If Sumi could make quantum computing more approachable through guided experimentation, the same model could support science, mathematics, engineering, coding, professional training, and other interactive learning applications.
 
-## How Codex helped build this submission
+## Why it fits the Education track
 
-![Codex Guidelines: goal, context, execution, verification, and iteration](docs/assets/codex-guidelines.png)
+Sumi is designed to push AI for education beyond answer generation.
 
-This project began as a top-level product idea developed with ChatGPT Voice and
-became a working application through an iterative Codex workflow:
+For students, Sumi provides contextual guidance, visual demonstration, prediction prompts, and immediate feedback inside the learning activity.
 
-1. **Idea to design:** convert the idea into a design prompt, define agent roles,
-   create a harness and repeatable build loop, then write the repository's
-   constraints and conventions in [`AGENTS.md`](AGENTS.md).
-2. **Implementation:** use Codex to organize the application, database, Sumi
-   SDK/CLI, local Whisper and Kokoro APIs, setup scripts, documentation, and
-   copied media assets.
-3. **Feedback and iteration:** manually run the application, inspect screens and
-   workflows, report issues, and iterate on the implementation and UX.
-4. **Self-evaluation:** ask Codex to evaluate both API behavior and browser UI
-   behavior, using pytest plus Playwright accessibility, interaction, and
-   responsive-layout checks before shipping.
+For educators, Sumi provides a structured way to define learning objectives, reviewed explanations, approved actions, and safe interaction boundaries.
 
-The Codex 5.6 model roles followed the same discipline shown above: **Soul** for
-deep planning and architecture, **Tera** for balanced feature implementation and
-integration, and **Lite** for fast, well-defined fixes, validation, and polish.
-Human review remained responsible for product direction, feedback, acceptance,
-and the final OpenAI Hackathon submission.
+For educational organizations, the Sumi SDK and Control Plane provide reusable screen registries, action policies, observability, evaluation, and governance across multiple learning applications.
 
-## Two products, one repository
+**1StopQuantum is the first proof-case application. Sumi is the reusable education platform.**
 
-This codebase ships two connected but independently useful products:
+## What it does
 
-| Product | Purpose | Main paths |
-| --- | --- | --- |
-| **1StopQuantum** | Local quantum-computing courses, circuit labs, simulation, accounts, and evidence-based benchmark learning | `app/`, `public/`, `database/` |
-| **Sumi Framework** | Provider-neutral AI learning companion that can be embedded in another learning platform | `public/sumi-*.js`, `scripts/sumi-framework-cli.js`, `docs/SUMI_FRAMEWORK.md` |
+**1StopQuantum** turns natural-language requests into visible and testable quantum experiments, and **Sumi** extends that interaction model into a reusable SDK, CLI, and control plane.
 
-Compatibility names such as `quantumyog`, `qyog`, and `quantumyog.dev/v1` remain
-in the code and data formats intentionally. Do not rename them without a migration.
+Learners can:
 
-## Repository layout
+- Generate quantum circuits from plain-language descriptions
+- Run local simulations
+- Step through circuits gate by gate
+- Inspect Bloch spheres, amplitudes, and measurement probabilities
+- View generated Qiskit and Cirq code
+- Compare quantum approaches and provider claims
+- Explore benchmark evidence and classical baselines
 
-```text
-app/                 FastAPI, simulation, persistence, MCP, and voice services
-public/              Browser app, Sumi SDK, course media, and 3-minute pitch
-database/            Idempotent PostgreSQL schema, seed data, and database guide
-scripts/             Setup, local servers, asset authoring, and Sumi CLI
-docs/                Architecture, setup, learning content, APIs, and SDK guides
-examples/            Runnable JSON/YAML circuit manifests
-tests/, evals/       Pytest and Playwright release suites
-integrations/        ChatGPT/Custom GPT integration contracts
-```
+**Sumi**, the AI Learning Companion inside 1StopQuantum, adds the missing educational layer.
 
-## Apple Silicon quick start
+Sumi can:
 
-These instructions target a clean M-series MacBook. Docker is not required.
+- Understand the learner’s current screen
+- Introduce the workspace through voice
+- Highlight relevant controls
+- Ask the learner to predict an outcome
+- Load and run approved experiments
+- Pause at meaningful stages
+- Explain changes using actual application state
+- Compare the learner’s prediction with deterministic simulation results
+- Provide contextual follow-up guidance
+- Route a learner request into either a bounded explanation or an approved action
+- Keep responses grounded in the active screen and its registered capabilities
 
-### 1. Clone and run the installer
+Sumi follows this learning loop:
 
-Git is the only prerequisite needed to clone the project. The root installer
-bootstraps Homebrew when needed, installs Python 3.12, Node 20, and PostgreSQL 16,
-creates `.venv`, installs locked Node dependencies, builds browser assets,
-provisions the database, and installs Playwright:
+> **Ask → Predict → Build → Step Through → Observe → Explain → Verify**
 
-```bash
-git clone <repository-url> sumi
-cd sumi
-./setup.sh
-```
+Sumi is now designed as a reusable platform rather than a feature that exists only inside 1StopQuantum. The host application owns the real UI actions, while a separate Sumi Control Plane governs organizations, applications, environments, screens, approved actions, prompt layers, telemetry, and evaluation.
 
-If the system packages already exist or the browser tests are not needed:
+![The learning loop ](https://raw.githubusercontent.com/dlyog/sumi/refs/heads/main/public/assets/learner_loop-v1.png)
 
-```bash
-INSTALL_SYSTEM_DEPS=0 INSTALL_PLAYWRIGHT_BROWSERS=0 ./setup.sh
-```
+Sumi is not a general-purpose browser agent. Her behavior is bounded by the current screen and application registry.
 
-The installer creates ignored `.env` and `.env.setup` files. Never commit them.
-It is safe to rerun. A reachable `DATABASE_URL` in `.env` is reused and migrated;
-otherwise the installer reuses a healthy local PostgreSQL service or installs and
-starts PostgreSQL 16 before creating the application database.
+The model interprets learner intent. A decision gate selects either a response-only flow or an approved-action flow. Registered host handlers perform the action locally. Deterministic software produces and verifies the result.
 
-### 2. Choose the AI mode
+![Sumi end-to-end architecture](https://raw.githubusercontent.com/dlyog/sumi/refs/heads/main/public/assets/sumi_architecture-v1.png)
 
-For a fully local model, install and start an OpenAI-compatible server such as
-Ollama, then edit `LLM_BASE_URL` and `LLM_MODEL` in `.env`:
+Key points:
 
-```bash
-brew install ollama
-brew services start ollama
-ollama pull qwen2.5-coder:14b
-```
+- 1StopQuantum is the first proof-case application, not the Sumi platform itself.
+- Sumi SDK code runs inside the host application and executes only approved local actions.
+- The Control Plane manages organizations, applications, environments, screens, allowed actions, prompt layers, telemetry, and evaluation workflows.
+- The Control Plane can govern and observe, but it cannot remotely click or mutate the host UI.
+- The SDK and CLI are designed so another learning application can adopt Sumi without importing quantum-specific logic.
 
-Use `http://127.0.0.1:11434/v1` as the Ollama base URL. If no model is available,
-the platform can still run its deterministic lessons, templates, and simulators.
+## Current end-to-end state
 
-### 3. Start and verify the application
+The working submission includes:
 
-```bash
-# Normal mode: requires the configured LLM to respond
-./manage.sh start
+- 1StopQuantum as the first proof-case host application
+- A reusable Sumi browser SDK and voice layer inside the host app
+- A Sumi CLI for scaffolding and validating new screen integrations
+- A separate Sumi Control Plane for tenancy, screen registries, approved actions, telemetry, and evaluation
+- A front-door proxy that keeps internal backend ports private behind Apache
+- Responsive host and admin interfaces across desktop, tablet, and mobile
+- Voice interaction with thinking audio, optional waiting audio, Kokoro narration, delayed text reveal, interruption handling, and reset controls
+- A separate Control Plane login, enterprise console, and PostgreSQL database
+- Real local UI actions verified through screen-scoped handlers
+- End-to-end tests that confirm the interface changes, not only the text response
 
-# Or local classroom/judge mode without an LLM
-ALLOW_LLM_UNAVAILABLE=1 ./manage.sh start
+## How we built it
 
-./manage.sh status
-curl -fsS http://localhost:8000/health
-open http://localhost:8080
-```
+This project was built for the OpenAI hackathon using **Codex with GPT-5.6**.
 
-The app runs at <http://localhost:8080>, the API at port `8000`, MCP at `8001`,
-and the optional local voice service at `5152`. Use `./manage.sh log --follow`
-for diagnostics and `./manage.sh stop` for a clean shutdown.
+We used Codex as an engineering partner, not as a one-shot code generator. I set the educational vision, product boundaries, architecture decisions, and acceptance criteria. Codex with GPT-5.6 accelerated repository analysis, implementation, debugging, testing, documentation, and iteration.
 
-Live Whisper/Kokoro voice is optional because narration audio is already bundled.
-On Apple silicon, install it with `./scripts/setup-local-voice.sh`; otherwise set
-`VOICE_AUTOSTART=0` in `.env`. See
-[`docs/LOCAL_AI_SETUP.md`](docs/LOCAL_AI_SETUP.md) for the exact MLX Whisper,
-Kokoro, Ollama, MLX-LM, llama.cpp, remote-LLM, endpoint, and health-check setup.
+![Codex Guidelines](https://raw.githubusercontent.com/dlyog/sumi/main/docs/assets/codex-guidelines.png)
 
-## Database setup
+Our workflow followed five steps.
 
-PostgreSQL stores learners, roles, educational plan entitlements, scheduled
-improvement jobs, feedback, analytics, moderation records, and encrypted LLM
-settings. It stores no payment-card data.
+## Goal
 
-The normal installer performs every database step. To provision or repair it
-separately:
+We defined observable vertical slices instead of asking Codex to build the entire platform at once.
 
-```bash
-brew install postgresql@16
-brew services start postgresql@16
-export PATH="$(brew --prefix postgresql@16)/bin:$PATH"
-./scripts/setup-postgres.sh
-```
+For example:
 
-That idempotent script creates the local `quantumyog` role and database, applies
-`database/schema.sql`, loads `database/seed.sql`, creates local admin/demo users,
-and writes `DATABASE_URL` to the ignored `.env`. Verify the result with:
+> Activate Sumi, introduce Algorithm Studio, ask the learner for a prediction, build Grover search, step through the circuit, run the local simulator, and compare the result with the prediction.
 
-```bash
-set -a; source .env; set +a
-pg_isready -h 127.0.0.1 -p 5432
-psql "$DATABASE_URL" -c '\dt'
-```
+This gave Codex a concrete user outcome and gave us a clear definition of done.
 
-To apply the schema manually to an existing database, set `DATABASE_URL`, then run:
+## Context and constraints
 
-```bash
-psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f database/schema.sql
-psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f database/seed.sql
-```
+We provided Codex with:
 
-Both SQL files are safe to rerun. Managed PostgreSQL users should set
-`POSTGRES_ADMIN_URL`, `QUANTUMYOG_DB_NAME`, `QUANTUMYOG_DB_USER`, and
-`QUANTUMYOG_DB_PASSWORD` before running `scripts/setup-postgres.sh`. See
-[`database/README.md`](database/README.md) for schema contents, demo credentials,
-security behavior, and backup guidance.
+- Repository structure and existing architecture
+- Current user interface and screenshots
+- Quantum domain models and Circuit IR
+- Existing APIs, services, and voice infrastructure
+- Product goals and learner scenarios
+- Accessibility requirements
+- Security and privacy boundaries
+- Acceptance tests and expected visual behavior
 
-## Integrating Sumi into another learning platform
+We required Codex to preserve:
 
-Sumi is not tied to quantum computing. It connects three server-owned provider
-adapters—speech-to-text, LLM, and text-to-speech—to an application-owned registry
-of allowed UI actions. The browser executes only registered actions and returns
-verified results; model output never becomes arbitrary JavaScript or selectors.
+- Existing 1StopQuantum functionality
+- Local-first simulation
+- Accessibility
+- Privacy boundaries
+- Approved and typed actions
+- Deterministic verification
+- Offline and PWA behavior
+- Existing test coverage
+- Clear separation between the host runtime and Sumi Control Plane
 
-```bash
-npm run sumi-framework -- init \
-  --screen lesson-lab --title "Lesson Lab" --out ./public/sumi
-npm run sumi-framework -- validate ./public/sumi/lesson-lab.registry.json
-```
+## Execution
 
-Open [`docs/SumiFramework.html`](docs/SumiFramework.html) for the standalone HTML
-SDK + CLI guide. The detailed contracts are in
-[`docs/SUMI_FRAMEWORK.md`](docs/SUMI_FRAMEWORK.md) and
-[`docs/SUMI_VOICE_SDK.md`](docs/SUMI_VOICE_SDK.md).
+Codex with GPT-5.6:
 
-## Learner value
+- Audited the repository before changing it
+- Proposed implementation plans
+- Built and refactored the Sumi SDK, CLI, registries, handlers, and control-plane services
+- Integrated voice components and UI state
+- Added responsive and accessibility improvements
+- Diagnosed build, browser, API, and service-worker failures
+- Repaired regressions and updated documentation
+- Helped turn the 1StopQuantum-specific implementation into a reusable platform architecture
 
-- **Ask:** Translate plain-language intent into a constrained, reviewable circuit.
-- **See:** Inspect each gate's effect on amplitudes, phase, Bloch vectors, and
-  entanglement instead of seeing only final counts.
-- **Practice:** Predict, simulate, explain, and complete formative checkpoints.
-- **Listen:** Continue narrated courses and podcast episodes on a phone.
-- **Evaluate:** Compare quantum proposals with classical baselines and evidence.
+Key human decisions included:
 
-## Current platform
+- Making Sumi the platform and 1StopQuantum the first proof case
+- Keeping real UI execution inside the host application
+- Using typed, screen-scoped actions instead of arbitrary browser control
+- Treating deterministic application output as the source of truth
+- Separating voice/runtime concerns from governance and observability
+- Prioritizing one polished learning loop over a broad but shallow feature set
 
-- Public access begins in **Learn**. Circuit Studio, Use Cases, Drug Discovery,
-  Providers, Benchmark, Improve, Podcast, and Community require a local account;
-  a protected destination reopens after sign-in. Help, About, policies, FAQ, and
-  credits remain public information surfaces.
-- Beginner and executive introductions connect classical CPUs/GPUs to the
-  quantum-coprocessor model, post-quantum readiness, realistic optimization,
-  supply chains, chemistry, simulation, and evidence-based investment decisions.
-- The **Use Case Center** covers chemistry, materials, logistics, cybersecurity,
-  finance, energy, climate, and public-sector assessment. Every case includes a
-  classical baseline, quantum candidate, resource assumptions, current hardware
-  limits, primary sources, provider fit, claim strength, and a suitability check.
-- The **1StopQuantum Podcast** bundles four long Kokoro episodes with Play All,
-  sequential playback, chapters, transcripts, downloads, saved position/speed,
-  lock-screen metadata, offline PWA caching, a versioned API, and an RSS feed.
-- Community research, contributor, and reviewer requests collect only first-contact
-  name/email/type/consent, expire after 24 months, and enter an audited moderation
-  queue. Public APIs strip contact details and private review data.
-- Every primary workspace has a replayable product tour with real control
-  highlighting, a practical action, keyboard navigation, and reduced-motion support.
-- An interactive **Quantum computing 101** workspace for high school,
-  undergraduate, and Master's learners. A versioned 16-lesson tree organizes four
-  short courses: Quantum foundations, Quantum effects, Algorithms through
-  experiments, and Hardware & evidence. Every lesson includes saved Kokoro audio,
-  a distinct reviewed visual, animated explanation, objectives, a classical
-  comparison, prediction, simulator practical, and checkpoint. The established
-  Three.js/WebGL Bloch sphere, D3 comparisons, and seven hands-on labs remain the
-  experimental core. A persistent audio guide also summarizes how to use every
-  primary workspace.
-- Controlled local media authoring: `scripts/generate_course_audio.py` reads the
-  curriculum tree and idempotently regenerates WAV narration through Kokoro;
-  `scripts/generate_course_images.py` creates lesson visuals through ComfyUI.
-  These are maintainer tools, not learner features. The browser receives only
-  versioned static media and provenance metadata, so classroom runtime is
-  independent of either authoring service.
-- Sumi's reusable browser voice SDK is documented in
-  [`docs/SUMI_VOICE_SDK.md`](docs/SUMI_VOICE_SDK.md), including opt-in persistent
-  listening, barge-in, cleanup, and the adapter boundary for additional screens.
-- Normal page loads begin in Learn. After sign-in, the shared gate palette opens
-  Circuit Studio and inserts the selected gate. Use
-  `http://localhost:8080/?view=circuits` for a direct Circuit Studio link.
-- An installable Progressive Web App with local icons and an offline app shell.
-  Each `manage.sh start` or `restart` rotates the browser build token; critical
-  bootstrap assets use `no-store`, and the service worker removes prior caches.
-- Natural-language circuit generation through the configured LLM, with
-  strict IR validation, deterministic peephole simplification, a semantic-fidelity
-  retry, a deterministic degree-to-radian compiler for the built-in rotation lesson,
-  and a visible warning when requested and generated qubit counts still differ.
-- Qiskit and Cirq local simulation, generated Python source, operation-by-operation
-  statevector stepping, phase-aware amplitudes, Bloch spheres, entanglement lessons,
-  measurement histograms, and an explicit bit-order convention.
-- Deterministic one-click GHZ, Grover `|11>`, Deutsch-Jozsa, and QRNG templates,
-  including the selected template parameters in the workspace.
-- Local source and circuit exports (`.py`, SVG, and PNG) plus browser-local session
-  restoration for the latest prompt, circuit, and backend.
-- Educational drug-discovery scoring with RDKit descriptors, per-rule Lipinski
-  results, optional side-by-side SMILES comparison, and simulated VQE indicators.
-- A provider lab with editable QUBO JSON, local simulated annealing, an energy
-  histogram, and an intent-routing lesson that distinguishes gate-model circuits
-  from annealing optimization requests.
-- An evidence-backed **Benchmark** workspace built from a bundled, attributable
-  Metriq snapshot. It includes an animated hardware landscape, QPU matching with
-  separate suitability and evidence scores, uncertainty-aware trend projections,
-  a source-linked update digest, public-sector use-case gates, and a QBI-inspired
-  provider-claim review. It is an independent educational screen, not a DARPA
-  determination or live hardware procurement system.
-- A versioned `quantumyog.dev/v1` declarative language in JSON or YAML. The local
-  LLM can generate a manifest, the browser can edit and visualize it, and the
-  Terraform-style `qyog` CLI can format, validate, plan, compile, run, and open it.
-- An in-app academic tutorial plus an instructor/student guide that introduces
-  state, amplitude, probability, phase, gates, measurement, interference, and
-  entanglement before advancing to manifests, providers, and applied modules.
-- A searchable in-app documentation center opened from the persistent top-right
-  Help control, with end-user tutorials, API guidance, provider concepts, CLI
-  examples, and ChatGPT integration instructions. A neighboring About control
-  reports the app version, current build, purpose, simulation boundary, and data
-  attribution without taking space from the primary workspaces.
-- A public Credits page acknowledges human/AI co-development, Metriq sources,
-  quantum frameworks, scientific libraries, application infrastructure, testing,
-  and maintainer-only media tools with direct upstream links.
-- An MCP App endpoint that returns validated circuit data and an embedded
-  visualization resource for ChatGPT, plus a separate OpenAPI schema for Custom
-  GPT Actions.
-- PostgreSQL-backed local accounts, educational subscription entitlements, and
-  scheduled circuit-improvement jobs. Returning learners can sign in, sign out,
-  and reset a forgotten password by answering their saved recovery challenge.
-  Passwords and normalized recovery answers use PBKDF2 hashes. No card or payment
-  data is collected. Account actions remain in the persistent top utility bar so
-  the learning palette contains quantum concepts only.
-- A beginner gate bridge compares classical AND, OR, NOT, and XOR with reversible
-  Toffoli, Pauli X, and CNOT constructions, including the role of measurement.
-- Anonymous or signed-in learners can mark a lesson helpful or report an
-  inaccuracy. A deterministic FAQ assistant, compact legal footer, AI-use notice,
-  and per-image provenance explain the app without calling a runtime chatbot.
-- An internal-only admin dashboard reports daily visitors, popular pages, and
-  feedback; moderates community requests; changes the database-authoritative
-  password; and switches between a local OpenAI-compatible endpoint and OpenAI.
-  Provider keys are encrypted in PostgreSQL and never returned to the browser.
-- A bounded plan/propose/review optimizer that accepts a rewrite only when it
-  lowers circuit cost and preserves the statevector up to global phase, then saves
-  a standalone HTML audit report.
+## Verification
 
-## Declarative quick start
+We did not consider generated code complete until it was tested.
+
+Verification included:
+
+- Frontend production builds
+- Python tests
+- API and proxy checks
+- Screen-registry validation
+- Action-registry validation
+- PostgreSQL and control-plane checks
+- Playwright acceptance flows
+- Responsive screenshots
+- Manual visual inspection
+- Voice interruption and reset checks
+- Cache and service-worker recovery tests
+
+Playwright verifies that Sumi changes real controls and application state. Screenshot review catches layout, accessibility, and branding regressions that functional tests alone may miss.
+
+## Iterate and improve
+
+Codex with GPT-5.6 helped shorten the feedback loop between an idea, a working screen, a failing test, and a repaired implementation.
+
+We repeatedly reviewed:
+
+- Voice behavior
+- Screen context
+- Approved-action execution
+- Deterministic results
+- Responsive layouts
+- Accessibility states
+- Control-plane data
+- Demo clarity
+
+Each iteration tightened the project around an observable learner outcome rather than expanding into unrelated features.
+
+## Technologies used
+
+The submission combines OpenAI-assisted development with a model-agnostic runtime architecture.
+
+- **Codex with GPT-5.6** — repository analysis, planning, implementation, debugging, testing, refactoring, and documentation
+- **ChatGPT Voice** — early product exploration and refinement of the learning vision
+- **Whisper** — speech-to-text in the current voice pipeline
+- **Text Gemma** — local language-model inference in the current demonstration runtime
+- **Kokoro** — text-to-speech narration
+- **Qiskit and Cirq** — quantum circuit generation and simulation targets
+- **Circuit IR** — shared validated representation across visualization, simulation, stepping, and code generation
+- **MCP** — tool and service integration
+- **Playwright** — end-to-end browser acceptance testing and screenshots
+- **PostgreSQL** — Control Plane persistence
+- **Apache and front-door proxy** — public routing without exposing internal service ports
+- **PWA and service workers** — installability, offline behavior, and recovery flows
+
+The current runtime can be adapted to other LLM, speech-to-text, and text-to-speech providers. Codex with GPT-5.6 was central to how the project was designed, built, tested, and improved for this hackathon.
+
+## Reusable Sumi architecture
+
+Sumi is the platform layer, not a one-off quantum feature. The architecture separates five responsibilities.
+
+## Voice runtime
+
+Handles:
+
+- Speech input
+- Text-to-speech
+- Interruption
+- Audio unlock
+- Listening state
+- Voice reset
+- Transcript filtering
+- Thinking and waiting audio
+
+## Screen registry
+
+Describes:
+
+- The current learning screen
+- Concepts on the screen
+- Visible controls
+- Reviewed explanations
+- Supported actions
+- Learning objectives
+- Action aliases and parameters
+
+## Typed action registry
+
+Exposes only approved application actions.
+
+The model cannot invent selectors or execute arbitrary code. It can request only registered actions with validated inputs.
+
+## Application adapter
+
+Connects Sumi actions to the real learning application.
+
+The host application provides deterministic handlers for actions such as:
+
+- Open a lesson
+- Change a learning level
+- Load an experiment
+- Run a simulation
+- Inspect a result
+- Move through a circuit
+- Reset the learning state
+
+Integrators can provide their preferred:
+
+- Language model
+- Speech-to-text service
+- Text-to-speech service
+
+## Control plane
+
+Owns:
+
+- Organizations, applications, environments, and screen registries
+- Approved-action policies and registry versions
+- Prompt layers
+- Telemetry ingestion and observability
+- LLM-as-Judge evaluation
+- Admin and reviewer workflows
+- Retention, audit, and access control
+
+## Host app
+
+Owns:
+
+- Real UI state
+- Screen-specific approved actions
+- Local execution and deterministic verification
+- Voice-session lifecycle inside the browser
+- Public learner experience
+
+The key rule is simple:
+
+> **The Control Plane may govern and observe, but the host application performs the action.**
+
+Example integration:
 
 ```bash
-./qyog validate examples/bell.qyog.yaml
-./qyog plan examples/bell.qyog.yaml
-./qyog compile examples/bell.qyog.yaml --target qiskit --output bell.py
-./qyog run examples/bell.qyog.yaml
-./qyog visualize examples/bell.qyog.yaml
+npx sumi-framework init ./my-learning-site
+npx sumi-framework validate ./sumi-screen-registry.json
+npx sumi-framework install
 ```
 
-Generate the same portable artifact from natural language through the configured
-LLM:
+This architecture can support science laboratories, mathematics lessons, coding exercises, engineering simulations, product training, and other interactive learning environments.
 
-```bash
-./qyog generate "Build a 3-qubit GHZ state" \
-  --name ghz-lesson \
-  --output ghz-lesson.qyog.yaml
-```
+## Challenges we faced
 
-See [`docs/QUANTUM_101_CURRICULUM.md`](docs/QUANTUM_101_CURRICULUM.md) for the
-level-aware course design, [`docs/ACADEMIC_GUIDE.md`](docs/ACADEMIC_GUIDE.md) for
-the learning sequence, and [`docs/MANIFEST_LANGUAGE.md`](docs/MANIFEST_LANGUAGE.md)
-for the language and CLI reference. Benchmark methodology and limitations are in
-[`docs/BENCHMARK_INTELLIGENCE.md`](docs/BENCHMARK_INTELLIGENCE.md), with source
-credit and transformation details in
-[`docs/METRIQ_ATTRIBUTION.md`](docs/METRIQ_ATTRIBUTION.md).
-Media regeneration and environment settings are documented in
-[`docs/MEDIA_AUTHORING.md`](docs/MEDIA_AUTHORING.md). Podcast and community APIs
-are in [`docs/PODCAST_API.md`](docs/PODCAST_API.md) and
-[`docs/COMMUNITY_API.md`](docs/COMMUNITY_API.md).
+## Browser voice behavior
 
-## Development and verification
+Microphone permissions and browser autoplay restrictions behave differently across browsers, devices, and sessions.
 
-Setup creates a private administrator and encryption key in `.env`. Open
-<http://localhost:8080/?admin=1> and use those credentials to configure a local
-OpenAI-compatible service or OpenAI. Public pages never expose provider settings.
-Provisioning also creates this local-only Scholar account:
+## Interruption and barge-in
 
-```text
-Email: learner@1stopquantum.local
-Password: LearnQuantum2026!
-Recovery answer: superposition
-```
+Sumi needed to stop speaking when the learner interrupted without accidentally transcribing her own voice output.
 
-The sign-in dialog can fill these credentials with **Use demo account**. They are
-for the local demo only and must not be reused for a public deployment.
+## Noisy speech transcripts
 
-Common development and verification commands are:
+Whisper can receive background noise, partial words, or accidental audio. We added transcript filtering and decision gates before requests reach the language model or action layer.
 
-```bash
-npm run build         # syntax-check and bundle browser JavaScript
-make evals-cli        # backend and CLI pytest suites
-make evals-ui         # Playwright browser suite
-make evals            # complete gate: CLI followed by UI
-make demo             # foreground API, MCP, frontend, and optional voice
-```
+## Turning conversation into real action
 
-Kokoro and ComfyUI are optional authoring dependencies. The generated media is
-already committed; maintainers can regenerate it with `make course-audio` and
-`make course-images`. For normal background operation, prefer the manager:
+It was not enough for Sumi to produce a helpful text response. A request such as “show me Grover search” had to change actual application state, run the real experiment, and explain the verified result.
 
-```bash
-./manage.sh start
-./manage.sh status
-./manage.sh log             # latest 100 lines
-./manage.sh log --follow    # follow the consolidated log
-./manage.sh restart
-./manage.sh stop
-```
+## Safe application control
 
-PID and log files live under ignored `.run/`. `make demo` remains useful for
-foreground development. `start` and `restart` generate a new `.run/build-id`, so
-reloading the page activates the matching service worker and removes the previous
-app-shell cache. No hard refresh or manual browser-cache deletion is required.
+Every action needed to be:
 
----
+- Typed
+- Screen-specific
+- Bounded
+- Reversible where possible
+- Observable
+- Verifiable
 
-## Why this exists
+## Turning one app into a platform
 
-Quantum frameworks today (Qiskit from IBM, Cirq from Google) are powerful but live
-in the terminal or in Jupyter notebooks. That's a wall for beginners and a bigger
-wall for domain experts (e.g. clinicians and biologists) who understand the
-*science* but not the code.
+Separating the host app from a reusable SDK and Control Plane introduced additional requirements:
 
-1StopQuantum lowers that wall three ways:
+- Screen registration must be explicit
+- Approved actions must be scoped to screen and application
+- Prompting must stay bounded to current screen context
+- Telemetry must support review without collecting raw audio or arbitrary host internals
+- A second application must be able to use Sumi without quantum-specific code
+- Governance must not become remote control of the learner’s UI
 
-1. **Visual first.** Learners manipulate a WebGL Bloch sphere, compare classical
-   and quantum probabilities in accessible D3 charts, and connect those views to
-   the circuit diagram, amplitudes, and measurement counts.
-2. **Natural language → circuit or algorithm.** A user types *"entangle two
-   qubits and measure them"* or *"Grover search for |11⟩"* and the
-   **administrator-selected LLM**
-   turns it into a validated Circuit IR (single gates or algorithm templates),
-   which is executed on a local simulator and visualized.
-3. **Browser-served, locally hosted.** Monaco, simulation, media, and the teaching
-   workspace are served from `localhost`. Circuit prompts stay local by default;
-   selecting OpenAI in the internal admin screen sends those prompts to OpenAI.
+## Explaining a complex product quickly
 
-The application embeds Monaco directly so it stays small and portable across
-macOS and Rocky Linux.
+1StopQuantum includes learning, experimentation, simulation, provider analysis, benchmarking, voice interaction, an SDK, a CLI, and a Control Plane. Presenting the central value in a public video of less than three minutes required strict prioritization.
 
-An optional **drug-discovery teaching module** illustrates a deterministic,
-non-clinical workflow with molecular descriptors and simulated VQE convergence.
-It does not design molecules, predict efficacy, or perform biological research.
+## Accomplishments that we are proud of
 
----
+- **Built a working AI-guided learning experience, not only a chatbot.** Sumi understands the current screen, introduces the activity, asks learners to predict, performs approved actions, and explains verified outcomes.
+- **Proved the model with a difficult subject.** 1StopQuantum turns natural-language requests into real circuits, local simulations, step-through views, Bloch visualizations, amplitudes, measurements, and Qiskit/Cirq code.
+- **Created a reusable Sumi SDK and CLI.** Another educational application can scaffold a screen registry, validate approved actions, and integrate Sumi without importing quantum-specific logic.
+- **Built a separate Sumi Control Plane.** It includes organization, application, environment, screen, action-policy, prompt-layer, observability, evaluation, admin-login, and enterprise-console concepts.
+- **Kept real actions safe and local.** Screen-scoped typed handlers perform approved UI actions, while deterministic application code verifies results.
+- **Delivered a working voice pipeline.** Whisper handles speech-to-text, Text Gemma provides local inference in the current demo, and Kokoro provides narration, with noise filtering, interruption handling, thinking audio, and explicit reset controls.
+- **Designed for accessibility and real use.** The interface is responsive across desktop, tablet, and mobile, with keyboard-focused interaction, visible state, text fallback, and reduced reading burden.
+- **Verified the product as software.** Playwright confirms real UI state changes; builds, Python tests, API checks, registry validation, screenshots, and recovery tests guard against regressions.
+- **Connected the complete quantum workflow through one Circuit IR.** The same validated artifact drives visualization, simulation, step-through behavior, deterministic results, and Qiskit/Cirq generation.
+- **Built deployable platform infrastructure.** PostgreSQL stores Control Plane state, MCP connects tools and services, and an Apache front-door proxy keeps internal backend ports private.
+- **Used Codex with GPT-5.6 throughout the engineering lifecycle.** Codex accelerated repository understanding, architecture changes, SDK and control-plane implementation, voice integration, debugging, tests, responsive polish, and documentation.
+- **Made deliberate human product decisions.** I defined the educational problem, selected quantum computing as the first proof case, established the action-safety boundary, reviewed learner experience, and decided where deterministic software must override model output.
+- **Produced a complete judge-ready submission.** The repository includes setup guidance, runnable services, sample configuration, working screens, a public demo narrative, and clear testing instructions.
 
-## Scope guardrails (read before building)
+## What we learned
 
-- **Local-first.** Simulation, LLM, frontend, scheduler, and database run on the
-  host. The optional ChatGPT integration deliberately exposes only the MCP
-  endpoint through HTTPS; using it sends the selected prompt/result through
-  ChatGPT. The standalone app needs no cloud AI API.
-- **Simulation only.** We simulate what a QPU *would* do on classical hardware.
-  No real quantum-hardware access is assumed or required. Small circuits
-  (≤ ~20 qubits) run comfortably on a laptop. Real-QPU providers (IonQ, D-Wave)
-  are documented as a *future* abstraction in `docs/PROVIDERS.md`, not built now.
-- **Benchmark intelligence is screening, not certification.** Historical public
-  results can expose trends and evidence gaps, but they do not establish live
-  availability, price, queue time, fault tolerance, utility, or vendor claims.
-  Different benchmark families remain separate and every decision starts with a
-  named classical baseline.
-- **Educational accuracy > performance.** We are teaching concepts. Do not claim
-  quantum speedup is actually happening locally — the UI is explicit that
-  this is a *simulator*.
-- **Drug-discovery module is illustrative.** Binding-affinity results are for
-  teaching the *pipeline and physics intuition*, not for clinical or research use.
-  Every drug-discovery output carries a visible "educational / not for clinical
-  use" banner.
+The difficult part is not adding a chatbot.
+
+The difficult part is designing the learning loop.
+
+A learner may need help discovering:
+
+- What to ask
+- What to predict
+- Which control to use
+- What result to inspect
+- Why the result changed
+- What experiment should come next
+
+AI becomes more useful in education when it is grounded in visible application state and constrained by deterministic software.
+
+We also learned that explanation alone is not enough. Learning becomes more meaningful when the learner can make a prediction, observe the system, test an idea, and receive immediate feedback.
+
+The most important product principle became:
+
+> **The model explains and proposes. The application acts and verifies.**
+
+We also learned how to work effectively with Codex. Clear goals, sufficient repository context, explicit constraints, observable acceptance criteria, and repeated verification produced far better results than broad prompts.
+
+## What’s next for Sumi and 1StopQuantum
+
+- Finalize Sumi SDK and Control Plane packaging so another app can adopt it without 1StopQuantum imports
+- Integrate Sumi into a second non-quantum learning application
+- Expand screen registries and action policies for additional education use cases
+- Publish clearer educator and developer onboarding through the CLI
+- Improve voice latency, audio fallback, multilingual support, and interruption behavior
+- Add consent-based learner progress and personalization
+- Continue strengthening observability, LLM-as-Judge evaluation, privacy controls, and responsible failure behavior
+- Run structured learner studies to evaluate confidence, retention, accessibility, and conceptual understanding
+- Continue improving 1StopQuantum as the first proof case while expanding Sumi to more applications
+
+## Attribution and limitations
+
+1StopQuantum and Sumi are independent educational projects.
+
+Quantum SDK names, frameworks, models, and product names belong to their respective owners. Open-source software, datasets, and libraries are attributed in the repository documentation.
+
+This hackathon build is an educational prototype. It may contain AI-assisted inaccuracies and should not be treated as a guarantee of scientific, educational, or production-grade correctness.
+
+Sumi is still evolving and can make mistakes.
+
+For that reason, application actions remain bounded, and simulation results are verified by deterministic software wherever possible.
+
+## Closing vision
+
+> **1StopQuantum is the first proof case. Sumi is the larger education platform.**
+
+The next generation of education may not be static lectures, videos, and assignments with a chatbot added beside them.
+
+It may be interactive learning applications in which AI listens, explains, demonstrates, acts safely, and helps the learner understand how an answer is built.
