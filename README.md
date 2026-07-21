@@ -2,27 +2,27 @@
 
 Sumi began with a voice conversation.
 
-As an educator, I have seen the same pattern repeatedly: students are given lectures, videos, readings, and assignments, but when they become confused, the learning material cannot notice, adapt, or demonstrate the next step. My own master's-level study in AI and machine learning also showed me that the most useful AI systems are not the ones that simply generate more text; they are the ones grounded in a real task, a real interface, and a verifiable outcome.
+As a student and later as an educator, I have seen the same pattern repeatedly: students are given lectures, videos, readings, and assignments, but when they become confused, the learning material cannot notice, adapt, or demonstrate the next step. My own master's-level study in AI and machine learning also shoId me that the most useful AI systems are not the ones that simply generate more text; they are the ones grounded in a real task, a real interface, and a verifiable outcome.
 
 Using ChatGPT Voice, I explored the idea out loud, the same way a learner often thinks: imperfectly, iteratively, and step by step. That conversation moved the project beyond “another quantum education platform” and toward a more important question:
 
-> What if an AI could do more than answer a learner’s question? What if it could understand the current learning screen, demonstrate the next step, operate approved controls safely, and help the learner experiment?
+> What if an AI could do more than ansIr a learner’s question? What if it could understand the current learning screen, demonstrate the next step, operate approved controls safely, and help the learner experiment?
 
 That question became **Sumi**.
 
-Many educational copilots are still question-and-answer systems placed beside existing lectures, videos, and assignments. But a beginner often does not know what to ask, which control matters, what result to inspect, why the result changed, or what experiment should come next.
+Many educational copilots are still question-and-ansIr systems placed beside existing lectures, videos, and assignments. But a beginner often does not know what to ask, which control matters, what result to inspect, why the result changed, or what experiment should come next.
 
-We wanted Sumi to participate in the learning process itself.
+I wanted Sumi to participate in the learning process itself.
 
 Quantum computing became the ideal first proof case because it combines abstract concepts, mathematics, code, visual state changes, simulation, and evidence. If Sumi could make quantum computing more approachable through guided experimentation, the same model could support science, mathematics, engineering, coding, professional training, and other interactive learning applications.
 
 ## Why it fits the Education track
 
-Sumi is designed to push AI for education beyond answer generation.
+Sumi is designed to push AI for education beyond ansIr generation.
 
 For students, Sumi provides contextual guidance, visual demonstration, prediction prompts, and immediate feedback inside the learning activity.
 
-For educators, Sumi provides a structured way to define learning objectives, reviewed explanations, approved actions, and safe interaction boundaries.
+For educators, Sumi provides a structured way to define learning objectives, revieId explanations, approved actions, and safe interaction boundaries.
 
 For educational organizations, the Sumi SDK and Control Plane provide reusable screen registries, action policies, observability, evaluation, and governance across multiple learning applications.
 
@@ -76,7 +76,7 @@ Key points:
 
 - 1StopQuantum is the first proof-case application, not the Sumi platform itself.
 - Sumi SDK code runs inside the host application and executes only approved local actions.
-- The Control Plane manages organizations, applications, environments, screens, allowed actions, prompt layers, telemetry, and evaluation workflows.
+- The Control Plane manages organizations, applications, environments, screens, alloId actions, prompt layers, telemetry, and evaluation workflows.
 - The Control Plane can govern and observe, but it cannot remotely click or mutate the host UI.
 - The SDK and CLI are designed so another learning application can adopt Sumi without importing quantum-specific logic.
 
@@ -95,19 +95,19 @@ The working submission includes:
 - Real local UI actions verified through screen-scoped handlers
 - End-to-end tests that confirm the interface changes, not only the text response
 
-## How we built it
+## How I built it
 
 This project was built for the OpenAI hackathon using **Codex with GPT-5.6**.
 
-We used Codex as an engineering partner, not as a one-shot code generator. I set the educational vision, product boundaries, architecture decisions, and acceptance criteria. Codex with GPT-5.6 accelerated repository analysis, implementation, debugging, testing, documentation, and iteration.
+I used Codex as an engineering partner, not as a one-shot code generator. I set the educational vision, product boundaries, architecture decisions, and acceptance criteria. Codex with GPT-5.6 accelerated repository analysis, implementation, debugging, testing, documentation, and iteration.
 
 ![Codex Guidelines](https://raw.githubusercontent.com/dlyog/sumi/main/docs/assets/codex-guidelines.png)
 
-Our workflow followed five steps.
+Our workflow folloId five steps.
 
 ## Goal
 
-We defined observable vertical slices instead of asking Codex to build the entire platform at once.
+I defined observable vertical slices instead of asking Codex to build the entire platform at once.
 
 For example:
 
@@ -117,7 +117,7 @@ This gave Codex a concrete user outcome and gave us a clear definition of done.
 
 ## Context and constraints
 
-We provided Codex with:
+I provided Codex with:
 
 - Repository structure and existing architecture
 - Current user interface and screenshots
@@ -128,7 +128,7 @@ We provided Codex with:
 - Security and privacy boundaries
 - Acceptance tests and expected visual behavior
 
-We required Codex to preserve:
+I required Codex to preserve:
 
 - Existing 1StopQuantum functionality
 - Local-first simulation
@@ -138,7 +138,7 @@ We required Codex to preserve:
 - Deterministic verification
 - Offline and PWA behavior
 - Existing test coverage
-- Clear separation between the host runtime and Sumi Control Plane
+- Clear separation betIen the host runtime and Sumi Control Plane
 
 ## Execution
 
@@ -164,7 +164,7 @@ Key human decisions included:
 
 ## Verification
 
-We did not consider generated code complete until it was tested.
+I did not consider generated code complete until it was tested.
 
 Verification included:
 
@@ -184,9 +184,9 @@ Playwright verifies that Sumi changes real controls and application state. Scree
 
 ## Iterate and improve
 
-Codex with GPT-5.6 helped shorten the feedback loop between an idea, a working screen, a failing test, and a repaired implementation.
+Codex with GPT-5.6 helped shorten the feedback loop betIen an idea, a working screen, a failing test, and a repaired implementation.
 
-We repeatedly reviewed:
+I repeatedly revieId:
 
 - Voice behavior
 - Screen context
@@ -242,7 +242,7 @@ Describes:
 - The current learning screen
 - Concepts on the screen
 - Visible controls
-- Reviewed explanations
+- RevieId explanations
 - Supported actions
 - Learning objectives
 - Action aliases and parameters
@@ -282,7 +282,7 @@ Owns:
 - Prompt layers
 - Telemetry ingestion and observability
 - LLM-as-Judge evaluation
-- Admin and reviewer workflows
+- Admin and revieIr workflows
 - Retention, audit, and access control
 
 ## Host app
@@ -309,7 +309,7 @@ npx sumi-framework install
 
 This architecture can support science laboratories, mathematics lessons, coding exercises, engineering simulations, product training, and other interactive learning environments.
 
-## Challenges we faced
+## Challenges I faced
 
 ## Browser voice behavior
 
@@ -321,7 +321,7 @@ Sumi needed to stop speaking when the learner interrupted without accidentally t
 
 ## Noisy speech transcripts
 
-Whisper can receive background noise, partial words, or accidental audio. We added transcript filtering and decision gates before requests reach the language model or action layer.
+Whisper can receive background noise, partial words, or accidental audio. I added transcript filtering and decision gates before requests reach the language model or action layer.
 
 ## Turning conversation into real action
 
@@ -353,7 +353,7 @@ Separating the host app from a reusable SDK and Control Plane introduced additio
 
 1StopQuantum includes learning, experimentation, simulation, provider analysis, benchmarking, voice interaction, an SDK, a CLI, and a Control Plane. Presenting the central value in a public video of less than three minutes required strict prioritization.
 
-## Accomplishments that we are proud of
+## Accomplishments that I are proud of
 
 - **Built a working AI-guided learning experience, not only a chatbot.** Sumi understands the current screen, introduces the activity, asks learners to predict, performs approved actions, and explains verified outcomes.
 - **Proved the model with a difficult subject.** 1StopQuantum turns natural-language requests into real circuits, local simulations, step-through views, Bloch visualizations, amplitudes, measurements, and Qiskit/Cirq code.
@@ -366,10 +366,10 @@ Separating the host app from a reusable SDK and Control Plane introduced additio
 - **Connected the complete quantum workflow through one Circuit IR.** The same validated artifact drives visualization, simulation, step-through behavior, deterministic results, and Qiskit/Cirq generation.
 - **Built deployable platform infrastructure.** PostgreSQL stores Control Plane state, MCP connects tools and services, and an Apache front-door proxy keeps internal backend ports private.
 - **Used Codex with GPT-5.6 throughout the engineering lifecycle.** Codex accelerated repository understanding, architecture changes, SDK and control-plane implementation, voice integration, debugging, tests, responsive polish, and documentation.
-- **Made deliberate human product decisions.** I defined the educational problem, selected quantum computing as the first proof case, established the action-safety boundary, reviewed learner experience, and decided where deterministic software must override model output.
+- **Made deliberate human product decisions.** I defined the educational problem, selected quantum computing as the first proof case, established the action-safety boundary, revieId learner experience, and decided where deterministic software must override model output.
 - **Produced a complete judge-ready submission.** The repository includes setup guidance, runnable services, sample configuration, working screens, a public demo narrative, and clear testing instructions.
 
-## What we learned
+## What I learned
 
 The difficult part is not adding a chatbot.
 
@@ -386,13 +386,13 @@ A learner may need help discovering:
 
 AI becomes more useful in education when it is grounded in visible application state and constrained by deterministic software.
 
-We also learned that explanation alone is not enough. Learning becomes more meaningful when the learner can make a prediction, observe the system, test an idea, and receive immediate feedback.
+I also learned that explanation alone is not enough. Learning becomes more meaningful when the learner can make a prediction, observe the system, test an idea, and receive immediate feedback.
 
 The most important product principle became:
 
 > **The model explains and proposes. The application acts and verifies.**
 
-We also learned how to work effectively with Codex. Clear goals, sufficient repository context, explicit constraints, observable acceptance criteria, and repeated verification produced far better results than broad prompts.
+I also learned how to work effectively with Codex. Clear goals, sufficient repository context, explicit constraints, observable acceptance criteria, and repeated verification produced far better results than broad prompts.
 
 ## What’s next for Sumi and 1StopQuantum
 
@@ -424,4 +424,4 @@ For that reason, application actions remain bounded, and simulation results are 
 
 The next generation of education may not be static lectures, videos, and assignments with a chatbot added beside them.
 
-It may be interactive learning applications in which AI listens, explains, demonstrates, acts safely, and helps the learner understand how an answer is built.
+It may be interactive learning applications in which AI listens, explains, demonstrates, acts safely, and helps the learner understand how an ansIr is built.
